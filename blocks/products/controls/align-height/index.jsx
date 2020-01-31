@@ -7,10 +7,10 @@ const { ToggleControl } = wp.components
 
 function AlignHeight({ state, dispatch }) {
   function onChange(isChecked) {
-    //  builderDispatch({
-    //    type: 'UPDATE_SETTING',
-    //    payload: { key: 'alignHeight', value: isChecked }
-    //  })
+    dispatch({
+      type: 'UPDATE_SETTING',
+      payload: { key: 'alignHeight', value: isChecked }
+    })
   }
 
   return (

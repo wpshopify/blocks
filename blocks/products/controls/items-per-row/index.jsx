@@ -23,6 +23,10 @@ function ItemsPerRow({ state, dispatch }) {
   }, [debouncedValue])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     setLocalVal(state.payloadSettings.itemsPerRow)
   }, [state.payloadSettings.itemsPerRow])
 

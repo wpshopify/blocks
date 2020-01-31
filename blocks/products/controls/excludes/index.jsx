@@ -1,11 +1,12 @@
 import without from 'lodash/without'
 import { withStore } from '../../../_common'
 
-const { useEffect, useState } = wp.element
+const { useEffect, useState, useRef } = wp.element
 const { CheckboxControl, BaseControl } = wp.components
 
 function Excludes({ state, dispatch }) {
   const [excludesState, setExcludesState] = useState(state.payloadSettings.excludes)
+  const isFirstRender = useRef(true)
 
   function inState(excludesState, type) {
     if (excludesState.includes(type)) {
@@ -30,10 +31,20 @@ function Excludes({ state, dispatch }) {
   }
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'excludes', value: excludesState } })
   }, [excludesState])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+
     setExcludesState(state.payloadSettings.excludes)
   }, [state.payloadSettings.excludes])
 

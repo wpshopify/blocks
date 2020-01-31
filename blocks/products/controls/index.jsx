@@ -46,10 +46,11 @@ const { PanelBody } = wp.components
 
 function BlockControls() {
   const [state, dispatch] = wp.element.useContext(BlockContext)
+  console.log('.............................. BlockControls')
 
-  wp.element.useEffect(() => {
-    console.log('Payload set! ', state.payload)
-  }, [state.payload])
+  //   wp.element.useEffect(() => {
+  //     console.log('Payload set! ', state.payload)
+  //   }, [state.payload])
 
   return (
     <InspectorControls>

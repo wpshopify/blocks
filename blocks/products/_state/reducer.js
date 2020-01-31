@@ -60,20 +60,6 @@ function BlockReducer(state, action) {
       }
     }
 
-    case 'SET_PAYLOAD': {
-      var newComponentSettings = state.componentSettings[0]
-
-      newComponentSettings.componentPayload = update(newComponentSettings.componentPayload, {
-        $set: action.payload
-      })
-
-      return {
-        ...state,
-        payload: update(state.payload, { $set: action.payload }),
-        componentSettings: [newComponentSettings]
-      }
-    }
-
     default: {
       throw new Error(`Unhandled action type: ${action.type} in BlockReducer`)
     }
