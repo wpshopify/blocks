@@ -1,4 +1,4 @@
-import { withStore } from '../../../_common'
+const { __ } = wp.i18n
 const { ToggleControl } = wp.components
 
 function ShowZoom({ state, dispatch }) {
@@ -7,7 +7,11 @@ function ShowZoom({ state, dispatch }) {
   }
 
   return (
-    <ToggleControl label='Show zoom' checked={state.payloadSettings.showZoom} onChange={onChange} />
+    <ToggleControl
+      label={__('Show zoom', 'wpshopify')}
+      checked={state.payloadSettings.showZoom}
+      onChange={onChange}
+    />
   )
 }
 

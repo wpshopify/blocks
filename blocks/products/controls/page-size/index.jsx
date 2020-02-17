@@ -1,6 +1,8 @@
 import { useDebounce } from 'use-debounce'
+
 const { useEffect, useState, useRef, useContext } = wp.element
 const { RangeControl } = wp.components
+const { __ } = wp.i18n
 
 function PageSize({ state, dispatch }) {
   const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize)
@@ -23,7 +25,7 @@ function PageSize({ state, dispatch }) {
   return (
     <RangeControl
       disabled={!state.payloadSettings.pageSize}
-      label='Page size'
+      label={__('Page size', 'wpshopify')}
       value={localVal}
       onChange={onChange}
       min={1}

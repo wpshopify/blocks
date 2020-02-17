@@ -1,5 +1,5 @@
-import { withStore } from '../../../_common'
 const { ToggleControl } = wp.components
+const { __ } = wp.i18n
 
 function HideQuantity({ state, dispatch }) {
   function onChange(newVal) {
@@ -8,7 +8,7 @@ function HideQuantity({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Hide quantity'
+      label={__('Hide quantity', 'wpshopify')}
       checked={state.payloadSettings.hideQuantity}
       onChange={onChange}
     />

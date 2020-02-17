@@ -1,6 +1,6 @@
-import { withStore } from '../../../_common'
 import { useDebounce } from 'use-debounce'
 
+const { __ } = wp.i18n
 const { useEffect, useState, useRef } = wp.element
 const { TextControl } = wp.components
 
@@ -28,7 +28,9 @@ function NoResultsText({ state, dispatch }) {
     setLocalVal(state.payloadSettings.noResultsText)
   }, [state.payloadSettings.noResultsText])
 
-  return <TextControl label='No results text' value={localVal} onChange={onChange} />
+  return (
+    <TextControl label={__('No results text', 'wpshopify')} value={localVal} onChange={onChange} />
+  )
 }
 
 export { NoResultsText }

@@ -1,5 +1,4 @@
-import { withStore } from '../../../_common'
-
+const { __ } = wp.i18n
 const { ToggleControl } = wp.components
 
 function ShowQuantityLabel({ state, dispatch }) {
@@ -9,7 +8,7 @@ function ShowQuantityLabel({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Show quantity label'
+      label={__('Show quantity label', 'wpshopify')}
       checked={state.payloadSettings.showQuantityLabel}
       onChange={onChange}
     />

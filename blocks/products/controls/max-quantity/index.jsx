@@ -1,5 +1,5 @@
-import { withStore } from '../../../_common'
 const { TextControl } = wp.components
+const { __ } = wp.i18n
 
 function MaxQuantity({ state, dispatch }) {
   function onChange(newVal) {
@@ -9,7 +9,7 @@ function MaxQuantity({ state, dispatch }) {
   return (
     <TextControl
       type='Number'
-      label='Max quantity'
+      label={__('Max quantity', 'wpshopify')}
       value={state.payloadSettings.maxQuantity}
       onChange={onChange}
     />

@@ -1,8 +1,6 @@
-// import React, { useContext, useState, useEffect, useRef } from 'react'
-// import { TextControl } from '@wordpress/components'
-import { withStore } from '../../../_common'
 import { useDebounce } from 'use-debounce'
 
+const { __ } = wp.i18n
 const { useEffect, useState, useRef } = wp.element
 const { TextControl } = wp.components
 
@@ -55,7 +53,7 @@ function StorefrontAccessToken({ state, dispatch }) {
   return (
     <TextControl
       placeholder='Enter your Storefront Access Token'
-      label='Storefront Access Token'
+      label={__('Storefront Access Token', 'wpshopify')}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}

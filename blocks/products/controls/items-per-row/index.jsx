@@ -1,6 +1,7 @@
 import { withStore } from '../../../_common'
 import { useDebounce } from 'use-debounce'
 
+const { __ } = wp.i18n
 const { useEffect, useState, useRef } = wp.element
 const { RangeControl } = wp.components
 
@@ -31,7 +32,13 @@ function ItemsPerRow({ state, dispatch }) {
   }, [state.payloadSettings.itemsPerRow])
 
   return (
-    <RangeControl label='Items per row' value={localVal} onChange={onChange} min={1} max={20} />
+    <RangeControl
+      label={__('Items per row', 'wpshopify')}
+      value={localVal}
+      onChange={onChange}
+      min={1}
+      max={20}
+    />
   )
 }
 

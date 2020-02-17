@@ -1,6 +1,6 @@
 const { useState, useEffect } = wp.element
 const { TextControl, ToggleControl } = wp.components
-import { withStore } from '../../../_common'
+const { __ } = wp.i18n
 
 function Limit({ state, dispatch }) {
   const [limitToggle, setLimitToggle] = useState(false)
@@ -28,14 +28,14 @@ function Limit({ state, dispatch }) {
 
   return (
     <>
-      <ToggleControl label='Limit?' checked={limitToggle} onChange={onChange} />
+      <ToggleControl label={__('Limit?', 'wpshopify')} checked={limitToggle} onChange={onChange} />
       {limitToggle && (
         <TextControl
-          label='Limit'
+          label={__('Limit', 'wpshopify')}
           value={localVal}
           onChange={onLimitChange}
           type='number'
-          help='Limits the overall output'
+          help={__('Limits the overall output', 'wpshopify')}
         />
       )}
     </>

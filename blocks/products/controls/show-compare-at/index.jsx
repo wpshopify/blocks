@@ -1,6 +1,5 @@
-import { withStore } from '../../../_common'
-
 const { ToggleControl } = wp.components
+const { __ } = wp.i18n
 
 function ShowCompareAt({ state, dispatch }) {
   function onChange(newVal) {
@@ -9,7 +8,7 @@ function ShowCompareAt({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Show compare at'
+      label={__('Show compare at', 'wpshopify')}
       checked={state.payloadSettings.showCompareAt}
       onChange={onChange}
     />

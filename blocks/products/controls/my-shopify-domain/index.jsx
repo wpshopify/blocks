@@ -1,9 +1,9 @@
-import { withStore } from '../../../_common'
 import { useDebounce } from 'use-debounce'
 import { sanitizeDomainField } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 
 const { useEffect, useState, useRef } = wp.element
 const { TextControl } = wp.components
+const { __ } = wp.i18n
 
 function MyShopifyDomain({ state, dispatch }) {
   const [val, setVal] = useState(getCachedValue())
@@ -53,7 +53,7 @@ function MyShopifyDomain({ state, dispatch }) {
   return (
     <TextControl
       placeholder='store.myshopify.com'
-      label='Shopify Domain'
+      label={__('Shopify Domain', 'wpshopify')}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}

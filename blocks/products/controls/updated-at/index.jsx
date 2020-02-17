@@ -1,5 +1,4 @@
-import { withStore } from '../../../_common'
-
+const { __ } = wp.i18n
 const { useState } = wp.element
 const { TextControl } = wp.components
 
@@ -13,9 +12,9 @@ function UpdatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label='Updated At'
+      label={__('Updated At', 'wpshopify')}
       value={val}
-      help='Match product updated at'
+      help={__('Match product updated at', 'wpshopify')}
       onChange={onChange}
     />
   )

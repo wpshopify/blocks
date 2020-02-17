@@ -1,6 +1,6 @@
-import { withStore } from '../../../_common'
 const { useState } = wp.element
 const { TextControl } = wp.components
+const { __ } = wp.i18n
 
 function CreatedAt({ state, dispatch }) {
   const [val, setVal] = useState(state.payloadSettings.createdAt)
@@ -12,9 +12,9 @@ function CreatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label='Created At'
+      label={__('Created At', 'wpshopify')}
       value={val}
-      help='Match product created at'
+      help={__('Match product created at', 'wpshopify')}
       onChange={onChange}
     />
   )

@@ -1,6 +1,5 @@
-import { withStore } from '../../../_common'
-
 const { ToggleControl } = wp.components
+const { __ } = wp.i18n
 
 function ShowPriceRange({ state, dispatch }) {
   function onChange(newVal) {
@@ -9,7 +8,7 @@ function ShowPriceRange({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Show price range'
+      label={__('Show price range', 'wpshopify')}
       checked={state.payloadSettings.showPriceRange}
       onChange={onChange}
     />

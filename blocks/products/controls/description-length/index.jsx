@@ -1,8 +1,8 @@
-import { withStore } from '../../../_common'
 import { useDebounce } from 'use-debounce'
 
 const { useEffect, useState, useRef } = wp.element
 const { RangeControl } = wp.components
+const { __ } = wp.i18n
 
 function DescriptionLength({ state, dispatch }) {
   const [localVal, setLocalVal] = useState(state.payloadSettings.descriptionLength)
@@ -31,8 +31,8 @@ function DescriptionLength({ state, dispatch }) {
 
   return (
     <RangeControl
-      label='Description Length'
-      help=' Limits the number of characters'
+      label={__('Limit Description Length', 'wpshopify')}
+      help={__('Limits the number of characters', 'wpshopify')}
       value={localVal}
       onChange={onChange}
       min={1}

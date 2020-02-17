@@ -1,6 +1,6 @@
-import { withStore } from '../../../_common'
 import { defaultColors } from '../../_common'
 
+const { __ } = wp.i18n
 const { BaseControl, ColorPalette } = wp.components
 
 function VariantButtonColor({ state, dispatch }) {
@@ -9,7 +9,7 @@ function VariantButtonColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label='Variant button color:' className='color-variants'>
+    <BaseControl label={__('Variant button color:', 'wpshopify')} className='color-variants'>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.variantButtonColor}

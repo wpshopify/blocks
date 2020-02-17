@@ -1,6 +1,6 @@
-import { withStore } from '../../../_common'
 const { useState } = wp.element
 const { TextControl } = wp.components
+const { __ } = wp.i18n
 
 function AddToCartButtonText({ state, dispatch }) {
   const [val, setVal] = useState(state.payloadSettings.addToCartButtonText)
@@ -10,7 +10,13 @@ function AddToCartButtonText({ state, dispatch }) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'addToCartButtonText', value: newVal } })
   }
 
-  return <TextControl label='Add to cart button text' value={val} onChange={onChange} />
+  return (
+    <TextControl
+      label={__('Add to cart button text', 'wpshopify')}
+      value={val}
+      onChange={onChange}
+    />
+  )
 }
 
 export { AddToCartButtonText }

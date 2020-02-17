@@ -6,17 +6,52 @@ import isEmpty from 'lodash/isEmpty'
 function BlockReducer(state, action) {
   switch (action.type) {
     case 'UPDATE_SETTING': {
+      if (typeof action.payload.value === 'undefined') {
+        var valueToSet = state.defaultPayloadSettings[action.payload.key]
+      } else {
+        var valueToSet = action.payload.value
+      }
+
       state.payloadSettings[action.payload.key] = update(
         state.payloadSettings[action.payload.key],
         {
-          $set: action.payload.value
+          $set: valueToSet
         }
       )
 
+      var payloadSettingsId = btoa(JSON.stringify(state.payloadSettings))
+
+      state.blockProps.setAttributes({
+        payloadSettingsId: payloadSettingsId
+      })
+
       return {
-        ...state
+        ...state,
+        payloadSettingsId: payloadSettingsId
       }
     }
+
+    //  case 'RESET_SETTINGS': {
+    //    var payloadSettingsId = btoa(JSON.stringify(action.payload.attributes.defaultPayloadSettings))
+
+    //    console.log('payloadSettingsId', payloadSettingsId)
+
+    //    action.payload.setAttributes({
+    //      payloadSettingsId: payloadSettingsId
+    //    })
+
+    //    console.log('RESET_SETTINGS')
+
+    //    return {
+    //      ...state,
+    //      payloadSettings: update(state.payloadSettings, {
+    //        $set: action.payload.attributes.defaultPayloadSettings
+    //      }),
+    //      payloadSettingsId: update(state.payloadSettingsId, {
+    //        $set: payloadSettingsId
+    //      })
+    //    }
+    //  }
 
     case 'UPDATE_NOTICES': {
       let updatedNotices = state.notices
@@ -42,6 +77,13 @@ function BlockReducer(state, action) {
       }
     }
 
+    case 'SET_IS_LOADING': {
+      return {
+        ...state,
+        isLoading: update(state.isLoading, { $set: action.payload })
+      }
+    }
+
     case 'SET_IS_READY': {
       return {
         ...state,
@@ -50,13 +92,18 @@ function BlockReducer(state, action) {
     }
 
     case 'SET_IS_LOADING': {
-      console.log('SET_IS_LOADING', action.payload)
-
       return {
         ...state,
         isLoading: update(state.isLoading, {
           $set: action.payload
         })
+      }
+    }
+
+    case 'UPDATE_QUERY_PARAMS': {
+      return {
+        ...state,
+        queryParams: update(state.queryParams, { $merge: action.payload })
       }
     }
 

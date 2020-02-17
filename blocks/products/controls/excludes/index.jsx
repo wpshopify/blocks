@@ -1,6 +1,5 @@
 import without from 'lodash/without'
-import { withStore } from '../../../_common'
-
+const { __ } = wp.i18n
 const { useEffect, useState, useRef } = wp.element
 const { CheckboxControl, BaseControl } = wp.components
 
@@ -51,7 +50,7 @@ function Excludes({ state, dispatch }) {
   function Title() {
     return (
       <CheckboxControl
-        label='Title'
+        label={__('Title', 'wpshopify')}
         checked={inState(excludesState, 'title')}
         onChange={isChecked => onChange(isChecked, 'title')}
       />
@@ -61,7 +60,7 @@ function Excludes({ state, dispatch }) {
   function Description() {
     return (
       <CheckboxControl
-        label='Description'
+        label={__('Description', 'wpshopify')}
         checked={inState(excludesState, 'description')}
         onChange={isChecked => onChange(isChecked, 'description')}
       />
@@ -71,7 +70,7 @@ function Excludes({ state, dispatch }) {
   function Images() {
     return (
       <CheckboxControl
-        label='Images'
+        label={__('Images', 'wpshopify')}
         checked={inState(excludesState, 'images')}
         onChange={isChecked => onChange(isChecked, 'images')}
       />
@@ -81,7 +80,7 @@ function Excludes({ state, dispatch }) {
   function Pricing() {
     return (
       <CheckboxControl
-        label='Pricing'
+        label={__('Pricing', 'wpshopify')}
         checked={inState(excludesState, 'pricing')}
         onChange={isChecked => onChange(isChecked, 'pricing')}
       />
@@ -91,7 +90,7 @@ function Excludes({ state, dispatch }) {
   function BuyButton() {
     return (
       <CheckboxControl
-        label='Buy Button'
+        label={__('Buy Button', 'wpshopify')}
         checked={inState(excludesState, 'buy-button')}
         onChange={isChecked => onChange(isChecked, 'buy-button')}
       />
@@ -100,7 +99,7 @@ function Excludes({ state, dispatch }) {
 
   return (
     <>
-      <BaseControl label='Excludes'></BaseControl>
+      <BaseControl label={__('Exclude from layout', 'wpshopify')}></BaseControl>
       <Title />
       <Description />
       <Images />

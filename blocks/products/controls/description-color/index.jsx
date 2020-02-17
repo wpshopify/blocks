@@ -1,6 +1,6 @@
-import { withStore } from '../../../_common'
 import { defaultColors } from '../../_common'
 const { BaseControl, ColorPalette } = wp.components
+const { __ } = wp.i18n
 
 function DescriptionColor({ state, dispatch }) {
   function onChange(newColor) {
@@ -8,7 +8,7 @@ function DescriptionColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label='Description Color:'>
+    <BaseControl label={__('Description Color:', 'wpshopify')}>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.descriptionColor}

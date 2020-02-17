@@ -1,5 +1,5 @@
-import { withStore } from '../../../_common'
 const { ToggleControl } = wp.components
+const { __ } = wp.i18n
 
 function ShowFeaturedOnly({ state, dispatch }) {
   function onChange(newVal) {
@@ -8,7 +8,7 @@ function ShowFeaturedOnly({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Show featured only'
+      label={__('Show featured only', 'wpshopify')}
       checked={state.payloadSettings.showFeaturedOnly}
       onChange={onChange}
     />

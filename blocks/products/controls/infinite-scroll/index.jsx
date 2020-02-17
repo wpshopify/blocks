@@ -1,5 +1,6 @@
 const { ToggleControl } = wp.components
 const { useState } = wp.element
+const { __ } = wp.i18n
 
 function InfiniteScroll({ state, dispatch }) {
   const [val, setVal] = useState(state.payloadSettings.infiniteScroll)
@@ -9,7 +10,9 @@ function InfiniteScroll({ state, dispatch }) {
     setVal(newVal)
   }
 
-  return <ToggleControl label='Infinite scroll?' checked={val} onChange={onChange} />
+  return (
+    <ToggleControl label={__('Infinite scroll?', 'wpshopify')} checked={val} onChange={onChange} />
+  )
 }
 
 export { InfiniteScroll }

@@ -1,12 +1,7 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
 import { Title } from './title'
 import { Tag } from './tag'
 import { Vendor } from './vendor'
 import { ProductType } from './product-type'
-import { ProductId } from './product-id'
-import { CreatedAt } from './created-at'
-import { UpdatedAt } from './updated-at'
 import { AvailableForSale } from './available-for-sale'
 import { Connective } from './connective'
 import { SortBy } from './sort-by'
@@ -17,9 +12,6 @@ import { PageSize } from './page-size'
 import { Limit } from './limit'
 import { ItemsPerRow } from './items-per-row'
 import { Excludes } from './excludes'
-import { StorefrontAccessToken } from './storefront-access-token'
-import { MyShopifyDomain } from './my-shopify-domain'
-import { UpdateCredentialsButton } from './update-credentials'
 import { InfiniteScroll } from './infinite-scroll'
 import { InfiniteScrollOffset } from './infinite-scroll-offset'
 import { AddToCartButtonColor } from './add-to-cart-button-color'
@@ -40,21 +32,21 @@ import { DescriptionSize } from './description-size'
 import { DescriptionColor } from './description-color'
 import { DescriptionLength } from './description-length'
 import { AlignHeight } from './align-height'
+import { ButtonReset } from './button-reset'
 import { BlockContext } from '../_state/context'
 const { InspectorControls } = wp.blockEditor
 const { PanelBody } = wp.components
+const { __ } = wp.i18n
+const { useContext } = wp.element
 
-function BlockControls() {
-  const [state, dispatch] = wp.element.useContext(BlockContext)
-  console.log('.............................. BlockControls')
-
-  //   wp.element.useEffect(() => {
-  //     console.log('Payload set! ', state.payload)
-  //   }, [state.payload])
+function BlockControls({ blockProps }) {
+  const [state, dispatch] = useContext(BlockContext)
 
   return (
     <InspectorControls>
-      <PanelBody title='Filtering' initialOpen={false}>
+      {/* <ButtonReset state={state} dispatch={dispatch} blockProps={blockProps} /> */}
+
+      <PanelBody title={__('Filtering', 'wpshopify')} initialOpen={false}>
         <Title state={state} dispatch={dispatch} />
         <Tag state={state} dispatch={dispatch} />
         <Vendor state={state} dispatch={dispatch} />
@@ -63,12 +55,12 @@ function BlockControls() {
         <Connective state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Sorting' initialOpen={false}>
+      <PanelBody title={__('Sorting', 'wpshopify')} initialOpen={false}>
         <SortBy state={state} dispatch={dispatch} />
         <Reverse state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Pagination' initialOpen={false}>
+      <PanelBody title={__('Pagination', 'wpshopify')} initialOpen={false}>
         <Pagination state={state} dispatch={dispatch} />
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
@@ -77,34 +69,34 @@ function BlockControls() {
         <InfiniteScrollOffset state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Layout' initialOpen={false}>
+      <PanelBody title={__('Layout', 'wpshopify')} initialOpen={false}>
         <ItemsPerRow state={state} dispatch={dispatch} />
         <Excludes state={state} dispatch={dispatch} />
         <AlignHeight state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Title' initialOpen={false}>
+      <PanelBody title={__('Title', 'wpshopify')} initialOpen={false}>
         <TitleSize state={state} dispatch={dispatch} />
         <TitleColor state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Description' initialOpen={false}>
+      <PanelBody title={__('Description', 'wpshopify')} initialOpen={false}>
         <DescriptionSize state={state} dispatch={dispatch} />
         <DescriptionColor state={state} dispatch={dispatch} />
         <DescriptionLength state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Pricing' initialOpen={false}>
+      <PanelBody title={__('Pricing', 'wpshopify')} initialOpen={false}>
         <ShowPriceRange state={state} dispatch={dispatch} />
         <ShowCompareAt state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Images' initialOpen={false}>
+      <PanelBody title={__('Images', 'wpshopify')} initialOpen={false}>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title='Buy Button' initialOpen={false}>
+      <PanelBody title={__('Buy Button', 'wpshopify')} initialOpen={false}>
         <AddToCartButtonColor state={state} dispatch={dispatch} />
         <AddToCartButtonText state={state} dispatch={dispatch} />
         <VariantButtonColor state={state} dispatch={dispatch} />

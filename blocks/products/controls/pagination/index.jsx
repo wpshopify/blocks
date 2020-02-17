@@ -1,6 +1,5 @@
-import { withStore } from '../../../_common'
 const { ToggleControl } = wp.components
-const { useEffect } = wp.element
+const { __ } = wp.i18n
 
 function Pagination({ state, dispatch }) {
   function onChange(newVal) {
@@ -9,7 +8,7 @@ function Pagination({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label='Show pagination'
+      label={__('Show pagination', 'wpshopify')}
       checked={state.payloadSettings.pagination}
       onChange={onChange}
     />

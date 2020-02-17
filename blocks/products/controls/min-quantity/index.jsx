@@ -1,6 +1,5 @@
-import { withStore } from '../../../_common'
-
 const { TextControl } = wp.components
+const { __ } = wp.i18n
 
 function MinQuantity({ state, dispatch }) {
   function onChange(newVal) {
@@ -10,7 +9,7 @@ function MinQuantity({ state, dispatch }) {
   return (
     <TextControl
       type='Number'
-      label='Min quantity'
+      label={__('Min quantity', 'wpshopify')}
       value={state.payloadSettings.minQuantity}
       onChange={onChange}
     />
