@@ -1,43 +1,73 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+
 const { useState, useEffect } = wp.element
-const { TextControl, ToggleControl } = wp.components
+const { TextControl, Spinner } = wp.components
 const { __ } = wp.i18n
 
 function Limit({ state, dispatch }) {
-  const [limitToggle, setLimitToggle] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [localVal, setLocalVal] = useState(
     state.payloadSettings.limit ? state.payloadSettings.limit : false
   )
 
-  function onChange() {
-    setLimitToggle(!limitToggle)
-  }
+  const spinnerStyles = css`
+    position: relative;
+    top: -3px;
+    right: 6px;
+    margin: 0;
+
+    .components-spinner {
+      margin: 0;
+    }
+  `
 
   function onLimitChange(newVal) {
-    setLocalVal(newVal)
+    dispatch({ type: 'SET_IS_LOADING', payload: true })
 
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: parseInt(newVal) } })
+    if (!newVal) {
+      setLocalVal(false)
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: false } })
+      dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { first: state.payloadSettings.pageSize } })
+    } else {
+      var newLimitNum = parseInt(newVal)
+
+      if (newLimitNum === state.payloadSettings.pageSize) {
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+      }
+
+      setLocalVal(newLimitNum)
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: newLimitNum } })
+      dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { first: newLimitNum } })
+    }
   }
 
   useEffect(() => {
-    setLocalVal(state.payloadSettings.limit)
-
-    if (!state.payloadSettings.limit) {
-      setLimitToggle(false)
+    if (isLoading && !state.isLoading) {
+      setIsLoading(false)
     }
-  }, [state.payloadSettings.limit])
+  }, [state.isLoading])
 
   return (
     <>
-      <ToggleControl label={__('Limit?', 'wpshopify')} checked={limitToggle} onChange={onChange} />
-      {limitToggle && (
-        <TextControl
-          label={__('Limit', 'wpshopify')}
-          value={localVal}
-          onChange={onLimitChange}
-          type='number'
-          help={__('Limits the overall output', 'wpshopify')}
-        />
+      {isLoading && (
+        <div css={spinnerStyles}>
+          <Spinner />
+        </div>
       )}
+
+      <TextControl
+        label={__('Limit products to', 'wpshopify')}
+        value={localVal}
+        onChange={onLimitChange}
+        type='number'
+        help={__(
+          'Sets the number of products shown. This will take precedence over page size.',
+          'wpshopify'
+        )}
+      />
     </>
   )
 }

@@ -18,7 +18,7 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
 
   const spinnerStyles = css`
     position: relative;
-    top: 28px;
+    top: -3px;
     right: 6px;
     margin: 0;
 
