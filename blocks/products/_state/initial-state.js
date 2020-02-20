@@ -16,6 +16,7 @@ function BlockInitialState(options, blockProps) {
     isReady: false,
     notices: [],
     componentElement: false,
+    shouldForceUpdate: false,
     componentType: 'products',
     blockProps: blockProps,
     payloadSettings: existingBlockData,

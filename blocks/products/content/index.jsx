@@ -20,13 +20,17 @@ function BlockContent() {
 
   function afterLoading() {
     console.log('BlockContent :: afterLoading')
-
     dispatch({ type: 'SET_IS_LOADING', payload: false })
   }
 
   return (
     <Suspense
-      fallback={<Placeholder label={__('Loading products ...', 'wpshopify')} icon={<Spinner />} />}>
+      fallback={
+        <Placeholder
+          label={__('Loading ' + state.componentType + ' ...', wpshopify.misc.textdomain)}
+          icon={<Spinner />}
+        />
+      }>
       <Shop options={{ isCartReady: true }}>
         <Items
           options={[
@@ -37,6 +41,7 @@ function BlockContent() {
             }
           ]}
           customQueryParams={state.queryParams}
+          limit={state.payloadSettings.limit}
           afterLoading={afterLoading}
           beforeLoading={beforeLoading}>
           <Products />

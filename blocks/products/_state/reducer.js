@@ -31,28 +31,6 @@ function BlockReducer(state, action) {
       }
     }
 
-    //  case 'RESET_SETTINGS': {
-    //    var payloadSettingsId = btoa(JSON.stringify(action.payload.attributes.defaultPayloadSettings))
-
-    //    console.log('payloadSettingsId', payloadSettingsId)
-
-    //    action.payload.setAttributes({
-    //      payloadSettingsId: payloadSettingsId
-    //    })
-
-    //    console.log('RESET_SETTINGS')
-
-    //    return {
-    //      ...state,
-    //      payloadSettings: update(state.payloadSettings, {
-    //        $set: action.payload.attributes.defaultPayloadSettings
-    //      }),
-    //      payloadSettingsId: update(state.payloadSettingsId, {
-    //        $set: payloadSettingsId
-    //      })
-    //    }
-    //  }
-
     case 'UPDATE_NOTICES': {
       let updatedNotices = state.notices
 

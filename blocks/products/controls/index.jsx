@@ -39,7 +39,7 @@ const { PanelBody } = wp.components
 const { __ } = wp.i18n
 const { useContext } = wp.element
 
-function BlockControls({ blockProps }) {
+function BlockControls() {
   const [state, dispatch] = useContext(BlockContext)
 
   return (
