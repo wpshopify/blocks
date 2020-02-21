@@ -1,51 +1,49 @@
-import { Title } from './title'
-import { Tag } from './tag'
-import { Vendor } from './vendor'
-import { ProductType } from './product-type'
-import { AvailableForSale } from './available-for-sale'
-import { Connective } from './connective'
-import { SortBy } from './sort-by'
-import { Reverse } from './reverse'
-import { Pagination } from './pagination'
-import { NoResultsText } from './no-results-text'
-import { PageSize } from './page-size'
-import { Limit } from './limit'
-import { ItemsPerRow } from './items-per-row'
-import { Excludes } from './excludes'
-import { InfiniteScroll } from './infinite-scroll'
-import { InfiniteScrollOffset } from './infinite-scroll-offset'
-import { AddToCartButtonColor } from './add-to-cart-button-color'
-import { AddToCartButtonText } from './add-to-cart-button-text'
-import { VariantButtonColor } from './variant-button-color'
-import { HideQuantity } from './hide-quantity'
-import { ShowQuantityLabel } from './show-quantity-label'
-import { QuantityLabelText } from './quantity-label-text'
-import { MinQuantity } from './min-quantity'
-import { MaxQuantity } from './max-quantity'
-import { ShowPriceRange } from './show-price-range'
-import { ShowCompareAt } from './show-compare-at'
-import { ShowFeaturedOnly } from './show-featured-only'
-import { ShowZoom } from './show-zoom'
-import { TitleSize } from './title-size'
-import { TitleColor } from './title-color'
-import { DescriptionSize } from './description-size'
-import { DescriptionColor } from './description-color'
-import { DescriptionLength } from './description-length'
-import { AlignHeight } from './align-height'
-import { ButtonReset } from './button-reset'
-import { BlockContext } from '../_state/context'
-const { InspectorControls } = wp.blockEditor
+import { Title } from '../../_controls/title'
+import { Tag } from '../../_controls/tag'
+import { Vendor } from '../../_controls/vendor'
+import { ProductType } from '../../_controls/product-type'
+import { AvailableForSale } from '../../_controls/available-for-sale'
+import { Connective } from '../../_controls/connective'
+import { SortBy } from '../../_controls/sort-by'
+import { Reverse } from '../../_controls/reverse'
+import { Pagination } from '../../_controls/pagination'
+import { NoResultsText } from '../../_controls/no-results-text'
+import { PageSize } from '../../_controls/page-size'
+import { Limit } from '../../_controls/limit'
+import { ItemsPerRow } from '../../_controls/items-per-row'
+import { Excludes } from '../../_controls/excludes'
+import { InfiniteScroll } from '../../_controls/infinite-scroll'
+import { InfiniteScrollOffset } from '../../_controls/infinite-scroll-offset'
+import { AddToCartButtonColor } from '../../_controls/add-to-cart-button-color'
+import { AddToCartButtonText } from '../../_controls/add-to-cart-button-text'
+import { VariantButtonColor } from '../../_controls/variant-button-color'
+import { HideQuantity } from '../../_controls/hide-quantity'
+import { ShowQuantityLabel } from '../../_controls/show-quantity-label'
+import { QuantityLabelText } from '../../_controls/quantity-label-text'
+import { MinQuantity } from '../../_controls/min-quantity'
+import { MaxQuantity } from '../../_controls/max-quantity'
+import { ShowPriceRange } from '../../_controls/show-price-range'
+import { ShowCompareAt } from '../../_controls/show-compare-at'
+import { ShowFeaturedOnly } from '../../_controls/show-featured-only'
+import { ShowZoom } from '../../_controls/show-zoom'
+import { TitleSize } from '../../_controls/title-size'
+import { TitleColor } from '../../_controls/title-color'
+import { DescriptionSize } from '../../_controls/description-size'
+import { DescriptionColor } from '../../_controls/description-color'
+import { DescriptionLength } from '../../_controls/description-length'
+import { AlignHeight } from '../../_controls/align-height'
+import { BlockControls } from '../../_controls'
+import { BlockContext } from '../../_state/context'
+
 const { PanelBody } = wp.components
 const { __ } = wp.i18n
 const { useContext } = wp.element
 
-function BlockControls() {
+function ProductsControls() {
   const [state, dispatch] = useContext(BlockContext)
 
   return (
-    <InspectorControls>
-      {/* <ButtonReset state={state} dispatch={dispatch} blockProps={blockProps} /> */}
-
+    <BlockControls>
       <PanelBody title={__('Filtering', 'wpshopify')} initialOpen={false}>
         <Title state={state} dispatch={dispatch} />
         <Tag state={state} dispatch={dispatch} />
@@ -64,7 +62,7 @@ function BlockControls() {
         <Pagination state={state} dispatch={dispatch} />
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
-        <NoResultsText state={state} dispatch={dispatch} />
+        {/* <NoResultsText state={state} dispatch={dispatch} /> */}
         <InfiniteScroll state={state} dispatch={dispatch} />
         <InfiniteScrollOffset state={state} dispatch={dispatch} />
       </PanelBody>
@@ -106,8 +104,8 @@ function BlockControls() {
         <MinQuantity state={state} dispatch={dispatch} />
         <MaxQuantity state={state} dispatch={dispatch} />
       </PanelBody>
-    </InspectorControls>
+    </BlockControls>
   )
 }
 
-export { BlockControls }
+export { ProductsControls }
