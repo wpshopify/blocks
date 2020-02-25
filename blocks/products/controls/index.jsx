@@ -62,9 +62,7 @@ function ProductsControls() {
         <Pagination state={state} dispatch={dispatch} />
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
-        {/* <NoResultsText state={state} dispatch={dispatch} /> */}
         <InfiniteScroll state={state} dispatch={dispatch} />
-        <InfiniteScrollOffset state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody title={__('Layout', 'wpshopify')} initialOpen={false}>

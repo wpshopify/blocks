@@ -37,6 +37,8 @@ function BlockProducts() {
       )
     },
     save: props => {
+      console.log('props', props)
+
       return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
     }
   }

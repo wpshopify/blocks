@@ -36,8 +36,8 @@ function PageSize({ state, dispatch }) {
     setIsLoading(true)
 
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pageSize', value: debouncedValue } })
-    dispatch({ type: 'SET_IS_LOADING', payload: true })
     dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { first: debouncedValue } })
+    dispatch({ type: 'SET_IS_LOADING', payload: true })
   }, [debouncedValue])
 
   useEffect(() => {

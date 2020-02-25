@@ -99,7 +99,7 @@ function Excludes({ state, dispatch }) {
 
   return (
     <>
-      <BaseControl label={__('Exclude from layout', 'wpshopify')}></BaseControl>
+      <BaseControl label={__('Exclude from layout: ', 'wpshopify')}></BaseControl>
       <Title />
       <Description />
       <Images />

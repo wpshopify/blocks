@@ -79,6 +79,8 @@ function BlockReducer(state, action) {
     }
 
     case 'UPDATE_QUERY_PARAMS': {
+      console.log('action.payload', action.payload)
+
       return {
         ...state,
         queryParams: update(state.queryParams, { $merge: action.payload })
