@@ -8,7 +8,7 @@ function HideQuantity({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Hide quantity', 'wpshopify')}
+      label={__('Hide quantity', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.hideQuantity}
       onChange={onChange}
     />

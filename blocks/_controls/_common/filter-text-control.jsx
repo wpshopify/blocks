@@ -12,7 +12,7 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   const [localVal, setLocalVal] = useState(
     convertValuesToString(state.payloadSettings[settingName])
   )
-  const [debouncedValue] = useDebounce(localVal, 400)
+  const [debouncedValue] = useDebounce(localVal, 250)
   const isFirstRender = useRef(true)
   const [isTouched, setIsTouched] = useState(false)
 
@@ -38,7 +38,6 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
     }
 
     setIsTouched(true)
-    console.log('localVal', localVal)
 
     dispatch({
       type: 'UPDATE_SETTING',
@@ -66,9 +65,9 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
       )}
 
       <TextControl
-        label={__(label, 'wpshopify')}
+        label={__(label, wpshopify.misc.textdomain)}
         value={localVal}
-        help={__(help, 'wpshopify')}
+        help={__(help, wpshopify.misc.textdomain)}
         onChange={onChange}
       />
     </>

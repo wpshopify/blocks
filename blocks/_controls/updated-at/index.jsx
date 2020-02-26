@@ -12,9 +12,9 @@ function UpdatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Updated At', 'wpshopify')}
+      label={__('Updated At', wpshopify.misc.textdomain)}
       value={val}
-      help={__('Match product updated at', 'wpshopify')}
+      help={__('Match product updated at', wpshopify.misc.textdomain)}
       onChange={onChange}
     />
   )

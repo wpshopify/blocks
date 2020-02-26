@@ -11,17 +11,17 @@ function FontSizePickerControl({ state, dispatch, defaultValue, label, settingNa
 
   const fontSizes = [
     {
-      name: __('Small', 'wpshopify'),
+      name: __('Small', wpshopify.misc.textdomain),
       slug: 'small',
       size: 18
     },
     {
-      name: __('Medium', 'wpshopify'),
+      name: __('Medium', wpshopify.misc.textdomain),
       slug: 'medium',
       size: 22
     },
     {
-      name: __('Big', 'wpshopify'),
+      name: __('Big', wpshopify.misc.textdomain),
       slug: 'big',
       size: 28
     }

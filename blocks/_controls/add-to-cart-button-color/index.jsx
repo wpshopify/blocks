@@ -9,7 +9,7 @@ function AddToCartButtonColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label={__('Add to cart color:', 'wpshopify')}>
+    <BaseControl label={__('Add to cart color:', wpshopify.misc.textdomain)}>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.addToCartButtonColor}

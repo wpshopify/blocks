@@ -32,7 +32,7 @@ function ItemsPerRow({ state, dispatch }) {
 
   return (
     <RangeControl
-      label={__('Items per row', 'wpshopify')}
+      label={__('Items per row', wpshopify.misc.textdomain)}
       value={localVal}
       onChange={onChange}
       min={1}

@@ -9,7 +9,7 @@ function MaxQuantity({ state, dispatch }) {
   return (
     <TextControl
       type='Number'
-      label={__('Max quantity', 'wpshopify')}
+      label={__('Max quantity', wpshopify.misc.textdomain)}
       value={state.payloadSettings.maxQuantity}
       onChange={onChange}
     />

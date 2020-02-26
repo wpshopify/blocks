@@ -20,21 +20,21 @@ function SortBy({ state, dispatch }) {
   `
 
   const options = [
-    { label: __('Title', 'wpshopify'), value: 'title' },
-    { label: __('Vendor', 'wpshopify'), value: 'vendor' },
-    { label: __('ID', 'wpshopify'), value: 'id' },
-    { label: __('Price', 'wpshopify'), value: 'price' },
-    { label: __('Best selling', 'wpshopify'), value: 'best_selling' },
-    { label: __('Product type', 'wpshopify'), value: 'product_type' },
-    { label: __('Created at', 'wpshopify'), value: 'created_at' },
-    { label: __('Updated at', 'wpshopify'), value: 'updated_at' }
+    { label: __('Title', wpshopify.misc.textdomain), value: 'title' },
+    { label: __('Vendor', wpshopify.misc.textdomain), value: 'vendor' },
+    { label: __('ID', wpshopify.misc.textdomain), value: 'id' },
+    { label: __('Price', wpshopify.misc.textdomain), value: 'price' },
+    { label: __('Best selling', wpshopify.misc.textdomain), value: 'best_selling' },
+    { label: __('Product type', wpshopify.misc.textdomain), value: 'product_type' },
+    { label: __('Created at', wpshopify.misc.textdomain), value: 'created_at' },
+    { label: __('Updated at', wpshopify.misc.textdomain), value: 'updated_at' }
   ]
 
   function onChange(newVal) {
     setIsLoading(true)
     dispatch({ type: 'SET_IS_LOADING', payload: true })
-    dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { sortKey: newVal } })
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'sortBy', value: newVal } })
+    dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { sortKey: newVal } })
   }
 
   useEffect(() => {
@@ -51,8 +51,11 @@ function SortBy({ state, dispatch }) {
         </div>
       )}
       <SelectControl
-        label={__('Sort by', 'wpshopify')}
-        help='Note: sorting by price will take all variant prices into consideration'
+        label={__('Sort by', wpshopify.misc.textdomain)}
+        help={__(
+          'Note: sorting by price will take all variant prices into consideration',
+          wpshopify.misc.textdomain
+        )}
         value={state.payloadSettings.sortBy}
         options={options}
         onChange={onChange}

@@ -8,7 +8,7 @@ function ShowCompareAt({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show compare at', 'wpshopify')}
+      label={__('Show compare at', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.showCompareAt}
       onChange={onChange}
     />

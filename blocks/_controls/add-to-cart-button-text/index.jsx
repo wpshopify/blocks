@@ -12,7 +12,7 @@ function AddToCartButtonText({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Add to cart button text', 'wpshopify')}
+      label={__('Add to cart button text', wpshopify.misc.textdomain)}
       value={val}
       onChange={onChange}
     />

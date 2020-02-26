@@ -1,7 +1,31 @@
+import { buildQueryFromSelections } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import update from 'immutability-helper'
 import concat from 'lodash/concat'
 import some from 'lodash/some'
 import isEmpty from 'lodash/isEmpty'
+
+function hashPayloadSettings(payloadSettings) {
+  return btoa(JSON.stringify(payloadSettings))
+}
+
+function setPayloadSettingsAttributes(setAttributes, payloadSettingsId) {
+  setAttributes({
+    payloadSettingsId: payloadSettingsId
+  })
+}
+
+function querySettings() {
+  return [
+    'title',
+    'tag',
+    'vendor',
+    'productType',
+    'query',
+    'availableForSale',
+    'connective',
+    'pageSize'
+  ]
+}
 
 function BlockReducer(state, action) {
   switch (action.type) {
@@ -19,11 +43,21 @@ function BlockReducer(state, action) {
         }
       )
 
-      var payloadSettingsId = btoa(JSON.stringify(state.payloadSettings))
+      if (querySettings().includes(action.payload.key)) {
+        console.log(
+          'SHOULDD BEE HEREEEEEE?!!!!!!!!!',
+          buildQueryFromSelections(state.payloadSettings)
+        )
 
-      state.blockProps.setAttributes({
-        payloadSettingsId: payloadSettingsId
-      })
+        state.payloadSettings.query = update(state.payloadSettings.query, {
+          $set: buildQueryFromSelections(state.payloadSettings)
+        })
+      }
+
+      var payloadSettingsId = hashPayloadSettings(state.payloadSettings)
+
+      setPayloadSettingsAttributes(state.blockProps.setAttributes, payloadSettingsId)
+      console.log('UPDATE_SETTING')
 
       return {
         ...state,
@@ -79,8 +113,6 @@ function BlockReducer(state, action) {
     }
 
     case 'UPDATE_QUERY_PARAMS': {
-      console.log('action.payload', action.payload)
-
       return {
         ...state,
         queryParams: update(state.queryParams, { $merge: action.payload })

@@ -50,7 +50,7 @@ function Excludes({ state, dispatch }) {
   function Title() {
     return (
       <CheckboxControl
-        label={__('Title', 'wpshopify')}
+        label={__('Title', wpshopify.misc.textdomain)}
         checked={inState(excludesState, 'title')}
         onChange={isChecked => onChange(isChecked, 'title')}
       />
@@ -60,7 +60,7 @@ function Excludes({ state, dispatch }) {
   function Description() {
     return (
       <CheckboxControl
-        label={__('Description', 'wpshopify')}
+        label={__('Description', wpshopify.misc.textdomain)}
         checked={inState(excludesState, 'description')}
         onChange={isChecked => onChange(isChecked, 'description')}
       />
@@ -70,7 +70,7 @@ function Excludes({ state, dispatch }) {
   function Images() {
     return (
       <CheckboxControl
-        label={__('Images', 'wpshopify')}
+        label={__('Images', wpshopify.misc.textdomain)}
         checked={inState(excludesState, 'images')}
         onChange={isChecked => onChange(isChecked, 'images')}
       />
@@ -80,7 +80,7 @@ function Excludes({ state, dispatch }) {
   function Pricing() {
     return (
       <CheckboxControl
-        label={__('Pricing', 'wpshopify')}
+        label={__('Pricing', wpshopify.misc.textdomain)}
         checked={inState(excludesState, 'pricing')}
         onChange={isChecked => onChange(isChecked, 'pricing')}
       />
@@ -90,7 +90,7 @@ function Excludes({ state, dispatch }) {
   function BuyButton() {
     return (
       <CheckboxControl
-        label={__('Buy Button', 'wpshopify')}
+        label={__('Buy Button', wpshopify.misc.textdomain)}
         checked={inState(excludesState, 'buy-button')}
         onChange={isChecked => onChange(isChecked, 'buy-button')}
       />
@@ -99,7 +99,7 @@ function Excludes({ state, dispatch }) {
 
   return (
     <>
-      <BaseControl label={__('Exclude from layout: ', 'wpshopify')}></BaseControl>
+      <BaseControl label={__('Exclude from layout: ', wpshopify.misc.textdomain)}></BaseControl>
       <Title />
       <Description />
       <Images />

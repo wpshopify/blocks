@@ -15,15 +15,15 @@ function Connective({ state, dispatch }) {
 
   return (
     <RadioControl
-      label={__('Match criteria', 'wpshopify')}
+      label={__('Match criteria', wpshopify.misc.textdomain)}
       help={__(
         'Determines how a match is found when filtering products. "OR" will attempt to match any products from the set filters. "AND" will only match products when all filters are true. Default is AND',
-        'wpshopify'
+        wpshopify.misc.textdomain
       )}
       selected={state.payloadSettings.connective}
       options={[
-        { label: __('AND', 'wpshopify'), value: 'AND' },
-        { label: __('OR', 'wpshopify'), value: 'OR' }
+        { label: __('AND', wpshopify.misc.textdomain), value: 'AND' },
+        { label: __('OR', wpshopify.misc.textdomain), value: 'OR' }
       ]}
       onChange={onChange}
     />

@@ -21,8 +21,8 @@ function Reverse({ state, dispatch }) {
 
   function onChange(newVal) {
     setIsLoading(true)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } })
     dispatch({ type: 'SET_IS_LOADING', payload: true })
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } })
     dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { reverse: newVal } })
   }
 
@@ -40,7 +40,7 @@ function Reverse({ state, dispatch }) {
         </div>
       )}
       <CheckboxControl
-        label={__('Reverse order?', 'wpshopify')}
+        label={__('Reverse order?', wpshopify.misc.textdomain)}
         checked={state.payloadSettings.reverse}
         onChange={onChange}
       />

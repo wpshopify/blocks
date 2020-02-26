@@ -10,14 +10,6 @@ function StorefrontAccessToken({ state, dispatch }) {
   const isFirstRender = useRef(true)
 
   function getCachedValue() {
-    //  var creds = JSON.parse(localStorage.getItem('wps-storefront-creds'))
-
-    //  if (!creds) {
-    //    return ''
-    //  }
-
-    //  return creds.storefrontAccessToken
-
     return ''
   }
 
@@ -52,8 +44,8 @@ function StorefrontAccessToken({ state, dispatch }) {
 
   return (
     <TextControl
-      placeholder='Enter your Storefront Access Token'
-      label={__('Storefront Access Token', 'wpshopify')}
+      placeholder={__('Enter your Storefront Access Token', wpshopify.misc.textdomain)}
+      label={__('Storefront Access Token', wpshopify.misc.textdomain)}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}

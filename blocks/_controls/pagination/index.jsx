@@ -8,7 +8,7 @@ function Pagination({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show pagination', 'wpshopify')}
+      label={__('Show pagination', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.pagination}
       onChange={onChange}
     />

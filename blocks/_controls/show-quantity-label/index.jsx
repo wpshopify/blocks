@@ -8,7 +8,7 @@ function ShowQuantityLabel({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show quantity label', 'wpshopify')}
+      label={__('Show quantity label', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.showQuantityLabel}
       onChange={onChange}
     />

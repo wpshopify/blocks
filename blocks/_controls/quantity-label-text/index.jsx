@@ -9,7 +9,7 @@ function QuantityLabelText({ state, dispatch }) {
   return (
     state.payloadSettings.showQuantityLabel && (
       <TextControl
-        label={__('Quantity label text', 'wpshopify')}
+        label={__('Quantity label text', wpshopify.misc.textdomain)}
         value={state.payloadSettings.quantityLabelText}
         onChange={onChange}
       />

@@ -31,8 +31,8 @@ function DescriptionLength({ state, dispatch }) {
 
   return (
     <RangeControl
-      label={__('Limit Description Length', 'wpshopify')}
-      help={__('Limits the number of characters', 'wpshopify')}
+      label={__('Limit Description Length', wpshopify.misc.textdomain)}
+      help={__('Limits the number of characters', wpshopify.misc.textdomain)}
       value={localVal}
       onChange={onChange}
       min={1}

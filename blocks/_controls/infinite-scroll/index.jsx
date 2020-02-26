@@ -11,7 +11,11 @@ function InfiniteScroll({ state, dispatch }) {
   }
 
   return (
-    <ToggleControl label={__('Infinite scroll?', 'wpshopify')} checked={val} onChange={onChange} />
+    <ToggleControl
+      label={__('Infinite scroll?', wpshopify.misc.textdomain)}
+      checked={val}
+      onChange={onChange}
+    />
   )
 }
 

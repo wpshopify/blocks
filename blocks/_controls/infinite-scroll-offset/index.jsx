@@ -16,11 +16,11 @@ function InfiniteScrollOffset({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Infinite Scroll Offset', 'wpshopify')}
+      label={__('Infinite Scroll Offset', wpshopify.misc.textdomain)}
       value={localVal}
       onChange={onChange}
       type='number'
-      help={__('Determines when infinite scroll begins', 'wpshopify')}
+      help={__('Determines when infinite scroll begins', wpshopify.misc.textdomain)}
     />
   )
 }

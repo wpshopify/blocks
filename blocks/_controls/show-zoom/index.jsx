@@ -8,7 +8,7 @@ function ShowZoom({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show zoom', 'wpshopify')}
+      label={__('Show zoom', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.showZoom}
       onChange={onChange}
     />

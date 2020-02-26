@@ -30,13 +30,13 @@ function Limit({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Limit products to', 'wpshopify')}
+      label={__('Limit products to', wpshopify.misc.textdomain)}
       value={localVal}
       onChange={onLimitChange}
       type='number'
       help={__(
         'Sets the number of products shown. This will take precedence over page size.',
-        'wpshopify'
+        wpshopify.misc.textdomain
       )}
     />
   )

@@ -12,9 +12,9 @@ function ProductId({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Product ID', 'wpshopify')}
+      label={__('Product ID', wpshopify.misc.textdomain)}
       value={val}
-      help={__('Match product ids', 'wpshopify')}
+      help={__('Match product ids', wpshopify.misc.textdomain)}
       onChange={onChange}
     />
   )

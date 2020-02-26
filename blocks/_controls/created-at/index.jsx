@@ -12,9 +12,9 @@ function CreatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Created At', 'wpshopify')}
+      label={__('Created At', wpshopify.misc.textdomain)}
       value={val}
-      help={__('Match product created at', 'wpshopify')}
+      help={__('Match product created at', wpshopify.misc.textdomain)}
       onChange={onChange}
     />
   )

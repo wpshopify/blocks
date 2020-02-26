@@ -8,7 +8,7 @@ function ShowPriceRange({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show price range', 'wpshopify')}
+      label={__('Show price range', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.showPriceRange}
       onChange={onChange}
     />

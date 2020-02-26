@@ -6,20 +6,21 @@ import {
   graphQuery,
   buildQueryFromSelections
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+const { __ } = wp.i18n
 
 function defaultColors() {
   return [
-    { name: 'Pale pink', color: '#f78da8' },
-    { name: 'Vivid red', color: '#cf2e2e' },
-    { name: 'Luminous vivid', color: '#ff6a00' },
-    { name: 'Luminous vivid amber', color: '#fcb900' },
-    { name: 'Light green cyan', color: '#7bdcb5' },
-    { name: 'Vivid green cyan', color: '#00d084' },
-    { name: 'Pale cyan blue', color: '#8ed2fc' },
-    { name: 'Cyan blue', color: '#0692e3' },
-    { name: 'Light grey', color: '#7d7d7d' },
-    { name: 'Medium blue grey', color: '#525252' },
-    { name: 'Dark grey', color: '#262626' }
+    { name: __('Pale pink', wpshopify.misc.textdomain), color: '#f78da8' },
+    { name: __('Vivid red', wpshopify.misc.textdomain), color: '#cf2e2e' },
+    { name: __('Luminous vivid', wpshopify.misc.textdomain), color: '#ff6a00' },
+    { name: __('Luminous vivid amber', wpshopify.misc.textdomain), color: '#fcb900' },
+    { name: __('Light green cyan', wpshopify.misc.textdomain), color: '#7bdcb5' },
+    { name: __('Vivid green cyan', wpshopify.misc.textdomain), color: '#00d084' },
+    { name: __('Pale cyan blue', wpshopify.misc.textdomain), color: '#8ed2fc' },
+    { name: __('Cyan blue', wpshopify.misc.textdomain), color: '#0692e3' },
+    { name: __('Light grey', wpshopify.misc.textdomain), color: '#7d7d7d' },
+    { name: __('Medium blue grey', wpshopify.misc.textdomain), color: '#525252' },
+    { name: __('Dark grey', wpshopify.misc.textdomain), color: '#262626' }
   ]
 }
 

@@ -11,7 +11,7 @@ function AlignHeight({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Align height?', 'wpshopify')}
+      label={__('Align height?', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.alignHeight}
       onChange={onChange}
     />

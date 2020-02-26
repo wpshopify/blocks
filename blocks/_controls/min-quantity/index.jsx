@@ -9,7 +9,7 @@ function MinQuantity({ state, dispatch }) {
   return (
     <TextControl
       type='Number'
-      label={__('Min quantity', 'wpshopify')}
+      label={__('Min quantity', wpshopify.misc.textdomain)}
       value={state.payloadSettings.minQuantity}
       onChange={onChange}
     />

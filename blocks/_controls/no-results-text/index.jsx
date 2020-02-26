@@ -29,7 +29,11 @@ function NoResultsText({ state, dispatch }) {
   }, [state.payloadSettings.noResultsText])
 
   return (
-    <TextControl label={__('No results text', 'wpshopify')} value={localVal} onChange={onChange} />
+    <TextControl
+      label={__('No results text', wpshopify.misc.textdomain)}
+      value={localVal}
+      onChange={onChange}
+    />
   )
 }
 

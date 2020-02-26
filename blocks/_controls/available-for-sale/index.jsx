@@ -30,8 +30,8 @@ function AvailableForSale({ state, dispatch }) {
 
   return (
     <CheckboxControl
-      label={__('Available for sale', 'wpshopify')}
-      help={__('Show products that are in stock', 'wpshopify')}
+      label={__('Available for sale', wpshopify.misc.textdomain)}
+      help={__('Show products that are in stock', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.availableForSale}
       onChange={onChange}
     />

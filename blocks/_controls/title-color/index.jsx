@@ -9,7 +9,7 @@ function TitleColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label={__('Title Color:', 'wpshopify')}>
+    <BaseControl label={__('Title Color:', wpshopify.misc.textdomain)}>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.titleColor}

@@ -8,7 +8,7 @@ function ShowFeaturedOnly({ state, dispatch }) {
 
   return (
     <ToggleControl
-      label={__('Show featured only', 'wpshopify')}
+      label={__('Show featured only', wpshopify.misc.textdomain)}
       checked={state.payloadSettings.showFeaturedOnly}
       onChange={onChange}
     />

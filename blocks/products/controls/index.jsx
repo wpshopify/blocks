@@ -7,13 +7,11 @@ import { Connective } from '../../_controls/connective'
 import { SortBy } from '../../_controls/sort-by'
 import { Reverse } from '../../_controls/reverse'
 import { Pagination } from '../../_controls/pagination'
-import { NoResultsText } from '../../_controls/no-results-text'
 import { PageSize } from '../../_controls/page-size'
 import { Limit } from '../../_controls/limit'
 import { ItemsPerRow } from '../../_controls/items-per-row'
 import { Excludes } from '../../_controls/excludes'
 import { InfiniteScroll } from '../../_controls/infinite-scroll'
-import { InfiniteScrollOffset } from '../../_controls/infinite-scroll-offset'
 import { AddToCartButtonColor } from '../../_controls/add-to-cart-button-color'
 import { AddToCartButtonText } from '../../_controls/add-to-cart-button-text'
 import { VariantButtonColor } from '../../_controls/variant-button-color'
@@ -44,7 +42,7 @@ function ProductsControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={false}>
         <Title state={state} dispatch={dispatch} />
         <Tag state={state} dispatch={dispatch} />
         <Vendor state={state} dispatch={dispatch} />
@@ -53,46 +51,46 @@ function ProductsControls() {
         <Connective state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Sorting', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Sorting', wpshopify.misc.textdomain)} initialOpen={false}>
         <SortBy state={state} dispatch={dispatch} />
         <Reverse state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Pagination', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Pagination', wpshopify.misc.textdomain)} initialOpen={false}>
         <Pagination state={state} dispatch={dispatch} />
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
         <InfiniteScroll state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Layout', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Layout', wpshopify.misc.textdomain)} initialOpen={false}>
         <ItemsPerRow state={state} dispatch={dispatch} />
         <Excludes state={state} dispatch={dispatch} />
         <AlignHeight state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Title', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Title', wpshopify.misc.textdomain)} initialOpen={false}>
         <TitleSize state={state} dispatch={dispatch} />
         <TitleColor state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Description', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Description', wpshopify.misc.textdomain)} initialOpen={false}>
         <DescriptionSize state={state} dispatch={dispatch} />
         <DescriptionColor state={state} dispatch={dispatch} />
         <DescriptionLength state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Pricing', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Pricing', wpshopify.misc.textdomain)} initialOpen={false}>
         <ShowPriceRange state={state} dispatch={dispatch} />
         <ShowCompareAt state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Images', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Images', wpshopify.misc.textdomain)} initialOpen={false}>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Buy Button', 'wpshopify')} initialOpen={false}>
+      <PanelBody title={__('Buy Button', wpshopify.misc.textdomain)} initialOpen={false}>
         <AddToCartButtonColor state={state} dispatch={dispatch} />
         <AddToCartButtonText state={state} dispatch={dispatch} />
         <VariantButtonColor state={state} dispatch={dispatch} />

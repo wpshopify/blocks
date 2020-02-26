@@ -8,7 +8,7 @@ function DescriptionColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label={__('Description Color:', 'wpshopify')}>
+    <BaseControl label={__('Description Color:', wpshopify.misc.textdomain)}>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.descriptionColor}

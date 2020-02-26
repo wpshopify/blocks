@@ -53,7 +53,7 @@ function MyShopifyDomain({ state, dispatch }) {
   return (
     <TextControl
       placeholder='store.myshopify.com'
-      label={__('Shopify Domain', 'wpshopify')}
+      label={__('Shopify Domain', wpshopify.misc.textdomain)}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}
