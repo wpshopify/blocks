@@ -6,11 +6,14 @@ import {
 import { BlockProvider } from '../_state/provider'
 import { ProductsControls } from './controls'
 import { ProductsContent } from './content'
-import { Icon } from './icons'
+import { Icon } from '../_icons'
 
 const { __ } = wp.i18n
 
 function BlockProducts() {
+  const pluginSettings = underscoreToCamel(wpshopify)
+  const defaultBlockSettings = underscoreToCamel(wpshopify.settings.products)
+
   return {
     title: __('Products', wpshopify.misc.textdomain),
     description: __(
@@ -25,12 +28,12 @@ function BlockProducts() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: underscoreToCamel(wpshopify.settings.products)
+        default: defaultBlockSettings
       }
     },
     edit: props => {
       return (
-        <BlockProvider options={underscoreToCamel(wpshopify)} blockProps={props}>
+        <BlockProvider options={pluginSettings} blockProps={props}>
           <ProductsControls />
           <ProductsContent />
         </BlockProvider>

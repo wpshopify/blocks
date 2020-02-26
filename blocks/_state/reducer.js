@@ -1,12 +1,11 @@
-import { buildQueryFromSelections } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+import {
+  buildQueryFromSelections,
+  encodePayloadSettings
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import update from 'immutability-helper'
 import concat from 'lodash/concat'
 import some from 'lodash/some'
 import isEmpty from 'lodash/isEmpty'
-
-function hashPayloadSettings(payloadSettings) {
-  return btoa(JSON.stringify(payloadSettings))
-}
 
 function setPayloadSettingsAttributes(setAttributes, payloadSettingsId) {
   setAttributes({
@@ -31,6 +30,7 @@ function BlockReducer(state, action) {
   switch (action.type) {
     case 'UPDATE_SETTING': {
       if (typeof action.payload.value === 'undefined') {
+        // get default instead
         var valueToSet = state.defaultPayloadSettings[action.payload.key]
       } else {
         var valueToSet = action.payload.value
@@ -44,20 +44,14 @@ function BlockReducer(state, action) {
       )
 
       if (querySettings().includes(action.payload.key)) {
-        console.log(
-          'SHOULDD BEE HEREEEEEE?!!!!!!!!!',
-          buildQueryFromSelections(state.payloadSettings)
-        )
-
         state.payloadSettings.query = update(state.payloadSettings.query, {
           $set: buildQueryFromSelections(state.payloadSettings)
         })
       }
 
-      var payloadSettingsId = hashPayloadSettings(state.payloadSettings)
+      var payloadSettingsId = encodePayloadSettings(state.payloadSettings)
 
       setPayloadSettingsAttributes(state.blockProps.setAttributes, payloadSettingsId)
-      console.log('UPDATE_SETTING')
 
       return {
         ...state,

@@ -1,15 +1,35 @@
-import { enumMake } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+import {
+  enumMake,
+  encodePayloadSettings,
+  decodePayloadSettings
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+
+function getSavedBlockSettings(payloadSettingsId) {
+  return [decodePayloadSettings(payloadSettingsId), payloadSettingsId]
+}
+
+function getDefaultBlockSettings(defaultPayloadSettings) {
+  return [defaultPayloadSettings, encodePayloadSettings(defaultPayloadSettings)]
+}
+
+function getBlockSettings(payloadSettingsId, defaultPayloadSettings) {
+  // If a block has been saved already ...
+  if (payloadSettingsId) {
+    return getSavedBlockSettings(payloadSettingsId)
+  }
+
+  return getDefaultBlockSettings(defaultPayloadSettings)
+}
 
 function BlockInitialState(options, blockProps) {
-  if (blockProps.attributes.payloadSettingsId) {
-    var existingBlockData = JSON.parse(atob(blockProps.attributes.payloadSettingsId))
-    var defaultPayloadSettingsId = blockProps.attributes.payloadSettingsId
-  } else {
-    var existingBlockData = blockProps.attributes.defaultPayloadSettings
-    var defaultPayloadSettingsId = btoa(
-      JSON.stringify(blockProps.attributes.defaultPayloadSettings)
-    )
-  }
+  const [blockData, payloadSettingsId] = getBlockSettings(
+    blockProps.attributes.payloadSettingsId,
+    blockProps.attributes.defaultPayloadSettings
+  )
+
+  blockProps.setAttributes({
+    payloadSettingsId: payloadSettingsId
+  })
 
   return {
     isLoading: true,
@@ -19,10 +39,10 @@ function BlockInitialState(options, blockProps) {
     shouldForceUpdate: false,
     componentType: 'products',
     blockProps: blockProps,
-    payloadSettings: existingBlockData,
-    payloadSettingsId: defaultPayloadSettingsId,
+    payloadSettings: blockData,
+    payloadSettingsId: payloadSettingsId,
     defaultPayloadSettings: blockProps.attributes.defaultPayloadSettings,
-    defaultPayloadSettingsId: defaultPayloadSettingsId,
+    defaultPayloadSettingsId: payloadSettingsId,
     queryParams: {
       query: options.settings.products.query,
       sortKey: enumMake(options.settings.products.sortBy),
