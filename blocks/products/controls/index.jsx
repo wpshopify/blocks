@@ -30,6 +30,7 @@ import { DescriptionSize } from '../../_controls/description-size'
 import { DescriptionColor } from '../../_controls/description-color'
 import { DescriptionLength } from '../../_controls/description-length'
 import { AlignHeight } from '../../_controls/align-height'
+import { VariantStyle } from '../../_controls/variant-style'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 
@@ -99,6 +100,7 @@ function ProductsControls() {
         <QuantityLabelText state={state} dispatch={dispatch} />
         <MinQuantity state={state} dispatch={dispatch} />
         <MaxQuantity state={state} dispatch={dispatch} />
+        <VariantStyle state={state} dispatch={dispatch} />
       </PanelBody>
     </BlockControls>
   )
