@@ -1,7 +1,7 @@
 import {
   enumMake,
   encodePayloadSettings,
-  decodePayloadSettings
+  decodePayloadSettings,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 
 function getSavedBlockSettings(payloadSettingsId) {
@@ -21,15 +21,25 @@ function getBlockSettings(payloadSettingsId, defaultPayloadSettings) {
   return getDefaultBlockSettings(defaultPayloadSettings)
 }
 
-function BlockInitialState(options, blockProps) {
+function BlockInitialState({ blockProps }) {
   const [blockData, payloadSettingsId] = getBlockSettings(
     blockProps.attributes.payloadSettingsId,
     blockProps.attributes.defaultPayloadSettings
   )
 
   blockProps.setAttributes({
-    payloadSettingsId: payloadSettingsId
+    payloadSettingsId: payloadSettingsId,
   })
+
+  if (
+    blockProps.attributes.defaultPayloadSettings.limit &&
+    blockProps.attributes.defaultPayloadSettings.limit <
+      blockProps.attributes.defaultPayloadSettings.pageSize
+  ) {
+    var pageSize = blockProps.attributes.defaultPayloadSettings.limit
+  } else {
+    var pageSize = blockProps.attributes.defaultPayloadSettings.pageSize
+  }
 
   return {
     isLoading: true,
@@ -38,17 +48,20 @@ function BlockInitialState(options, blockProps) {
     componentElement: false,
     shouldForceUpdate: false,
     componentType: 'products',
+    dataType: 'products',
     blockProps: blockProps,
     payloadSettings: blockData,
     payloadSettingsId: payloadSettingsId,
+    isFirstRender: blockProps.attributes.isFirstRender,
     defaultPayloadSettings: blockProps.attributes.defaultPayloadSettings,
     defaultPayloadSettingsId: payloadSettingsId,
+    payload: [],
     queryParams: {
-      query: options.settings.products.query,
-      sortKey: enumMake(options.settings.products.sortBy),
-      reverse: options.settings.products.reverse,
-      first: options.settings.products.pageSize
-    }
+      query: blockProps.attributes.defaultPayloadSettings.query,
+      sortKey: enumMake(blockProps.attributes.defaultPayloadSettings.sortBy),
+      reverse: blockProps.attributes.defaultPayloadSettings.reverse,
+      first: pageSize,
+    },
   }
 }
 

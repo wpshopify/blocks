@@ -33,6 +33,8 @@ import { AlignHeight } from '../../_controls/align-height'
 import { VariantStyle } from '../../_controls/variant-style'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
+import { ProductsLinkTarget } from '../../_controls/products-link-target'
+import { ProductsLinkTo } from '../../_controls/products-link-to'
 
 const { PanelBody } = wp.components
 const { __ } = wp.i18n
@@ -50,6 +52,11 @@ function ProductsControls() {
         <ProductType state={state} dispatch={dispatch} />
         <AvailableForSale state={state} dispatch={dispatch} />
         <Connective state={state} dispatch={dispatch} />
+      </PanelBody>
+
+      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+        <ProductsLinkTo state={state} dispatch={dispatch} />
+        <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody title={__('Sorting', wpshopify.misc.textdomain)} initialOpen={false}>

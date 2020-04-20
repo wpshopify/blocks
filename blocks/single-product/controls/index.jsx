@@ -19,6 +19,8 @@ import { DescriptionColor } from '../../_controls/description-color'
 import { DescriptionLength } from '../../_controls/description-length'
 import { AlignHeight } from '../../_controls/align-height'
 import { VariantStyle } from '../../_controls/variant-style'
+import { ProductsLinkTarget } from '../../_controls/products-link-target'
+import { ProductsLinkTo } from '../../_controls/products-link-to'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 
@@ -31,8 +33,13 @@ function SingleProductControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={true}>
         <Title state={state} dispatch={dispatch} />
+      </PanelBody>
+
+      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+        <ProductsLinkTo state={state} dispatch={dispatch} />
+        <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody title={__('Layout', wpshopify.misc.textdomain)} initialOpen={false}>

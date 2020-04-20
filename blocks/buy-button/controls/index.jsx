@@ -10,6 +10,8 @@ import { MaxQuantity } from '../../_controls/max-quantity'
 import { VariantStyle } from '../../_controls/variant-style'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
+import { ProductsLinkTarget } from '../../_controls/products-link-target'
+import { ProductsLinkTo } from '../../_controls/products-link-to'
 
 const { __ } = wp.i18n
 const { PanelBody } = wp.components
@@ -20,8 +22,13 @@ function BuyButtonControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={true}>
         <Title state={state} dispatch={dispatch} />
+      </PanelBody>
+
+      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+        <ProductsLinkTo state={state} dispatch={dispatch} />
+        <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody title={__('Buy Button', wpshopify.misc.textdomain)} initialOpen={false}>

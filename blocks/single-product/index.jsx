@@ -1,6 +1,6 @@
 import {
   RootElement,
-  underscoreToCamel
+  underscoreToCamel,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 
 import { BlockProvider } from '../_state/provider'
@@ -15,6 +15,7 @@ function customDefaultPayloadSettings(payloadSettings) {
 
   copyPayloadSettings.limit = 1
   copyPayloadSettings.itemsPerRow = 1
+  copyPayloadSettings.linkTo = 'none'
 
   return copyPayloadSettings
 }
@@ -27,14 +28,14 @@ function BlockSingleProduct() {
     icon: Icon,
     attributes: {
       payloadSettingsId: {
-        type: 'string'
+        type: 'string',
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: underscoreToCamel(customDefaultPayloadSettings(wpshopify.settings.products))
-      }
+        default: customDefaultPayloadSettings(underscoreToCamel(wpshopify.settings.products)),
+      },
     },
-    edit: props => {
+    edit: (props) => {
       return (
         <BlockProvider options={underscoreToCamel(wpshopify)} blockProps={props}>
           <SingleProductControls />
@@ -42,9 +43,9 @@ function BlockSingleProduct() {
         </BlockProvider>
       )
     },
-    save: props => {
+    save: (props) => {
       return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
-    }
+    },
   }
 }
 

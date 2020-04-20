@@ -1,6 +1,6 @@
 import {
   buildQueryFromSelections,
-  encodePayloadSettings
+  encodePayloadSettings,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import update from 'immutability-helper'
 import concat from 'lodash/concat'
@@ -9,7 +9,7 @@ import isEmpty from 'lodash/isEmpty'
 
 function setPayloadSettingsAttributes(setAttributes, payloadSettingsId) {
   setAttributes({
-    payloadSettingsId: payloadSettingsId
+    payloadSettingsId: payloadSettingsId,
   })
 }
 
@@ -22,7 +22,7 @@ function querySettings() {
     'query',
     'availableForSale',
     'connective',
-    'pageSize'
+    'pageSize',
   ]
 }
 
@@ -39,13 +39,13 @@ function BlockReducer(state, action) {
       state.payloadSettings[action.payload.key] = update(
         state.payloadSettings[action.payload.key],
         {
-          $set: valueToSet
+          $set: valueToSet,
         }
       )
 
       if (querySettings().includes(action.payload.key)) {
         state.payloadSettings.query = update(state.payloadSettings.query, {
-          $set: buildQueryFromSelections(state.payloadSettings)
+          $set: buildQueryFromSelections(state.payloadSettings),
         })
       }
 
@@ -55,7 +55,7 @@ function BlockReducer(state, action) {
 
       return {
         ...state,
-        payloadSettingsId: payloadSettingsId
+        payloadSettingsId: payloadSettingsId,
       }
     }
 
@@ -72,44 +72,42 @@ function BlockReducer(state, action) {
 
       return {
         ...state,
-        notices: update(state.notices, { $set: updatedNotices })
+        notices: update(state.notices, { $set: updatedNotices }),
       }
     }
 
     case 'SET_NOTICES': {
       return {
         ...state,
-        notices: update(state.notices, { $set: action.payload })
+        notices: update(state.notices, { $set: action.payload }),
+      }
+    }
+
+    case 'SET_PAYLOAD': {
+      return {
+        ...state,
+        payload: update(state.payload, { $set: action.payload }),
       }
     }
 
     case 'SET_IS_LOADING': {
       return {
         ...state,
-        isLoading: update(state.isLoading, { $set: action.payload })
+        isLoading: update(state.isLoading, { $set: action.payload }),
       }
     }
 
     case 'SET_IS_READY': {
       return {
         ...state,
-        isReady: update(state.isReady, { $set: action.payload })
-      }
-    }
-
-    case 'SET_IS_LOADING': {
-      return {
-        ...state,
-        isLoading: update(state.isLoading, {
-          $set: action.payload
-        })
+        isReady: update(state.isReady, { $set: action.payload }),
       }
     }
 
     case 'UPDATE_QUERY_PARAMS': {
       return {
         ...state,
-        queryParams: update(state.queryParams, { $merge: action.payload })
+        queryParams: update(state.queryParams, { $merge: action.payload }),
       }
     }
 

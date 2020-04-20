@@ -8,8 +8,6 @@ function VariantStyle({ state, dispatch }) {
   ]
 
   function onChange(newVal) {
-    console.log('newVal', newVal)
-
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'variantStyle', value: newVal } })
   }
 
