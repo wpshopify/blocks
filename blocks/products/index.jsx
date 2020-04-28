@@ -1,7 +1,4 @@
-import {
-  RootElement,
-  underscoreToCamel
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
+import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 
 import { BlockProvider } from '../_state/provider'
 import { ProductsControls } from './controls'
@@ -18,10 +15,7 @@ function customDefaultPayloadSettings(payloadSettings) {
 }
 
 function BlockProducts() {
-  const pluginSettings = underscoreToCamel(wpshopify)
-  const defaultBlockSettings = customDefaultPayloadSettings(
-    underscoreToCamel(wpshopify.settings.products)
-  )
+  const defaultBlockSettings = customDefaultPayloadSettings(wpshopify.settings.products)
 
   return {
     title: __('Products', wpshopify.misc.textdomain),
@@ -33,24 +27,24 @@ function BlockProducts() {
     icon: Icon,
     attributes: {
       payloadSettingsId: {
-        type: 'string'
+        type: 'string',
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: defaultBlockSettings
-      }
+        default: defaultBlockSettings,
+      },
     },
-    edit: props => {
+    edit: (props) => {
       return (
-        <BlockProvider options={pluginSettings} blockProps={props}>
+        <BlockProvider options={wpshopify} blockProps={props}>
           <ProductsControls />
           <ProductsContent />
         </BlockProvider>
       )
     },
-    save: props => {
+    save: (props) => {
       return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
-    }
+    },
   }
 }
 

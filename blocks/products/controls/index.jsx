@@ -45,7 +45,10 @@ function ProductsControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Filtering', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
         <Tag state={state} dispatch={dispatch} />
         <Vendor state={state} dispatch={dispatch} />
@@ -54,51 +57,78 @@ function ProductsControls() {
         <Connective state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('General', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ProductsLinkTo state={state} dispatch={dispatch} />
         <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Sorting', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Sorting', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <SortBy state={state} dispatch={dispatch} />
         <Reverse state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Pagination', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Pagination', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <Pagination state={state} dispatch={dispatch} />
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
         <InfiniteScroll state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Layout', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Layout', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ItemsPerRow state={state} dispatch={dispatch} />
         <Excludes state={state} dispatch={dispatch} />
         <AlignHeight state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Title', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Title', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <TitleSize state={state} dispatch={dispatch} />
         <TitleColor state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Description', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Description', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <DescriptionSize state={state} dispatch={dispatch} />
         <DescriptionColor state={state} dispatch={dispatch} />
         <DescriptionLength state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Pricing', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Pricing', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ShowPriceRange state={state} dispatch={dispatch} />
         <ShowCompareAt state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Images', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Images', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Buy Button', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Buy Button', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <AddToCartButtonColor state={state} dispatch={dispatch} />
         <AddToCartButtonText state={state} dispatch={dispatch} />
         <VariantButtonColor state={state} dispatch={dispatch} />

@@ -17,10 +17,12 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   const [isTouched, setIsTouched] = useState(false)
 
   const spinnerStyles = css`
-    position: relative;
-    top: -3px;
-    right: 6px;
+    position: absolute;
+    top: 78px;
+    right: 18px;
     margin: 0;
+    background: white;
+    padding: 0px 8px;
 
     .components-spinner {
       margin: 0;
@@ -41,12 +43,12 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
 
     dispatch({
       type: 'UPDATE_SETTING',
-      payload: { key: settingName, value: removeEmptyValues(localVal) }
+      payload: { key: settingName, value: removeEmptyValues(localVal) },
     })
 
     dispatch({
       type: 'UPDATE_QUERY_PARAMS',
-      payload: { query: buildQueryFromSelections(state.payloadSettings) }
+      payload: { query: buildQueryFromSelections(state.payloadSettings) },
     })
   }, [debouncedValue])
 

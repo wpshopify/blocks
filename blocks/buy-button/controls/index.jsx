@@ -22,16 +22,25 @@ function BuyButtonControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={true}>
+      <PanelBody
+        title={__('Filtering', wpshopify.misc.textdomain)}
+        initialOpen={true}
+        className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('General', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ProductsLinkTo state={state} dispatch={dispatch} />
         <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Buy Button', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Buy Button', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <AddToCartButtonColor state={state} dispatch={dispatch} />
         <AddToCartButtonText state={state} dispatch={dispatch} />
         <VariantButtonColor state={state} dispatch={dispatch} />

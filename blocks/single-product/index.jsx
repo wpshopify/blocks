@@ -1,7 +1,4 @@
-import {
-  RootElement,
-  underscoreToCamel,
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
+import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 
 import { BlockProvider } from '../_state/provider'
 import { SingleProductControls } from './controls'
@@ -32,12 +29,12 @@ function BlockSingleProduct() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: customDefaultPayloadSettings(underscoreToCamel(wpshopify.settings.products)),
+        default: customDefaultPayloadSettings(wpshopify.settings.products),
       },
     },
     edit: (props) => {
       return (
-        <BlockProvider options={underscoreToCamel(wpshopify)} blockProps={props}>
+        <BlockProvider options={wpshopify} blockProps={props}>
           <SingleProductControls />
           <ProductsContent />
         </BlockProvider>

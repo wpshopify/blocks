@@ -33,42 +33,66 @@ function SingleProductControls() {
 
   return (
     <BlockControls>
-      <PanelBody title={__('Filtering', wpshopify.misc.textdomain)} initialOpen={true}>
+      <PanelBody
+        title={__('Filtering', wpshopify.misc.textdomain)}
+        initialOpen={true}
+        className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('General', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('General', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ProductsLinkTo state={state} dispatch={dispatch} />
         <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Layout', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Layout', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <Excludes state={state} dispatch={dispatch} />
         <AlignHeight state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Title', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Title', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <TitleSize state={state} dispatch={dispatch} />
         <TitleColor state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Description', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Description', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <DescriptionSize state={state} dispatch={dispatch} />
         <DescriptionColor state={state} dispatch={dispatch} />
         <DescriptionLength state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Pricing', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Pricing', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ShowPriceRange state={state} dispatch={dispatch} />
         <ShowCompareAt state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Images', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Images', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
       </PanelBody>
 
-      <PanelBody title={__('Buy Button', wpshopify.misc.textdomain)} initialOpen={false}>
+      <PanelBody
+        title={__('Buy Button', wpshopify.misc.textdomain)}
+        initialOpen={false}
+        className='wps-panel-body'>
         <AddToCartButtonColor state={state} dispatch={dispatch} />
         <AddToCartButtonText state={state} dispatch={dispatch} />
         <VariantButtonColor state={state} dispatch={dispatch} />

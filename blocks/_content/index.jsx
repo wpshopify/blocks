@@ -1,37 +1,41 @@
 import { Items, Shop } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 import { fetchNewItems } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import { BlockContext } from '../_state/context'
-const { useContext, useEffect, useState } = wp.element
+const { useContext, useEffect } = wp.element
 
 function BlockContent({ children, hasItems = true }) {
   const [state, dispatch] = useContext(BlockContext)
 
   useEffect(() => {
+    dispatch({ type: 'SET_IS_LOADING', payload: true })
+
     fetchNewItems(state)
       .then(function (newItems) {
         console.log('<BlockContent> :: newItems', newItems)
 
-        //   itemsDispatch({ type: 'SET_IS_LOADING', payload: false })
-        //   itemsDispatch({ type: 'HAS_QUERY_PARAMS_CHANGED', payload: false })
-        //   updatePayloadState(newItems)
-
-        dispatch({
-          type: 'SET_PAYLOAD',
-          payload: newItems,
-        })
+        if (newItems.length) {
+          dispatch({
+            type: 'SET_PAYLOAD',
+            payload: newItems,
+          })
+        } else {
+          dispatch({
+            type: 'UPDATE_NOTICES',
+            payload: 'No products found',
+          })
+        }
+        dispatch({ type: 'SET_IS_LOADING', payload: false })
       })
       .catch((error) => {
         console.log('<BlockContent> :: ', error)
 
-        //   dispatch({
-        //     type: 'UPDATE_NOTICES',
-        //     payload: error,
-        //   })
+        dispatch({
+          type: 'UPDATE_NOTICES',
+          payload: error,
+        })
 
-        //   dispatch({ type: 'SET_IS_LOADING', payload: false })
+        dispatch({ type: 'SET_IS_LOADING', payload: false })
       })
-
-    //  dispatch({ type: 'SET_PAYLOAD', payload: })
   }, [state.queryParams])
 
   return (
