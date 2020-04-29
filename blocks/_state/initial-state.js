@@ -21,7 +21,54 @@ function getBlockSettings(payloadSettingsId, defaultPayloadSettings) {
   return getDefaultBlockSettings(defaultPayloadSettings)
 }
 
+function customDefaultPayloadSettingsProductSingle(payloadSettings) {
+  var copyPayloadSettings = payloadSettings
+  console.log('.............. 1 copyPayloadSettings', payloadSettings)
+  copyPayloadSettings.limit = 1
+  copyPayloadSettings.itemsPerRow = 1
+  copyPayloadSettings.linkTo = 'none'
+  console.log('.............. 2 copyPayloadSettings', copyPayloadSettings)
+
+  return copyPayloadSettings
+}
+
+function customDefaultPayloadSettingsBuyButton(payloadSettings) {
+  var copyPayloadSettings = payloadSettings
+
+  copyPayloadSettings.limit = 1
+  copyPayloadSettings.itemsPerRow = 1
+  copyPayloadSettings.excludes = ['title', 'images', 'description', 'pricing']
+  copyPayloadSettings.linkTo = 'none'
+
+  return copyPayloadSettings
+}
+
+function customDefaultPayloadSettingsProducts(payloadSettings) {
+  var copyPayloadSettings = payloadSettings
+  copyPayloadSettings.linkTo = 'none'
+
+  return copyPayloadSettings
+}
+
+function customizeDefaultSettings(blockProps) {
+  if (blockProps.name === 'wpshopify/products') {
+    console.log('wpshopify/productswpshopify/products')
+
+    return customDefaultPayloadSettingsProducts(blockProps.attributes.defaultPayloadSettings)
+  } else if (blockProps.name === 'wpshopify/single-product') {
+    return customDefaultPayloadSettingsProductSingle(blockProps.attributes.defaultPayloadSettings)
+  } else if (blockProps.name === 'wpshopify/buy-button') {
+    return customDefaultPayloadSettingsBuyButton(blockProps.attributes.defaultPayloadSettings)
+  } else {
+    return blockProps.attributes.defaultPayloadSettings
+  }
+}
+
 function BlockInitialState({ blockProps }) {
+  console.log('blockProps', blockProps.name)
+
+  blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps)
+
   const [blockData, payloadSettingsId] = getBlockSettings(
     blockProps.attributes.payloadSettingsId,
     blockProps.attributes.defaultPayloadSettings

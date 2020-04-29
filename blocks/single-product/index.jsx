@@ -7,16 +7,6 @@ import { Icon } from '../_icons'
 
 const { __ } = wp.i18n
 
-function customDefaultPayloadSettings(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
-
-  copyPayloadSettings.limit = 1
-  copyPayloadSettings.itemsPerRow = 1
-  copyPayloadSettings.linkTo = 'none'
-
-  return copyPayloadSettings
-}
-
 function BlockSingleProduct() {
   return {
     title: __('Single Product', wpshopify.misc.textdomain),
@@ -29,7 +19,7 @@ function BlockSingleProduct() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: customDefaultPayloadSettings(wpshopify.settings.products),
+        default: wpshopify.settings.products,
       },
     },
     edit: (props) => {

@@ -7,16 +7,7 @@ import { Icon } from '../_icons'
 
 const { __ } = wp.i18n
 
-function customDefaultPayloadSettings(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
-  copyPayloadSettings.linkTo = 'none'
-
-  return copyPayloadSettings
-}
-
 function BlockProducts() {
-  const defaultBlockSettings = customDefaultPayloadSettings(wpshopify.settings.products)
-
   return {
     title: __('Products', wpshopify.misc.textdomain),
     description: __(
@@ -31,7 +22,7 @@ function BlockProducts() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: defaultBlockSettings,
+        default: wpshopify.settings.products,
       },
     },
     edit: (props) => {

@@ -1,5 +1,12 @@
-import { Items, Shop } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
-import { fetchNewItems } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+import {
+  Items,
+  Shop,
+  ProductPlaceholder,
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
+import {
+  fetchNewItems,
+  buildQueryFromSelections,
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import { BlockContext } from '../_state/context'
 const { useContext, useEffect } = wp.element
 
@@ -8,6 +15,7 @@ function BlockContent({ children, hasItems = true }) {
 
   useEffect(() => {
     dispatch({ type: 'SET_IS_LOADING', payload: true })
+    console.log('state', state)
 
     fetchNewItems(state)
       .then(function (newItems) {
@@ -17,6 +25,10 @@ function BlockContent({ children, hasItems = true }) {
           dispatch({
             type: 'SET_PAYLOAD',
             payload: newItems,
+          })
+          dispatch({
+            type: 'UPDATE_QUERY_PARAMS',
+            payload: { query: buildQueryFromSelections(state.payloadSettings) },
           })
         } else {
           dispatch({
@@ -38,7 +50,9 @@ function BlockContent({ children, hasItems = true }) {
       })
   }, [state.queryParams])
 
-  return (
+  return state.isLoading ? (
+    <ProductPlaceholder />
+  ) : (
     <Shop options={{ isCartReady: true }}>
       <Items
         options={[

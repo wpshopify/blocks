@@ -7,17 +7,6 @@ import { Icon } from '../_icons'
 
 const { __ } = wp.i18n
 
-function customDefaultPayloadSettings(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
-
-  copyPayloadSettings.limit = 1
-  copyPayloadSettings.itemsPerRow = 1
-  copyPayloadSettings.excludes = ['title', 'images', 'description', 'pricing']
-  copyPayloadSettings.linkTo = 'none'
-
-  return copyPayloadSettings
-}
-
 function BlockBuyButton() {
   return {
     title: __('Buy Button', wpshopify.misc.textdomain),
@@ -33,7 +22,7 @@ function BlockBuyButton() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: customDefaultPayloadSettings(wpshopify.settings.products),
+        default: wpshopify.settings.products,
       },
     },
     edit: (props) => {
