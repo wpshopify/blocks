@@ -13,9 +13,10 @@ const { useContext, useEffect } = wp.element
 function BlockContent({ children, hasItems = true }) {
   const [state, dispatch] = useContext(BlockContext)
 
+  console.log('<BlockContent> :: ', state)
+
   useEffect(() => {
     dispatch({ type: 'SET_IS_LOADING', payload: true })
-    console.log('state', state)
 
     fetchNewItems(state)
       .then(function (newItems) {

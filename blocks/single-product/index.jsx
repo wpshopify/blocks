@@ -23,6 +23,8 @@ function BlockSingleProduct() {
       },
     },
     edit: (props) => {
+      console.log('BlockSingleProduct :: Edit')
+
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <SingleProductControls />
@@ -37,6 +39,7 @@ function BlockSingleProduct() {
 }
 
 function registerBlockSingleProduct() {
+  console.log('registerBlockSingleProduct')
   wp.blocks.registerBlockType('wpshopify/single-product', BlockSingleProduct())
 }
 

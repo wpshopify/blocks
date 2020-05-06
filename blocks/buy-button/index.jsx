@@ -26,6 +26,7 @@ function BlockBuyButton() {
       },
     },
     edit: (props) => {
+      console.log('BlockBuyButton :: Edit')
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <BuyButtonControls />
@@ -40,6 +41,7 @@ function BlockBuyButton() {
 }
 
 function registerBlockBuyButton() {
+  console.log('registerBlockBuyButton')
   wp.blocks.registerBlockType('wpshopify/buy-button', BlockBuyButton())
 }
 

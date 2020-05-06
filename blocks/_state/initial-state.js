@@ -23,11 +23,10 @@ function getBlockSettings(payloadSettingsId, defaultPayloadSettings) {
 
 function customDefaultPayloadSettingsProductSingle(payloadSettings) {
   var copyPayloadSettings = payloadSettings
-  console.log('.............. 1 copyPayloadSettings', payloadSettings)
+
   copyPayloadSettings.limit = 1
   copyPayloadSettings.itemsPerRow = 1
   copyPayloadSettings.linkTo = 'none'
-  console.log('.............. 2 copyPayloadSettings', copyPayloadSettings)
 
   return copyPayloadSettings
 }
@@ -52,8 +51,6 @@ function customDefaultPayloadSettingsProducts(payloadSettings) {
 
 function customizeDefaultSettings(blockProps) {
   if (blockProps.name === 'wpshopify/products') {
-    console.log('wpshopify/productswpshopify/products')
-
     return customDefaultPayloadSettingsProducts(blockProps.attributes.defaultPayloadSettings)
   } else if (blockProps.name === 'wpshopify/single-product') {
     return customDefaultPayloadSettingsProductSingle(blockProps.attributes.defaultPayloadSettings)
@@ -65,8 +62,6 @@ function customizeDefaultSettings(blockProps) {
 }
 
 function BlockInitialState({ blockProps }) {
-  console.log('blockProps', blockProps.name)
-
   blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps)
 
   const [blockData, payloadSettingsId] = getBlockSettings(

@@ -26,6 +26,8 @@ function BlockProducts() {
       },
     },
     edit: (props) => {
+      console.log('BlockProducts :: Edit')
+
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <ProductsControls />
@@ -40,6 +42,8 @@ function BlockProducts() {
 }
 
 function registerBlockProducts() {
+  console.log('registerBlockProducts')
+
   wp.blocks.registerBlockType('wpshopify/products', BlockProducts())
 }
 
