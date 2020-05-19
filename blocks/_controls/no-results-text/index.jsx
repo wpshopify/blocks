@@ -1,10 +1,8 @@
 import { useDebounce } from 'use-debounce'
 
-const { __ } = wp.i18n
-const { useEffect, useState, useRef } = wp.element
-const { TextControl } = wp.components
-
 function NoResultsText({ state, dispatch }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { TextControl } = wp.components
   const [localVal, setLocalVal] = useState(state.payloadSettings.noResultsText)
   const [debouncedValue] = useDebounce(localVal, 250)
   const isFirstRender = useRef(true)
@@ -30,7 +28,7 @@ function NoResultsText({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('No results text', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('No results text', 'wpshopify')}
       value={localVal}
       onChange={onChange}
     />

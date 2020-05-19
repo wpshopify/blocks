@@ -1,14 +1,12 @@
-const { __ } = wp.i18n
-const { ToggleControl } = wp.components
-
 function ShowZoom({ state, dispatch }) {
+  const { ToggleControl } = wp.components
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'showZoom', value: newVal } })
   }
 
   return (
     <ToggleControl
-      label={__('Show zoom', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Show zoom', 'wpshopify')}
       checked={state.payloadSettings.showZoom}
       onChange={onChange}
     />

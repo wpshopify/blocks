@@ -1,10 +1,8 @@
-const { __ } = wp.i18n
-const { SelectControl } = wp.components
-
 function VariantStyle({ state, dispatch }) {
+  const { SelectControl } = wp.components
   const options = [
-    { label: __('Dropdown', wpshopify.misc.textdomain), value: 'dropdown' },
-    { label: __('Buttons', wpshopify.misc.textdomain), value: 'buttons' }
+    { label: wp.i18n.__('Dropdown', 'wpshopify'), value: 'dropdown' },
+    { label: wp.i18n.__('Buttons', 'wpshopify'), value: 'buttons' },
   ]
 
   function onChange(newVal) {
@@ -13,7 +11,7 @@ function VariantStyle({ state, dispatch }) {
 
   return (
     <SelectControl
-      label={__('Variant style', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Variant style', 'wpshopify')}
       value={state.payloadSettings.variantStyle}
       options={options}
       onChange={onChange}

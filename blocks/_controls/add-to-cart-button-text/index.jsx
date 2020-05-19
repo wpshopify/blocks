@@ -1,8 +1,6 @@
-const { useState } = wp.element
-const { TextControl } = wp.components
-const { __ } = wp.i18n
-
 function AddToCartButtonText({ state, dispatch }) {
+  const { useState } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(state.payloadSettings.addToCartButtonText)
 
   function onChange(newVal) {
@@ -12,7 +10,7 @@ function AddToCartButtonText({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Add to cart button text', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Add to cart button text', 'wpshopify')}
       value={val}
       onChange={onChange}
     />

@@ -5,13 +5,18 @@ import { SingleProductControls } from './controls'
 import { ProductsContent } from '../products/content'
 import { Icon } from '../_icons'
 
-const { __ } = wp.i18n
-
 function BlockSingleProduct() {
   return {
-    title: __('Single Product', wpshopify.misc.textdomain),
-    description: __('This block displays a single Shopify product.', wpshopify.misc.textdomain),
+    title: wp.i18n.__('Single Product', 'wpshopify'),
+    description: wp.i18n.__('This block displays a single Shopify product.', 'wpshopify'),
     category: 'wpshopify-products',
+    keywords: [
+      wp.i18n.__('products', 'wpshopify'),
+      wp.i18n.__('shopify', 'wpshopify'),
+      wp.i18n.__('store', 'wpshopify'),
+      wp.i18n.__('ecommerce', 'wpshopify'),
+      wp.i18n.__('sell', 'wpshopify'),
+    ],
     icon: Icon,
     attributes: {
       payloadSettingsId: {

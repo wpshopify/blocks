@@ -24,24 +24,22 @@ import { ProductsLinkTo } from '../../_controls/products-link-to'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 
-const { __ } = wp.i18n
-const { PanelBody } = wp.components
-const { useContext } = wp.element
-
 function SingleProductControls() {
+  const { PanelBody } = wp.components
+  const { useContext } = wp.element
   const [state, dispatch] = useContext(BlockContext)
 
   return (
     <BlockControls>
       <PanelBody
-        title={__('Filtering', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Filtering', 'wpshopify')}
         initialOpen={true}
         className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody
-        title={__('General', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('General', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <ProductsLinkTo state={state} dispatch={dispatch} />
@@ -49,7 +47,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Layout', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Layout', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <Excludes state={state} dispatch={dispatch} />
@@ -57,7 +55,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Title', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Title', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <TitleSize state={state} dispatch={dispatch} />
@@ -65,7 +63,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Description', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Description', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <DescriptionSize state={state} dispatch={dispatch} />
@@ -74,7 +72,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Pricing', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Pricing', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <ShowPriceRange state={state} dispatch={dispatch} />
@@ -82,7 +80,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Images', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Images', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
@@ -90,7 +88,7 @@ function SingleProductControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Buy Button', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Buy Button', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <AddToCartButtonColor state={state} dispatch={dispatch} />

@@ -1,9 +1,7 @@
 import { defaultColors } from '../_common'
 
-const { __ } = wp.i18n
-const { BaseControl, ColorPalette } = wp.components
-
 function VariantButtonColor({ state, dispatch }) {
+  const { BaseControl, ColorPalette } = wp.components
   function onChange(newColor) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'variantButtonColor', value: newColor } })
   }
@@ -11,7 +9,7 @@ function VariantButtonColor({ state, dispatch }) {
   return (
     state.payloadSettings.variantStyle === 'dropdown' && (
       <BaseControl
-        label={__('Variant button color:', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Variant button color:', 'wpshopify')}
         className='color-variants'>
         <ColorPalette
           colors={defaultColors()}

@@ -1,7 +1,6 @@
 import { defaultColors } from '../_common'
 
 const { BaseControl, ColorPalette } = wp.components
-const { __ } = wp.i18n
 
 function AddToCartButtonColor({ state, dispatch }) {
   function onChange(newColor) {
@@ -9,7 +8,7 @@ function AddToCartButtonColor({ state, dispatch }) {
   }
 
   return (
-    <BaseControl label={__('Add to cart color:', wpshopify.misc.textdomain)}>
+    <BaseControl label={wp.i18n.__('Add to cart color:', 'wpshopify')}>
       <ColorPalette
         colors={defaultColors()}
         value={state.payloadSettings.addToCartButtonColor}

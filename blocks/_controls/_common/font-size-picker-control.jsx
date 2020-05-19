@@ -2,7 +2,6 @@ import { useDebounce } from 'use-debounce'
 
 const { useEffect, useState, useRef } = wp.element
 const { FontSizePicker, BaseControl } = wp.components
-const { __ } = wp.i18n
 
 function FontSizePickerControl({ state, dispatch, defaultValue, label, settingName }) {
   const [localVal, setLocalVal] = useState(getVal())
@@ -11,20 +10,20 @@ function FontSizePickerControl({ state, dispatch, defaultValue, label, settingNa
 
   const fontSizes = [
     {
-      name: __('Small', wpshopify.misc.textdomain),
+      name: wp.i18n.__('Small', 'wpshopify'),
       slug: 'small',
-      size: 18
+      size: 18,
     },
     {
-      name: __('Medium', wpshopify.misc.textdomain),
+      name: wp.i18n.__('Medium', 'wpshopify'),
       slug: 'medium',
-      size: 22
+      size: 22,
     },
     {
-      name: __('Big', wpshopify.misc.textdomain),
+      name: wp.i18n.__('Big', 'wpshopify'),
       slug: 'big',
-      size: 28
-    }
+      size: 28,
+    },
   ]
 
   function getSizeIntFromString(value) {
@@ -61,7 +60,7 @@ function FontSizePickerControl({ state, dispatch, defaultValue, label, settingNa
 
     dispatch({
       type: 'UPDATE_SETTING',
-      payload: { key: settingName, value: convertToString(newVal) }
+      payload: { key: settingName, value: convertToString(newVal) },
     })
   }, [debouncedValue])
 

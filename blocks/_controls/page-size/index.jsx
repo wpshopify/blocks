@@ -2,11 +2,9 @@ import { useDebounce } from 'use-debounce'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const { useEffect, useState, useRef, useContext } = wp.element
-const { RangeControl, Spinner } = wp.components
-const { __ } = wp.i18n
-
 function PageSize({ state, dispatch }) {
+  const { useEffect, useState, useRef, useContext } = wp.element
+  const { RangeControl, Spinner } = wp.components
   const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize)
   const [debouncedValue] = useDebounce(localVal, 150)
   const isFirstRender = useRef(true)
@@ -56,7 +54,7 @@ function PageSize({ state, dispatch }) {
 
       <RangeControl
         disabled={!state.payloadSettings.pageSize}
-        label={__('Page size', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Page size', 'wpshopify')}
         value={localVal}
         onChange={onChange}
         min={1}

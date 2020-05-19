@@ -1,8 +1,6 @@
-const { __ } = wp.i18n
-const { useState } = wp.element
-const { TextControl } = wp.components
-
 function UpdatedAt({ state, dispatch }) {
+  const { useState } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(state.payloadSettings.updatedAt)
 
   function onChange(newVal) {
@@ -12,9 +10,9 @@ function UpdatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Updated At', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Updated At', 'wpshopify')}
+      help={wp.i18n.__('Match product updated at', 'wpshopify')}
       value={val}
-      help={__('Match product updated at', wpshopify.misc.textdomain)}
       onChange={onChange}
     />
   )

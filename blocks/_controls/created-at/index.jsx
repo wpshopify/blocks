@@ -1,8 +1,6 @@
-const { useState } = wp.element
-const { TextControl } = wp.components
-const { __ } = wp.i18n
-
 function CreatedAt({ state, dispatch }) {
+  const { useState } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(state.payloadSettings.createdAt)
 
   function onChange(newVal) {
@@ -12,9 +10,9 @@ function CreatedAt({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Created At', wpshopify.misc.textdomain)}
       value={val}
-      help={__('Match product created at', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Created At', 'wpshopify')}
+      help={wp.i18n.__('Match product created at', 'wpshopify')}
       onChange={onChange}
     />
   )

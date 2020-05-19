@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const { __ } = wp.i18n
-const { SelectControl, Spinner } = wp.components
-const { useState, useEffect } = wp.element
-
 function SortBy({ state, dispatch }) {
+  const { SelectControl, Spinner } = wp.components
+  const { useState, useEffect } = wp.element
   const [isLoading, setIsLoading] = useState(false)
 
   const spinnerStyles = css`
@@ -20,14 +18,14 @@ function SortBy({ state, dispatch }) {
   `
 
   const options = [
-    { label: __('Title', wpshopify.misc.textdomain), value: 'title' },
-    { label: __('Vendor', wpshopify.misc.textdomain), value: 'vendor' },
-    { label: __('ID', wpshopify.misc.textdomain), value: 'id' },
-    { label: __('Price', wpshopify.misc.textdomain), value: 'price' },
-    { label: __('Best selling', wpshopify.misc.textdomain), value: 'best_selling' },
-    { label: __('Product type', wpshopify.misc.textdomain), value: 'product_type' },
-    { label: __('Created at', wpshopify.misc.textdomain), value: 'created_at' },
-    { label: __('Updated at', wpshopify.misc.textdomain), value: 'updated_at' }
+    { label: wp.i18n.__('Title', 'wpshopify'), value: 'title' },
+    { label: wp.i18n.__('Vendor', 'wpshopify'), value: 'vendor' },
+    { label: wp.i18n.__('ID', 'wpshopify'), value: 'id' },
+    { label: wp.i18n.__('Price', 'wpshopify'), value: 'price' },
+    { label: wp.i18n.__('Best selling', 'wpshopify'), value: 'best_selling' },
+    { label: wp.i18n.__('Product type', 'wpshopify'), value: 'product_type' },
+    { label: wp.i18n.__('Created at', 'wpshopify'), value: 'created_at' },
+    { label: wp.i18n.__('Updated at', 'wpshopify'), value: 'updated_at' },
   ]
 
   function onChange(newVal) {
@@ -51,10 +49,10 @@ function SortBy({ state, dispatch }) {
         </div>
       )}
       <SelectControl
-        label={__('Sort by', wpshopify.misc.textdomain)}
-        help={__(
+        label={wp.i18n.__('Sort by', 'wpshopify')}
+        help={wp.i18n.__(
           'Note: sorting by price will take all variant prices into consideration',
-          wpshopify.misc.textdomain
+          'wpshopify'
         )}
         value={state.payloadSettings.sortBy}
         options={options}

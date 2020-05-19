@@ -5,17 +5,22 @@ import { ProductsControls } from './controls'
 import { ProductsContent } from './content'
 import { Icon } from '../_icons'
 
-const { __ } = wp.i18n
-
 function BlockProducts() {
   return {
-    title: __('Products', wpshopify.misc.textdomain),
-    description: __(
+    title: wp.i18n.__('Products', 'wpshopify'),
+    description: wp.i18n.__(
       'This block displays one or more Shopify products in a grid layout.',
-      wpshopify.misc.textdomain
+      'wpshopify'
     ),
     category: 'wpshopify-products',
     icon: Icon,
+    keywords: [
+      wp.i18n.__('products', 'wpshopify'),
+      wp.i18n.__('shopify', 'wpshopify'),
+      wp.i18n.__('store', 'wpshopify'),
+      wp.i18n.__('ecommerce', 'wpshopify'),
+      wp.i18n.__('sell', 'wpshopify'),
+    ],
     attributes: {
       payloadSettingsId: {
         type: 'string',
@@ -26,8 +31,6 @@ function BlockProducts() {
       },
     },
     edit: (props) => {
-      console.log('BlockProducts :: Edit')
-
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <ProductsControls />
@@ -42,8 +45,6 @@ function BlockProducts() {
 }
 
 function registerBlockProducts() {
-  console.log('registerBlockProducts')
-
   wp.blocks.registerBlockType('wpshopify/products', BlockProducts())
 }
 

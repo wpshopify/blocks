@@ -1,10 +1,8 @@
-const { __ } = wp.i18n
-const { SelectControl } = wp.components
-
 function ProductsLinkTarget({ state, dispatch }) {
+  const { SelectControl } = wp.components
   const options = [
-    { label: __('Current tab / window', wpshopify.misc.textdomain), value: '_self' },
-    { label: __('New tab / window', wpshopify.misc.textdomain), value: '_blank' }
+    { label: wp.i18n.__('Current tab / window', 'wpshopify'), value: '_self' },
+    { label: wp.i18n.__('New tab / window', 'wpshopify'), value: '_blank' },
   ]
 
   function onChange(newVal) {
@@ -13,7 +11,7 @@ function ProductsLinkTarget({ state, dispatch }) {
 
   return (
     <SelectControl
-      label={__('Product links should open in:', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Product links should open in:', 'wpshopify')}
       value={state.payloadSettings.linkTarget}
       options={options}
       onChange={onChange}

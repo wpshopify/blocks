@@ -1,9 +1,8 @@
 import without from 'lodash/without'
-const { __ } = wp.i18n
-const { useEffect, useState, useRef } = wp.element
-const { CheckboxControl, BaseControl } = wp.components
 
 function Excludes({ state, dispatch }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { CheckboxControl, BaseControl } = wp.components
   const [excludesState, setExcludesState] = useState(state.payloadSettings.excludes)
   const isFirstRender = useRef(true)
 
@@ -50,9 +49,9 @@ function Excludes({ state, dispatch }) {
   function Title() {
     return (
       <CheckboxControl
-        label={__('Title', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Title', 'wpshopify')}
         checked={inState(excludesState, 'title')}
-        onChange={isChecked => onChange(isChecked, 'title')}
+        onChange={(isChecked) => onChange(isChecked, 'title')}
       />
     )
   }
@@ -60,9 +59,9 @@ function Excludes({ state, dispatch }) {
   function Description() {
     return (
       <CheckboxControl
-        label={__('Description', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Description', 'wpshopify')}
         checked={inState(excludesState, 'description')}
-        onChange={isChecked => onChange(isChecked, 'description')}
+        onChange={(isChecked) => onChange(isChecked, 'description')}
       />
     )
   }
@@ -70,9 +69,9 @@ function Excludes({ state, dispatch }) {
   function Images() {
     return (
       <CheckboxControl
-        label={__('Images', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Images', 'wpshopify')}
         checked={inState(excludesState, 'images')}
-        onChange={isChecked => onChange(isChecked, 'images')}
+        onChange={(isChecked) => onChange(isChecked, 'images')}
       />
     )
   }
@@ -80,9 +79,9 @@ function Excludes({ state, dispatch }) {
   function Pricing() {
     return (
       <CheckboxControl
-        label={__('Pricing', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Pricing', 'wpshopify')}
         checked={inState(excludesState, 'pricing')}
-        onChange={isChecked => onChange(isChecked, 'pricing')}
+        onChange={(isChecked) => onChange(isChecked, 'pricing')}
       />
     )
   }
@@ -90,16 +89,16 @@ function Excludes({ state, dispatch }) {
   function BuyButton() {
     return (
       <CheckboxControl
-        label={__('Buy Button', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Buy Button', 'wpshopify')}
         checked={inState(excludesState, 'buy-button')}
-        onChange={isChecked => onChange(isChecked, 'buy-button')}
+        onChange={(isChecked) => onChange(isChecked, 'buy-button')}
       />
     )
   }
 
   return (
     <>
-      <BaseControl label={__('Exclude from layout: ', wpshopify.misc.textdomain)}></BaseControl>
+      <BaseControl label={wp.i18n.__('Exclude from layout: ', 'wpshopify')}></BaseControl>
       <Title />
       <Description />
       <Images />

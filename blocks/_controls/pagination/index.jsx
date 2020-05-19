@@ -1,14 +1,13 @@
-const { ToggleControl } = wp.components
-const { __ } = wp.i18n
-
 function Pagination({ state, dispatch }) {
+  const { ToggleControl } = wp.components
+
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pagination', value: newVal } })
   }
 
   return (
     <ToggleControl
-      label={__('Show pagination', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Show pagination', 'wpshopify')}
       checked={state.payloadSettings.pagination}
       onChange={onChange}
     />

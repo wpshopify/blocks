@@ -1,14 +1,12 @@
-const { ToggleControl } = wp.components
-const { __ } = wp.i18n
-
 function ShowFeaturedOnly({ state, dispatch }) {
+  const { ToggleControl } = wp.components
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'showFeaturedOnly', value: newVal } })
   }
 
   return (
     <ToggleControl
-      label={__('Show featured only', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Show featured only', 'wpshopify')}
       checked={state.payloadSettings.showFeaturedOnly}
       onChange={onChange}
     />

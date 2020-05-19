@@ -1,10 +1,8 @@
 import { useDebounce } from 'use-debounce'
 
-const { useEffect, useState, useRef } = wp.element
-const { RangeControl } = wp.components
-const { __ } = wp.i18n
-
 function DescriptionLength({ state, dispatch }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { RangeControl } = wp.components
   const [localVal, setLocalVal] = useState(state.payloadSettings.descriptionLength)
   const [debouncedValue] = useDebounce(localVal, 10)
   const isFirstRender = useRef(true)
@@ -21,7 +19,7 @@ function DescriptionLength({ state, dispatch }) {
 
     dispatch({
       type: 'UPDATE_SETTING',
-      payload: { key: 'descriptionLength', value: debouncedValue }
+      payload: { key: 'descriptionLength', value: debouncedValue },
     })
   }, [debouncedValue])
 
@@ -31,8 +29,8 @@ function DescriptionLength({ state, dispatch }) {
 
   return (
     <RangeControl
-      label={__('Limit Description Length', wpshopify.misc.textdomain)}
-      help={__('Limits the number of characters', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Limit Description Length', 'wpshopify')}
+      help={wp.i18n.__('Limits the number of characters', 'wpshopify')}
       value={localVal}
       onChange={onChange}
       min={1}

@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const { CheckboxControl, Spinner } = wp.components
-const { __ } = wp.i18n
-const { useState, useEffect } = wp.element
-
 function Reverse({ state, dispatch }) {
+  const { CheckboxControl, Spinner } = wp.components
+  const { useState, useEffect } = wp.element
   const [isLoading, setIsLoading] = useState(false)
 
   const spinnerStyles = css`
@@ -40,7 +38,7 @@ function Reverse({ state, dispatch }) {
         </div>
       )}
       <CheckboxControl
-        label={__('Reverse order?', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Reverse order?', 'wpshopify')}
         checked={state.payloadSettings.reverse}
         onChange={onChange}
       />

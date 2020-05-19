@@ -13,24 +13,22 @@ import { BlockContext } from '../../_state/context'
 import { ProductsLinkTarget } from '../../_controls/products-link-target'
 import { ProductsLinkTo } from '../../_controls/products-link-to'
 
-const { __ } = wp.i18n
-const { PanelBody } = wp.components
-const { useContext } = wp.element
-
 function BuyButtonControls() {
+  const { PanelBody } = wp.components
+  const { useContext } = wp.element
   const [state, dispatch] = useContext(BlockContext)
 
   return (
     <BlockControls>
       <PanelBody
-        title={__('Filtering', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Filtering', 'wpshopify')}
         initialOpen={true}
         className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody
-        title={__('General', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('General', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <ProductsLinkTo state={state} dispatch={dispatch} />
@@ -38,7 +36,7 @@ function BuyButtonControls() {
       </PanelBody>
 
       <PanelBody
-        title={__('Buy Button', wpshopify.misc.textdomain)}
+        title={wp.i18n.__('Buy Button', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
         <AddToCartButtonColor state={state} dispatch={dispatch} />

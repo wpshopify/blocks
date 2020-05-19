@@ -1,14 +1,12 @@
-const { __ } = wp.i18n
-const { SelectControl } = wp.components
-const { useState } = wp.element
-
 function ProductsLinkTo({ state, dispatch }) {
+  const { SelectControl } = wp.components
+  const { useState } = wp.element
   const [localVal, setLocalVal] = useState('none')
 
   const options = [
-    { label: __('WordPress', wpshopify.misc.textdomain), value: 'wordpress' },
-    { label: __('Shopify', wpshopify.misc.textdomain), value: 'shopify' },
-    { label: __('None', wpshopify.misc.textdomain), value: 'none' }
+    { label: wp.i18n.__('WordPress', 'wpshopify'), value: 'wordpress' },
+    { label: wp.i18n.__('Shopify', 'wpshopify'), value: 'shopify' },
+    { label: wp.i18n.__('None', 'wpshopify'), value: 'none' },
   ]
 
   function onChange(newVal) {
@@ -18,12 +16,12 @@ function ProductsLinkTo({ state, dispatch }) {
 
   return (
     <SelectControl
-      label={__('Products should link to:', wpshopify.misc.textdomain)}
-      value={localVal}
-      help={__(
+      label={wp.i18n.__('Products should link to:', 'wpshopify')}
+      help={wp.i18n.__(
         'You must turn off Lite Sync in order to link products to WordPress single pages.',
-        wpshopify.misc.textdomain
+        'wpshopify'
       )}
+      value={localVal}
       options={options}
       onChange={onChange}
     />

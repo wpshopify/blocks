@@ -1,8 +1,6 @@
-const { useEffect, useState } = wp.element
-const { TextControl } = wp.components
-const { __ } = wp.i18n
-
 function InfiniteScrollOffset({ state, dispatch }) {
+  const { useEffect, useState } = wp.element
+  const { TextControl } = wp.components
   const [localVal, setLocalVal] = useState(state.payloadSettings.infiniteScrollOffset)
 
   function onChange(newVal) {
@@ -16,11 +14,11 @@ function InfiniteScrollOffset({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Infinite Scroll Offset', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Infinite Scroll Offset', 'wpshopify')}
+      help={wp.i18n.__('Determines when infinite scroll begins', 'wpshopify')}
       value={localVal}
       onChange={onChange}
       type='number'
-      help={__('Determines when infinite scroll begins', wpshopify.misc.textdomain)}
     />
   )
 }

@@ -1,8 +1,6 @@
-const { __ } = wp.i18n
-const { useState } = wp.element
-const { TextControl } = wp.components
-
 function ProductId({ state, dispatch }) {
+  const { useState } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(state.payloadSettings.productId)
 
   function onChange(newVal) {
@@ -12,9 +10,9 @@ function ProductId({ state, dispatch }) {
 
   return (
     <TextControl
-      label={__('Product ID', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Product ID', 'wpshopify')}
+      help={wp.i18n.__('Match product ids', 'wpshopify')}
       value={val}
-      help={__('Match product ids', wpshopify.misc.textdomain)}
       onChange={onChange}
     />
   )

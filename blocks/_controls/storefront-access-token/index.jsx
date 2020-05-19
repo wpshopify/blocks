@@ -1,10 +1,8 @@
 import { useDebounce } from 'use-debounce'
 
-const { __ } = wp.i18n
-const { useEffect, useState, useRef } = wp.element
-const { TextControl } = wp.components
-
 function StorefrontAccessToken({ state, dispatch }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(getCachedValue())
   const [debouncedValue] = useDebounce(val, 250)
   const isFirstRender = useRef(true)
@@ -21,7 +19,7 @@ function StorefrontAccessToken({ state, dispatch }) {
 
     dispatch({
       type: 'UPDATE_SETTING',
-      payload: { key: 'storefrontAccessToken', value: debouncedValue }
+      payload: { key: 'storefrontAccessToken', value: debouncedValue },
     })
   }, [debouncedValue])
 
@@ -44,8 +42,8 @@ function StorefrontAccessToken({ state, dispatch }) {
 
   return (
     <TextControl
-      placeholder={__('Enter your Storefront Access Token', wpshopify.misc.textdomain)}
-      label={__('Storefront Access Token', wpshopify.misc.textdomain)}
+      placeholder={wp.i18n.__('Enter your Storefront Access Token', 'wpshopify')}
+      label={wp.i18n.__('Storefront Access Token', 'wpshopify')}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}

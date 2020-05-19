@@ -1,11 +1,9 @@
 import { useDebounce } from 'use-debounce'
 import { sanitizeDomainField } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 
-const { useEffect, useState, useRef } = wp.element
-const { TextControl } = wp.components
-const { __ } = wp.i18n
-
 function MyShopifyDomain({ state, dispatch }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { TextControl } = wp.components
   const [val, setVal] = useState(getCachedValue())
   const [debouncedValue] = useDebounce(val, 50)
   const isFirstRender = useRef(true)
@@ -29,7 +27,7 @@ function MyShopifyDomain({ state, dispatch }) {
 
     dispatch({
       key: 'myShopifyDomain',
-      value: sanitizeDomainField(debouncedValue)
+      value: sanitizeDomainField(debouncedValue),
     })
   }, [debouncedValue])
 
@@ -52,8 +50,8 @@ function MyShopifyDomain({ state, dispatch }) {
 
   return (
     <TextControl
-      placeholder='store.myshopify.com'
-      label={__('Shopify Domain', wpshopify.misc.textdomain)}
+      placeholder='yourstore.myshopify.com'
+      label={wp.i18n.__('Shopify Domain', 'wpshopify')}
       value={val}
       onChange={onChange}
       disabled={builderState.hasCustomConnection}

@@ -4,23 +4,22 @@ import isEmpty from 'lodash/isEmpty'
 import isString from 'lodash/isString'
 import {
   graphQuery,
-  buildQueryFromSelections
+  buildQueryFromSelections,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
-const { __ } = wp.i18n
 
 function defaultColors() {
   return [
-    { name: __('Pale pink', wpshopify.misc.textdomain), color: '#f78da8' },
-    { name: __('Vivid red', wpshopify.misc.textdomain), color: '#cf2e2e' },
-    { name: __('Luminous vivid', wpshopify.misc.textdomain), color: '#ff6a00' },
-    { name: __('Luminous vivid amber', wpshopify.misc.textdomain), color: '#fcb900' },
-    { name: __('Light green cyan', wpshopify.misc.textdomain), color: '#7bdcb5' },
-    { name: __('Vivid green cyan', wpshopify.misc.textdomain), color: '#00d084' },
-    { name: __('Pale cyan blue', wpshopify.misc.textdomain), color: '#8ed2fc' },
-    { name: __('Cyan blue', wpshopify.misc.textdomain), color: '#0692e3' },
-    { name: __('Light grey', wpshopify.misc.textdomain), color: '#7d7d7d' },
-    { name: __('Medium blue grey', wpshopify.misc.textdomain), color: '#525252' },
-    { name: __('Dark grey', wpshopify.misc.textdomain), color: '#262626' }
+    { name: wp.i18n.__('Pale pink', 'wpshopify'), color: '#f78da8' },
+    { name: wp.i18n.__('Vivid red', 'wpshopify'), color: '#cf2e2e' },
+    { name: wp.i18n.__('Luminous vivid', 'wpshopify'), color: '#ff6a00' },
+    { name: wp.i18n.__('Luminous vivid amber', 'wpshopify'), color: '#fcb900' },
+    { name: wp.i18n.__('Light green cyan', 'wpshopify'), color: '#7bdcb5' },
+    { name: wp.i18n.__('Vivid green cyan', 'wpshopify'), color: '#00d084' },
+    { name: wp.i18n.__('Pale cyan blue', 'wpshopify'), color: '#8ed2fc' },
+    { name: wp.i18n.__('Cyan blue', 'wpshopify'), color: '#0692e3' },
+    { name: wp.i18n.__('Light grey', 'wpshopify'), color: '#7d7d7d' },
+    { name: wp.i18n.__('Medium blue grey', 'wpshopify'), color: '#525252' },
+    { name: wp.i18n.__('Dark grey', 'wpshopify'), color: '#262626' },
   ]
 }
 
@@ -43,7 +42,7 @@ function splitSelection(string) {
 function removeEmptyValues(stringSelection) {
   var stuff = compact(splitSelection(stringSelection))
 
-  var final = map(stuff, val => val.trim())
+  var final = map(stuff, (val) => val.trim())
 
   return compact(final)
 }
@@ -57,7 +56,7 @@ function fetchNewItems(type, builderState) {
       : state.payloadSettings.pageSize,
     query: queryString,
     reverse: state.payloadSettings.reverse,
-    sortKey: state.payloadSettings.sortBy
+    sortKey: state.payloadSettings.sortBy,
   }
 
   return graphQuery(type, options)

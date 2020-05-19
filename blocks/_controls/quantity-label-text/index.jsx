@@ -1,7 +1,6 @@
-const { TextControl } = wp.components
-const { __ } = wp.i18n
-
 function QuantityLabelText({ state, dispatch }) {
+  const { TextControl } = wp.components
+
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'quantityLabelText', value: newVal } })
   }
@@ -9,7 +8,7 @@ function QuantityLabelText({ state, dispatch }) {
   return (
     state.payloadSettings.showQuantityLabel && (
       <TextControl
-        label={__('Quantity label text', wpshopify.misc.textdomain)}
+        label={wp.i18n.__('Quantity label text', 'wpshopify')}
         value={state.payloadSettings.quantityLabelText}
         onChange={onChange}
       />

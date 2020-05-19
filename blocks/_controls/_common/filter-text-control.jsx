@@ -1,10 +1,10 @@
 import { convertValuesToString, removeEmptyValues } from './'
 import { useDebounce } from 'use-debounce'
 import { buildQueryFromSelections } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const { __ } = wp.i18n
 const { useEffect, useState, useRef } = wp.element
 const { TextControl, Spinner } = wp.components
 
@@ -66,12 +66,7 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
         </div>
       )}
 
-      <TextControl
-        label={__(label, wpshopify.misc.textdomain)}
-        value={localVal}
-        help={__(help, wpshopify.misc.textdomain)}
-        onChange={onChange}
-      />
+      <TextControl label={label} value={localVal} help={help} onChange={onChange} />
     </>
   )
 }

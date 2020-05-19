@@ -1,14 +1,12 @@
-const { ToggleControl } = wp.components
-const { __ } = wp.i18n
-
 function ShowCompareAt({ state, dispatch }) {
+  const { ToggleControl } = wp.components
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'showCompareAt', value: newVal } })
   }
 
   return (
     <ToggleControl
-      label={__('Show compare at', wpshopify.misc.textdomain)}
+      label={wp.i18n.__('Show compare at', 'wpshopify')}
       checked={state.payloadSettings.showCompareAt}
       onChange={onChange}
     />
