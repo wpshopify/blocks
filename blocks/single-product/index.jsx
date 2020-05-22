@@ -1,5 +1,4 @@
 import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
-
 import { BlockProvider } from '../_state/provider'
 import { SingleProductControls } from './controls'
 import { ProductsContent } from '../products/content'
@@ -28,8 +27,6 @@ function BlockSingleProduct() {
       },
     },
     edit: (props) => {
-      console.log('BlockSingleProduct :: Edit')
-
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <SingleProductControls />
@@ -44,7 +41,6 @@ function BlockSingleProduct() {
 }
 
 function registerBlockSingleProduct() {
-  console.log('registerBlockSingleProduct')
   wp.blocks.registerBlockType('wpshopify/single-product', BlockSingleProduct())
 }
 

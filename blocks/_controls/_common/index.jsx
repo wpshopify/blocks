@@ -47,19 +47,4 @@ function removeEmptyValues(stringSelection) {
   return compact(final)
 }
 
-function fetchNewItems(type, builderState) {
-  const queryString = buildQueryFromSelections(builderState.payloadSettings)
-
-  var options = {
-    first: state.payloadSettings.limit
-      ? state.payloadSettings.limit
-      : state.payloadSettings.pageSize,
-    query: queryString,
-    reverse: state.payloadSettings.reverse,
-    sortKey: state.payloadSettings.sortBy,
-  }
-
-  return graphQuery(type, options)
-}
-
-export { defaultColors, fetchNewItems, removeEmptyValues, convertValuesToString }
+export { defaultColors, removeEmptyValues, convertValuesToString }

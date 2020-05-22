@@ -1,6 +1,5 @@
 import { convertValuesToString, removeEmptyValues } from './'
 import { useDebounce } from 'use-debounce'
-import { buildQueryFromSelections } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -12,14 +11,14 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   const [localVal, setLocalVal] = useState(
     convertValuesToString(state.payloadSettings[settingName])
   )
-  const [debouncedValue] = useDebounce(localVal, 250)
+  const [debouncedValue] = useDebounce(localVal, 350)
   const isFirstRender = useRef(true)
   const [isTouched, setIsTouched] = useState(false)
 
   const spinnerStyles = css`
     position: absolute;
-    top: 78px;
-    right: 18px;
+    top: 27px;
+    right: 0px;
     margin: 0;
     background: white;
     padding: 0px 8px;
@@ -27,6 +26,10 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
     .components-spinner {
       margin: 0;
     }
+  `
+
+  const filterWrapCSS = css`
+    position: relative;
   `
 
   function onChange(newVal) {
@@ -45,11 +48,6 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
       type: 'UPDATE_SETTING',
       payload: { key: settingName, value: removeEmptyValues(localVal) },
     })
-
-    dispatch({
-      type: 'UPDATE_QUERY_PARAMS',
-      payload: { query: buildQueryFromSelections(state.payloadSettings) },
-    })
   }, [debouncedValue])
 
   useEffect(() => {
@@ -59,7 +57,7 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   }, [state.isLoading])
 
   return (
-    <>
+    <div css={filterWrapCSS}>
       {state.isLoading && isTouched && (
         <div css={spinnerStyles}>
           <Spinner />
@@ -67,7 +65,7 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
       )}
 
       <TextControl label={label} value={localVal} help={help} onChange={onChange} />
-    </>
+    </div>
   )
 }
 

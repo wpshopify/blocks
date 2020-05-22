@@ -7,21 +7,26 @@ function Reverse({ state, dispatch }) {
   const [isLoading, setIsLoading] = useState(false)
 
   const spinnerStyles = css`
-    position: relative;
-    top: 2px;
-    right: 0;
+    position: absolute;
+    top: 3px;
+    right: -5px;
     margin: 0;
+    background: white;
+    padding: 0px 8px;
 
     .components-spinner {
       margin: 0;
     }
   `
 
+  const filterWrapCSS = css`
+    position: relative;
+  `
+
   function onChange(newVal) {
     setIsLoading(true)
     dispatch({ type: 'SET_IS_LOADING', payload: true })
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } })
-    dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { reverse: newVal } })
   }
 
   useEffect(() => {
@@ -31,7 +36,7 @@ function Reverse({ state, dispatch }) {
   }, [state.isLoading])
 
   return (
-    <>
+    <div css={filterWrapCSS}>
       {isLoading && (
         <div css={spinnerStyles}>
           <Spinner />
@@ -42,7 +47,7 @@ function Reverse({ state, dispatch }) {
         checked={state.payloadSettings.reverse}
         onChange={onChange}
       />
-    </>
+    </div>
   )
 }
 

@@ -2,10 +2,9 @@ import {
   buildQueryFromSelections,
   encodePayloadSettings,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+
+import { updateNoticesState } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 import update from 'immutability-helper'
-import concat from 'lodash/concat'
-import some from 'lodash/some'
-import isEmpty from 'lodash/isEmpty'
 
 function setPayloadSettingsAttributes(setAttributes, payloadSettingsId) {
   setAttributes({
@@ -22,8 +21,40 @@ function querySettings() {
     'query',
     'availableForSale',
     'connective',
+    'collection',
     'pageSize',
+    'sortBy',
+    'reverse',
   ]
+}
+
+function changedQuerySetting(key) {
+  return querySettings().includes(key)
+}
+
+function findQueryParamToUpdate({ key, value }, queryParams, newPayloadSettings) {
+  var obj = { ...queryParams }
+
+  switch (key) {
+    case 'sortBy':
+      obj['sortKey'] = value
+
+      break
+    case 'reverse':
+      obj['reverse'] = value
+
+      break
+    case 'pageSize':
+      obj['first'] = value
+
+      break
+    default:
+      break
+  }
+
+  obj['query'] = buildQueryFromSelections(newPayloadSettings)
+
+  return obj
 }
 
 function BlockReducer(state, action) {
@@ -36,43 +67,45 @@ function BlockReducer(state, action) {
         var valueToSet = action.payload.value
       }
 
-      state.payloadSettings[action.payload.key] = update(
-        state.payloadSettings[action.payload.key],
-        {
-          $set: valueToSet,
-        }
-      )
+      var newPayloadSettings = update(state.payloadSettings, {
+        $merge: {
+          [action.payload.key]: valueToSet,
+        },
+      })
 
-      if (querySettings().includes(action.payload.key)) {
-        state.payloadSettings.query = update(state.payloadSettings.query, {
-          $set: buildQueryFromSelections(state.payloadSettings),
+      if (changedQuerySetting(action.payload.key)) {
+        var queryParamObject = findQueryParamToUpdate(
+          action.payload,
+          state.queryParams,
+          newPayloadSettings
+        )
+
+        newPayloadSettings.query = update(state.payloadSettings.query, {
+          $set: buildQueryFromSelections(newPayloadSettings),
         })
+
+        //   action.payload.key
+      } else {
+        var queryParamObject = state.queryParams
       }
 
-      var payloadSettingsId = encodePayloadSettings(state.payloadSettings)
+      var okqueryParamObject = update(state.queryParams, { $set: queryParamObject })
+      var payloadSettingsId = encodePayloadSettings(newPayloadSettings)
 
       setPayloadSettingsAttributes(state.blockProps.setAttributes, payloadSettingsId)
 
       return {
         ...state,
+        queryParams: okqueryParamObject,
+        payloadSettings: newPayloadSettings,
         payloadSettingsId: payloadSettingsId,
       }
     }
 
     case 'UPDATE_NOTICES': {
-      let updatedNotices = state.notices
-
-      if (!isEmpty(action.payload)) {
-        if (!some(state.notices, action.payload)) {
-          updatedNotices = concat(state.notices, [action.payload])
-        } else {
-          updatedNotices = state.notices
-        }
-      }
-
       return {
         ...state,
-        notices: update(state.notices, { $set: updatedNotices }),
+        notices: updateNoticesState(state.notices, action.payload),
       }
     }
 
@@ -101,13 +134,6 @@ function BlockReducer(state, action) {
       return {
         ...state,
         isReady: update(state.isReady, { $set: action.payload }),
-      }
-    }
-
-    case 'UPDATE_QUERY_PARAMS': {
-      return {
-        ...state,
-        queryParams: update(state.queryParams, { $merge: action.payload }),
       }
     }
 

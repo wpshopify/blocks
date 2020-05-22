@@ -3,7 +3,7 @@ import { useDebounce } from 'use-debounce'
 import { jsx, css } from '@emotion/core'
 
 function PageSize({ state, dispatch }) {
-  const { useEffect, useState, useRef, useContext } = wp.element
+  const { useEffect, useState, useRef } = wp.element
   const { RangeControl, Spinner } = wp.components
   const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize)
   const [debouncedValue] = useDebounce(localVal, 150)
@@ -12,14 +12,20 @@ function PageSize({ state, dispatch }) {
   const [isLoading, setIsLoading] = useState(false)
 
   const spinnerStyles = css`
-    position: relative;
-    top: -3px;
-    right: 6px;
+    position: absolute;
+    top: 27px;
+    right: 0px;
     margin: 0;
+    background: white;
+    padding: 0px 8px;
 
     .components-spinner {
       margin: 0;
     }
+  `
+
+  const filterWrapCSS = css`
+    position: relative;
   `
 
   function onChange(newVal) {
@@ -35,7 +41,6 @@ function PageSize({ state, dispatch }) {
 
     dispatch({ type: 'SET_IS_LOADING', payload: true })
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pageSize', value: debouncedValue } })
-    dispatch({ type: 'UPDATE_QUERY_PARAMS', payload: { first: debouncedValue } })
   }, [debouncedValue])
 
   useEffect(() => {
@@ -45,7 +50,7 @@ function PageSize({ state, dispatch }) {
   }, [state.isLoading])
 
   return (
-    <>
+    <div css={filterWrapCSS}>
       {isLoading && (
         <div css={spinnerStyles}>
           <Spinner />
@@ -60,7 +65,7 @@ function PageSize({ state, dispatch }) {
         min={1}
         max={250}
       />
-    </>
+    </div>
   )
 }
 

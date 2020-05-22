@@ -1,5 +1,4 @@
 import {
-  enumMake,
   encodePayloadSettings,
   decodePayloadSettings,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
@@ -27,6 +26,7 @@ function customDefaultPayloadSettingsProductSingle(payloadSettings) {
   copyPayloadSettings.limit = 1
   copyPayloadSettings.itemsPerRow = 1
   copyPayloadSettings.linkTo = 'none'
+  copyPayloadSettings.excludes = ['description']
 
   return copyPayloadSettings
 }
@@ -45,6 +45,9 @@ function customDefaultPayloadSettingsBuyButton(payloadSettings) {
 function customDefaultPayloadSettingsProducts(payloadSettings) {
   var copyPayloadSettings = payloadSettings
   copyPayloadSettings.linkTo = 'none'
+  copyPayloadSettings.excludes = ['description']
+  copyPayloadSettings.itemsPerRow = 3
+  copyPayloadSettings.limit = false
 
   return copyPayloadSettings
 }
@@ -53,34 +56,42 @@ function customizeDefaultSettings(blockProps) {
   if (blockProps.name === 'wpshopify/products') {
     return customDefaultPayloadSettingsProducts(blockProps.attributes.defaultPayloadSettings)
   } else if (blockProps.name === 'wpshopify/single-product') {
+    console.log('wpshopify/single-product', blockProps.attributes.defaultPayloadSettings)
+
     return customDefaultPayloadSettingsProductSingle(blockProps.attributes.defaultPayloadSettings)
   } else if (blockProps.name === 'wpshopify/buy-button') {
+    console.log('wpshopify/buy-button', blockProps.attributes.defaultPayloadSettings)
     return customDefaultPayloadSettingsBuyButton(blockProps.attributes.defaultPayloadSettings)
   } else {
     return blockProps.attributes.defaultPayloadSettings
   }
 }
 
+/*
+
+Setup inital block state
+
+*/
 function BlockInitialState({ blockProps }) {
   blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps)
+
+  //   console.log('::::::::::: get :::::::::::::', blockProps.attributes.payloadSettingsId)
 
   const [blockData, payloadSettingsId] = getBlockSettings(
     blockProps.attributes.payloadSettingsId,
     blockProps.attributes.defaultPayloadSettings
   )
 
+  console.log('::::::::::: get ::::::::::::: blockData', blockData)
+
   blockProps.setAttributes({
     payloadSettingsId: payloadSettingsId,
   })
 
-  if (
-    blockProps.attributes.defaultPayloadSettings.limit &&
-    blockProps.attributes.defaultPayloadSettings.limit <
-      blockProps.attributes.defaultPayloadSettings.pageSize
-  ) {
-    var pageSize = blockProps.attributes.defaultPayloadSettings.limit
+  if (blockData.limit && blockData.limit < blockData.pageSize) {
+    var pageSize = blockData.limit
   } else {
-    var pageSize = blockProps.attributes.defaultPayloadSettings.pageSize
+    var pageSize = blockData.pageSize
   }
 
   return {
@@ -99,9 +110,9 @@ function BlockInitialState({ blockProps }) {
     defaultPayloadSettingsId: payloadSettingsId,
     payload: [],
     queryParams: {
-      query: blockProps.attributes.defaultPayloadSettings.query,
-      sortKey: enumMake(blockProps.attributes.defaultPayloadSettings.sortBy),
-      reverse: blockProps.attributes.defaultPayloadSettings.reverse,
+      query: blockData.query,
+      sortKey: blockData.sortBy,
+      reverse: blockData.reverse,
       first: pageSize,
     },
   }

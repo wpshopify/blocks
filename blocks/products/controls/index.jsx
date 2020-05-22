@@ -1,4 +1,5 @@
 import { Title } from '../../_controls/title'
+import { Collection } from '../../_controls/collection'
 import { Tag } from '../../_controls/tag'
 import { Vendor } from '../../_controls/vendor'
 import { ProductType } from '../../_controls/product-type'
@@ -48,19 +49,12 @@ function ProductsControls() {
         initialOpen={false}
         className='wps-panel-body'>
         <Title state={state} dispatch={dispatch} />
+        <Collection state={state} dispatch={dispatch} />
         <Tag state={state} dispatch={dispatch} />
         <Vendor state={state} dispatch={dispatch} />
         <ProductType state={state} dispatch={dispatch} />
         <AvailableForSale state={state} dispatch={dispatch} />
         <Connective state={state} dispatch={dispatch} />
-      </PanelBody>
-
-      <PanelBody
-        title={wp.i18n.__('General', 'wpshopify')}
-        initialOpen={false}
-        className='wps-panel-body'>
-        <ProductsLinkTo state={state} dispatch={dispatch} />
-        <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody
@@ -79,6 +73,14 @@ function ProductsControls() {
         <PageSize state={state} dispatch={dispatch} />
         <Limit state={state} dispatch={dispatch} />
         <InfiniteScroll state={state} dispatch={dispatch} />
+      </PanelBody>
+
+      <PanelBody
+        title={wp.i18n.__('General', 'wpshopify')}
+        initialOpen={false}
+        className='wps-panel-body'>
+        <ProductsLinkTo state={state} dispatch={dispatch} />
+        <ProductsLinkTarget state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody

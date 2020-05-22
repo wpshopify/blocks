@@ -1,14 +1,8 @@
-import { buildQueryFromSelections } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
-
 function Connective({ state, dispatch }) {
   const { RadioControl } = wp.components
+
   function onChange(newVal) {
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'connective', value: newVal } })
-
-    dispatch({
-      type: 'UPDATE_QUERY_PARAMS',
-      payload: { query: buildQueryFromSelections(state.payloadSettings) },
-    })
   }
 
   return (

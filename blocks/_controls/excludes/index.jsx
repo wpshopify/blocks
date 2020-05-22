@@ -1,10 +1,18 @@
 import without from 'lodash/without'
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
 
 function Excludes({ state, dispatch }) {
   const { useEffect, useState, useRef } = wp.element
   const { CheckboxControl, BaseControl } = wp.components
   const [excludesState, setExcludesState] = useState(state.payloadSettings.excludes)
   const isFirstRender = useRef(true)
+
+  const excludeCSS = css`
+    && {
+      margin-bottom: 3px;
+    }
+  `
 
   function inState(excludesState, type) {
     if (excludesState.includes(type)) {
@@ -33,18 +41,19 @@ function Excludes({ state, dispatch }) {
       isFirstRender.current = false
       return
     }
+    console.log('excludesState ::::::: ', excludesState)
 
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'excludes', value: excludesState } })
   }, [excludesState])
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
+  //   useEffect(() => {
+  //     if (isFirstRender.current) {
+  //       isFirstRender.current = false
+  //       return
+  //     }
 
-    setExcludesState(state.payloadSettings.excludes)
-  }, [state.payloadSettings.excludes])
+  //     setExcludesState(state.payloadSettings.excludes)
+  //   }, [state.payloadSettings.excludes])
 
   function Title() {
     return (
@@ -98,7 +107,7 @@ function Excludes({ state, dispatch }) {
 
   return (
     <>
-      <BaseControl label={wp.i18n.__('Exclude from layout: ', 'wpshopify')}></BaseControl>
+      <BaseControl css={excludeCSS} label={wp.i18n.__('Exclude from layout: ', 'wpshopify')} />
       <Title />
       <Description />
       <Images />
