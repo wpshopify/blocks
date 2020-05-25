@@ -4,10 +4,9 @@ import { useDebounce } from 'use-debounce'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const { useEffect, useState, useRef } = wp.element
-const { TextControl, Spinner } = wp.components
-
 function FilterTextControl({ state, dispatch, label, help, settingName }) {
+  const { useEffect, useState, useRef } = wp.element
+  const { TextControl, Spinner } = wp.components
   const [localVal, setLocalVal] = useState(
     convertValuesToString(state.payloadSettings[settingName])
   )

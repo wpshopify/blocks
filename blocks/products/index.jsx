@@ -2,7 +2,7 @@ import { decodePayloadSettings } from '/Users/andrew/www/devil/devilbox-new/data
 import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 import { BlockProvider } from '../_state/provider'
 import { ProductsControls } from './controls'
-import { ProductsContent } from './content'
+import ProductsContent from './content'
 import { Icon } from '../_icons'
 
 function BlockProducts() {
@@ -31,7 +31,7 @@ function BlockProducts() {
       },
     },
     edit: (props) => {
-      console.log('::::: edit :::::')
+      console.log('::::: BlockProducts edit :::::')
 
       return (
         <BlockProvider options={wpshopify} blockProps={props}>

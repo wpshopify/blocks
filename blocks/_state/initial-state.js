@@ -73,16 +73,13 @@ Setup inital block state
 
 */
 function BlockInitialState({ blockProps }) {
+  console.log('::::: BlockInitialState :::::')
   blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps)
-
-  //   console.log('::::::::::: get :::::::::::::', blockProps.attributes.payloadSettingsId)
 
   const [blockData, payloadSettingsId] = getBlockSettings(
     blockProps.attributes.payloadSettingsId,
     blockProps.attributes.defaultPayloadSettings
   )
-
-  console.log('::::::::::: get ::::::::::::: blockData', blockData)
 
   blockProps.setAttributes({
     payloadSettingsId: payloadSettingsId,

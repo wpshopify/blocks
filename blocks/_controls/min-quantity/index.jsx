@@ -1,6 +1,11 @@
 function MinQuantity({ state, dispatch }) {
   const { TextControl } = wp.components
   function onChange(newVal) {
+    console.log('newVal', newVal)
+
+    if (!newVal || newVal === 0 || newVal === '0') {
+      newVal = 1
+    }
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'minQuantity', value: newVal } })
   }
 

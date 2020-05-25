@@ -5,17 +5,15 @@ import {
   Notices,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 import { fetchNewItems } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
-
 import { BlockContext } from '../_state/context'
 
-const { useContext, useEffect } = wp.element
-
-function BlockContent({ children, hasItems = true }) {
+function BlockContent({ children }) {
+  const { useContext, useEffect } = wp.element
   const [state, dispatch] = useContext(BlockContext)
-  console.log('::::: BlockContent :::::')
+  console.log('::::: BlockContent 1 :::::')
 
   useEffect(() => {
-    console.log('::::: BlockContent useEffect :::::', state.queryParams)
+    console.log('::::: BlockContent useEffect :::::')
 
     dispatch({ type: 'SET_IS_LOADING', payload: true })
 
@@ -58,7 +56,6 @@ function BlockContent({ children, hasItems = true }) {
         })
       })
   }, [state.queryParams])
-  console.log('state.payload.length', state.payload.length)
 
   return state.isLoading ? (
     <ProductPlaceholder />

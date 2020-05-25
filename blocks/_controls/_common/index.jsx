@@ -2,10 +2,6 @@ import compact from 'lodash/compact'
 import map from 'lodash/map'
 import isEmpty from 'lodash/isEmpty'
 import isString from 'lodash/isString'
-import {
-  graphQuery,
-  buildQueryFromSelections,
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 
 function defaultColors() {
   return [

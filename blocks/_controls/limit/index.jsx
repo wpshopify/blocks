@@ -28,9 +28,9 @@ function Limit({ state, dispatch }) {
 
   return (
     <TextControl
-      label={wp.i18n.__('Limit products to', 'wpshopify')}
+      label={wp.i18n.__('Limit products?', 'wpshopify')}
       help={wp.i18n.__(
-        'Sets the number of products shown. This will take precedence over page size.',
+        'Sets the number of products shown. This will take precedence over the page size setting.',
         'wpshopify'
       )}
       value={localVal}

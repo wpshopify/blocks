@@ -1,18 +1,12 @@
+import TextControlDebounced from '../_common/text-control-debounced'
+
 function AddToCartButtonText({ state, dispatch }) {
-  const { useState } = wp.element
-  const { TextControl } = wp.components
-  const [val, setVal] = useState(state.payloadSettings.addToCartButtonText)
-
-  function onChange(newVal) {
-    setVal(newVal)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'addToCartButtonText', value: newVal } })
-  }
-
   return (
-    <TextControl
+    <TextControlDebounced
+      settingName='addToCartButtonText'
       label={wp.i18n.__('Add to cart button text', 'wpshopify')}
-      value={val}
-      onChange={onChange}
+      state={state}
+      dispatch={dispatch}
     />
   )
 }
