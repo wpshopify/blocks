@@ -5,6 +5,9 @@ import ProductsContent from '../products/content'
 import { Icon } from '../_icons'
 
 function BlockBuyButton() {
+  const isBootstrapping = {
+    current: true,
+  }
   return {
     title: wp.i18n.__('Buy Button', 'wpshopify'),
     description: wp.i18n.__(
@@ -33,7 +36,7 @@ function BlockBuyButton() {
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <BuyButtonControls />
-          <ProductsContent />
+          <ProductsContent isBootstrapping={isBootstrapping} />
         </BlockProvider>
       )
     },

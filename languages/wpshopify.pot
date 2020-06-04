@@ -1,0 +1,489 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-05-26T03:57:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
+"X-Domain: wpshopify\n"
+
+#: blocks/buy-button/controls/index.jsx:24
+#: blocks/products/controls/index.jsx:48
+#: blocks/single-product/controls/index.jsx:35
+msgid "Filtering"
+msgstr ""
+
+#: blocks/buy-button/controls/index.jsx:31
+#: blocks/products/controls/index.jsx:79
+#: blocks/single-product/controls/index.jsx:42
+msgid "General"
+msgstr ""
+
+#: blocks/buy-button/controls/index.jsx:39
+#: blocks/buy-button/index.jsx:9
+#: blocks/products/controls/index.jsx:129
+#: blocks/single-product/controls/index.jsx:91
+#: blocks/_controls/excludes/index.jsx:101
+msgid "Buy Button"
+msgstr ""
+
+#: blocks/buy-button/index.jsx:10
+msgid "This block displays a simple \"buy button\" without the product title, images, or price."
+msgstr ""
+
+#: blocks/buy-button/index.jsx:15
+#: blocks/products/index.jsx:18
+#: blocks/single-product/index.jsx:13
+msgid "products"
+msgstr ""
+
+#: blocks/buy-button/index.jsx:16
+#: blocks/products/index.jsx:19
+#: blocks/single-product/index.jsx:14
+msgid "shopify"
+msgstr ""
+
+#: blocks/buy-button/index.jsx:17
+#: blocks/products/index.jsx:20
+#: blocks/single-product/index.jsx:15
+msgid "store"
+msgstr ""
+
+#: blocks/buy-button/index.jsx:18
+msgid "button"
+msgstr ""
+
+#: blocks/buy-button/index.jsx:19
+msgid "buy"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:61
+msgid "Sorting"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:69
+msgid "Pagination"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:87
+#: blocks/single-product/controls/index.jsx:50
+msgid "Layout"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:96
+#: blocks/single-product/controls/index.jsx:58
+#: blocks/_controls/excludes/index.jsx:61
+#: blocks/_controls/sort-by/index.jsx:33
+msgid "Title"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:104
+#: blocks/single-product/controls/index.jsx:66
+#: blocks/_controls/excludes/index.jsx:71
+msgid "Description"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:113
+#: blocks/single-product/controls/index.jsx:75
+#: blocks/_controls/excludes/index.jsx:91
+msgid "Pricing"
+msgstr ""
+
+#: blocks/products/controls/index.jsx:121
+#: blocks/single-product/controls/index.jsx:83
+#: blocks/_controls/excludes/index.jsx:81
+msgid "Images"
+msgstr ""
+
+#: blocks/products/index.jsx:10
+msgid "Products"
+msgstr ""
+
+#: blocks/products/index.jsx:11
+msgid "This block displays one or more Shopify products in a grid layout."
+msgstr ""
+
+#: blocks/products/index.jsx:21
+#: blocks/single-product/index.jsx:16
+msgid "ecommerce"
+msgstr ""
+
+#: blocks/products/index.jsx:22
+#: blocks/single-product/index.jsx:17
+msgid "sell"
+msgstr ""
+
+#: blocks/single-product/index.jsx:9
+msgid "Single Product"
+msgstr ""
+
+#: blocks/single-product/index.jsx:10
+msgid "This block displays a single Shopify product."
+msgstr ""
+
+#: blocks/_controls/add-to-cart-button-color/index.jsx:11
+msgid "Add to cart color:"
+msgstr ""
+
+#: blocks/_controls/add-to-cart-button-text/index.jsx:7
+msgid "Add to cart button text"
+msgstr ""
+
+#: blocks/_controls/align-height/index.jsx:13
+msgid "Align height?"
+msgstr ""
+
+#: blocks/_controls/available-for-sale/index.jsx:10
+msgid "Available for sale"
+msgstr ""
+
+#: blocks/_controls/available-for-sale/index.jsx:11
+msgid "Determines whether to show products that are in stock or not"
+msgstr ""
+
+#: blocks/_controls/available-for-sale/index.jsx:14
+msgid "Any"
+msgstr ""
+
+#: blocks/_controls/available-for-sale/index.jsx:15
+msgid "In stock"
+msgstr ""
+
+#: blocks/_controls/available-for-sale/index.jsx:16
+msgid "Out of stock"
+msgstr ""
+
+#: blocks/_controls/collection/index.jsx:6
+msgid "Filter by Collection"
+msgstr ""
+
+#: blocks/_controls/collection/index.jsx:7
+msgid "Filter products which belong to a collection. Only matches one collection."
+msgstr ""
+
+#: blocks/_controls/connective/index.jsx:10
+msgid "Match criteria"
+msgstr ""
+
+#: blocks/_controls/connective/index.jsx:11
+msgid "Determines how a match is found when filtering products. \"OR\" will attempt to match any products from the set filters. \"AND\" will only match products when all filters are true. Default is AND"
+msgstr ""
+
+#: blocks/_controls/connective/index.jsx:17
+msgid "AND"
+msgstr ""
+
+#: blocks/_controls/connective/index.jsx:18
+msgid "OR"
+msgstr ""
+
+#: blocks/_controls/created-at/index.jsx:14
+#: blocks/_controls/sort-by/index.jsx:39
+msgid "Created At"
+msgstr ""
+
+#: blocks/_controls/created-at/index.jsx:15
+msgid "Match product created at"
+msgstr ""
+
+#: blocks/_controls/description-color/index.jsx:11
+msgid "Description Color:"
+msgstr ""
+
+#: blocks/_controls/description-length/index.jsx:32
+msgid "Limit Description Length"
+msgstr ""
+
+#: blocks/_controls/description-length/index.jsx:33
+msgid "Limits the number of characters"
+msgstr ""
+
+#: blocks/_controls/excludes/index.jsx:110
+msgid "Exclude from layout: "
+msgstr ""
+
+#: blocks/_controls/hide-quantity/index.jsx:9
+msgid "Hide quantity"
+msgstr ""
+
+#: blocks/_controls/infinite-scroll-offset/index.jsx:17
+msgid "Infinite Scroll Offset"
+msgstr ""
+
+#: blocks/_controls/infinite-scroll-offset/index.jsx:18
+msgid "Determines when infinite scroll begins"
+msgstr ""
+
+#: blocks/_controls/infinite-scroll/index.jsx:13
+msgid "Infinite scroll?"
+msgstr ""
+
+#: blocks/_controls/items-per-row/index.jsx:35
+msgid "Items per row"
+msgstr ""
+
+#: blocks/_controls/limit/index.jsx:31
+msgid "Limit products?"
+msgstr ""
+
+#: blocks/_controls/limit/index.jsx:32
+msgid "Sets the number of products shown. This will take precedence over the page size setting."
+msgstr ""
+
+#: blocks/_controls/max-quantity/index.jsx:10
+msgid "Max quantity"
+msgstr ""
+
+#: blocks/_controls/min-quantity/index.jsx:15
+msgid "Min quantity"
+msgstr ""
+
+#: blocks/_controls/my-shopify-domain/index.jsx:54
+msgid "Shopify Domain"
+msgstr ""
+
+#: blocks/_controls/no-results-text/index.jsx:31
+msgid "No results text"
+msgstr ""
+
+#: blocks/_controls/page-size/index.jsx:62
+msgid "Page size"
+msgstr ""
+
+#: blocks/_controls/pagination/index.jsx:10
+msgid "Show pagination"
+msgstr ""
+
+#: blocks/_controls/product-id/index.jsx:13
+msgid "Product ID"
+msgstr ""
+
+#: blocks/_controls/product-id/index.jsx:14
+msgid "Match product ids"
+msgstr ""
+
+#: blocks/_controls/product-type/index.jsx:6
+msgid "Filter by Product Type"
+msgstr ""
+
+#: blocks/_controls/product-type/index.jsx:7
+msgid "Match product types. Separate multiple by comma."
+msgstr ""
+
+#: blocks/_controls/products-link-target/index.jsx:4
+msgid "Current tab / window"
+msgstr ""
+
+#: blocks/_controls/products-link-target/index.jsx:5
+msgid "New tab / window"
+msgstr ""
+
+#: blocks/_controls/products-link-target/index.jsx:14
+msgid "Product links should open in:"
+msgstr ""
+
+#: blocks/_controls/products-link-to/index.jsx:7
+msgid "WordPress"
+msgstr ""
+
+#: blocks/_controls/products-link-to/index.jsx:8
+msgid "Shopify"
+msgstr ""
+
+#: blocks/_controls/products-link-to/index.jsx:9
+msgid "None"
+msgstr ""
+
+#: blocks/_controls/products-link-to/index.jsx:19
+msgid "Products should link to:"
+msgstr ""
+
+#: blocks/_controls/products-link-to/index.jsx:20
+msgid "You must turn off Lite Sync in order to link products to WordPress single pages."
+msgstr ""
+
+#: blocks/_controls/quantity-label-text/index.jsx:8
+msgid "Quantity label text"
+msgstr ""
+
+#: blocks/_controls/reverse/index.jsx:46
+msgid "Reverse order?"
+msgstr ""
+
+#: blocks/_controls/show-compare-at/index.jsx:9
+msgid "Show compare at"
+msgstr ""
+
+#: blocks/_controls/show-compare-at/index.jsx:10
+msgid "Useful for showing sale pricing"
+msgstr ""
+
+#: blocks/_controls/show-featured-only/index.jsx:9
+msgid "Show featured only"
+msgstr ""
+
+#: blocks/_controls/show-price-range/index.jsx:9
+msgid "Show price range"
+msgstr ""
+
+#: blocks/_controls/show-quantity-label/index.jsx:10
+msgid "Show quantity label"
+msgstr ""
+
+#: blocks/_controls/show-zoom/index.jsx:9
+msgid "Show zoom"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:34
+msgid "Vendor"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:35
+msgid "ID"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:36
+msgid "Price"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:37
+msgid "Best Selling"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:38
+msgid "Product Type"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:40
+#: blocks/_controls/updated-at/index.jsx:13
+msgid "Updated At"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:42
+msgid "Collection Default (Collection only)"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:45
+msgid "Manual (Collection only)"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:80
+msgid "Sort by"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:81
+msgid "Note: sorting by price will take all variant prices into consideration"
+msgstr ""
+
+#: blocks/_controls/sort-by/index.jsx:92
+msgid "Warning: You must filter products by a Collection first!"
+msgstr ""
+
+#: blocks/_controls/storefront-access-token/index.jsx:45
+msgid "Enter your Storefront Access Token"
+msgstr ""
+
+#: blocks/_controls/storefront-access-token/index.jsx:46
+msgid "Storefront Access Token"
+msgstr ""
+
+#: blocks/_controls/tag/index.jsx:6
+msgid "Filter by Tag"
+msgstr ""
+
+#: blocks/_controls/tag/index.jsx:7
+msgid "Match product tags. Separate multiple by comma."
+msgstr ""
+
+#: blocks/_controls/title-color/index.jsx:11
+msgid "Title Color:"
+msgstr ""
+
+#: blocks/_controls/title/index.jsx:6
+msgid "Filter by Title"
+msgstr ""
+
+#: blocks/_controls/title/index.jsx:7
+msgid "Match product titles. Separate multiple by comma."
+msgstr ""
+
+#: blocks/_controls/updated-at/index.jsx:14
+msgid "Match product updated at"
+msgstr ""
+
+#: blocks/_controls/variant-button-color/index.jsx:12
+msgid "Variant button color:"
+msgstr ""
+
+#: blocks/_controls/variant-style/index.jsx:4
+msgid "Dropdown"
+msgstr ""
+
+#: blocks/_controls/variant-style/index.jsx:5
+msgid "Buttons"
+msgstr ""
+
+#: blocks/_controls/variant-style/index.jsx:14
+msgid "Variant style"
+msgstr ""
+
+#: blocks/_controls/_common/font-size-picker-control.jsx:13
+msgid "Small"
+msgstr ""
+
+#: blocks/_controls/_common/font-size-picker-control.jsx:18
+msgid "Medium"
+msgstr ""
+
+#: blocks/_controls/_common/font-size-picker-control.jsx:23
+msgid "Big"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:8
+msgid "Pale pink"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:9
+msgid "Vivid red"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:10
+msgid "Luminous vivid"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:11
+msgid "Luminous vivid amber"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:12
+msgid "Light green cyan"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:13
+msgid "Vivid green cyan"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:14
+msgid "Pale cyan blue"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:15
+msgid "Cyan blue"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:16
+msgid "Light grey"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:17
+msgid "Medium blue grey"
+msgstr ""
+
+#: blocks/_controls/_common/index.jsx:18
+msgid "Dark grey"
+msgstr ""

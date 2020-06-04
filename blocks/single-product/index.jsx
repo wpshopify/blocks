@@ -5,6 +5,9 @@ import ProductsContent from '../products/content'
 import { Icon } from '../_icons'
 
 function BlockSingleProduct() {
+  const isBootstrapping = {
+    current: true,
+  }
   return {
     title: wp.i18n.__('Single Product', 'wpshopify'),
     description: wp.i18n.__('This block displays a single Shopify product.', 'wpshopify'),
@@ -30,7 +33,7 @@ function BlockSingleProduct() {
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <SingleProductControls />
-          <ProductsContent />
+          <ProductsContent isBootstrapping={isBootstrapping} />
         </BlockProvider>
       )
     },

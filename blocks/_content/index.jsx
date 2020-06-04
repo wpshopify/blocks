@@ -7,21 +7,20 @@ import {
 import { fetchNewItems } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import { BlockContext } from '../_state/context'
 
-function BlockContent({ children }) {
+function BlockContent({ children, isBootstrapping }) {
   const { useContext, useEffect } = wp.element
   const [state, dispatch] = useContext(BlockContext)
-  console.log('::::: BlockContent 1 :::::')
 
   useEffect(() => {
-    console.log('::::: BlockContent useEffect :::::')
-
     dispatch({ type: 'SET_IS_LOADING', payload: true })
 
     fetchNewItems(state)
       .then(function (newItems) {
-        console.log('<BlockContent> :: newItems', newItems)
-
         dispatch({ type: 'SET_IS_LOADING', payload: false })
+
+        if (isBootstrapping) {
+          isBootstrapping.current = false
+        }
 
         if (newItems.length) {
           dispatch({
@@ -43,8 +42,6 @@ function BlockContent({ children }) {
         }
       })
       .catch((error) => {
-        console.log('<BlockContent>rrrrrrrrrrrrrr :: ', error)
-
         dispatch({ type: 'SET_IS_LOADING', payload: false })
 
         dispatch({
@@ -57,7 +54,7 @@ function BlockContent({ children }) {
       })
   }, [state.queryParams])
 
-  return state.isLoading ? (
+  return isBootstrapping.current ? (
     <ProductPlaceholder />
   ) : state.payload.length ? (
     <Shop options={{ isCartReady: true }}>
@@ -72,7 +69,8 @@ function BlockContent({ children }) {
         payload={state.payload}
         customQueryParams={state.queryParams}
         limit={state.payloadSettings.limit}
-        infiniteScroll={state.payloadSettings.infiniteScroll}>
+        infiniteScroll={state.payloadSettings.infiniteScroll}
+        isParentLoading={state.isLoading}>
         {children}
       </Items>
     </Shop>

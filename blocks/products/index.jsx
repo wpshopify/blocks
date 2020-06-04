@@ -6,6 +6,9 @@ import ProductsContent from './content'
 import { Icon } from '../_icons'
 
 function BlockProducts() {
+  const isBootstrapping = {
+    current: true,
+  }
   return {
     title: wp.i18n.__('Products', 'wpshopify'),
     description: wp.i18n.__(
@@ -31,12 +34,10 @@ function BlockProducts() {
       },
     },
     edit: (props) => {
-      console.log('::::: BlockProducts edit :::::')
-
       return (
         <BlockProvider options={wpshopify} blockProps={props}>
           <ProductsControls />
-          <ProductsContent />
+          <ProductsContent isBootstrapping={isBootstrapping} />
         </BlockProvider>
       )
     },

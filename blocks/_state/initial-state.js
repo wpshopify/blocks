@@ -92,8 +92,7 @@ function BlockInitialState({ blockProps }) {
   }
 
   return {
-    isLoading: true,
-    isReady: false,
+    isLoading: false,
     notices: [],
     componentElement: false,
     shouldForceUpdate: false,

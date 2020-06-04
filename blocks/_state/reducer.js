@@ -130,13 +130,6 @@ function BlockReducer(state, action) {
       }
     }
 
-    case 'SET_IS_READY': {
-      return {
-        ...state,
-        isReady: update(state.isReady, { $set: action.payload }),
-      }
-    }
-
     default: {
       throw new Error(`Unhandled action type: ${action.type} in BlockReducer`)
     }
