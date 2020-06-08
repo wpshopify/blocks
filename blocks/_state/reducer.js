@@ -67,6 +67,8 @@ function BlockReducer(state, action) {
         var valueToSet = action.payload.value
       }
 
+      console.log('valueToSet', valueToSet)
+
       var newPayloadSettings = update(state.payloadSettings, {
         $merge: {
           [action.payload.key]: valueToSet,
@@ -79,6 +81,7 @@ function BlockReducer(state, action) {
           state.queryParams,
           newPayloadSettings
         )
+        console.log('newPayloadSettings', newPayloadSettings)
 
         newPayloadSettings.query = update(state.payloadSettings.query, {
           $set: buildQueryFromSelections(newPayloadSettings),
@@ -88,7 +91,7 @@ function BlockReducer(state, action) {
       } else {
         var queryParamObject = state.queryParams
       }
-
+      console.log('queryParamObject', queryParamObject)
       var okqueryParamObject = update(state.queryParams, { $set: queryParamObject })
       var payloadSettingsId = encodePayloadSettings(newPayloadSettings)
 
