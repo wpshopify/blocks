@@ -46,9 +46,6 @@ function SortBy({ state, dispatch }) {
   ]
 
   function onChange(newVal) {
-    console.log('state.collection', state.payloadSettings.collection)
-    console.log('newValnewValnewValnewValnewValnewVal', newVal)
-
     if (
       (!state.payloadSettings.collection && newVal === 'collection_default') ||
       newVal === 'manual'

@@ -42,8 +42,6 @@ function BlockProducts() {
       )
     },
     save: (props) => {
-      console.log('::::: save :::::', decodePayloadSettings(props.attributes.payloadSettingsId))
-
       return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
     },
   }

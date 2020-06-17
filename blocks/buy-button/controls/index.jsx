@@ -12,6 +12,7 @@ import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 import { ProductsLinkTarget } from '../../_controls/products-link-target'
 import { ProductsLinkTo } from '../../_controls/products-link-to'
+import DirectCheckout from '../../_controls/direct-checkout'
 
 function BuyButtonControls() {
   const { PanelBody } = wp.components
@@ -48,6 +49,13 @@ function BuyButtonControls() {
         <MinQuantity state={state} dispatch={dispatch} />
         <MaxQuantity state={state} dispatch={dispatch} />
         <VariantStyle state={state} dispatch={dispatch} />
+      </PanelBody>
+
+      <PanelBody
+        title={wp.i18n.__('Checkout', 'wpshopify')}
+        initialOpen={false}
+        className='wps-panel-body'>
+        <DirectCheckout state={state} dispatch={dispatch} />
       </PanelBody>
     </BlockControls>
   )

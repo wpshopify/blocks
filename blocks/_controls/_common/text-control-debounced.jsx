@@ -16,7 +16,7 @@ function TextControlDebounced({ state, dispatch, label, help = false, settingNam
       isFirstRender.current = false
       return
     }
-    console.log('TextControlDebounced NOT isFirstRender')
+
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: settingName, value: localVal },

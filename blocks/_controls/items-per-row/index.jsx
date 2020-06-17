@@ -8,8 +8,6 @@ function ItemsPerRow({ state, dispatch }) {
   const isFirstRender = useRef(true)
 
   function onChange(newVal) {
-    console.log('onChange', newVal)
-
     setLocalVal(newVal)
   }
 

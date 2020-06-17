@@ -41,7 +41,6 @@ function Excludes({ state, dispatch }) {
       isFirstRender.current = false
       return
     }
-    console.log('excludesState ::::::: ', excludesState)
 
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'excludes', value: excludesState } })
   }, [excludesState])

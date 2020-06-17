@@ -13,7 +13,6 @@ function BlockContent({ children, isBootstrapping }) {
 
   useEffect(() => {
     dispatch({ type: 'SET_IS_LOADING', payload: true })
-    console.log('state', state)
 
     fetchNewItems(state)
       .then(function (newItems) {
