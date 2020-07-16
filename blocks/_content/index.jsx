@@ -42,6 +42,10 @@ function BlockContent({ children, isBootstrapping }) {
         }
       })
       .catch((error) => {
+        if (isBootstrapping) {
+          isBootstrapping.current = false
+        }
+
         dispatch({ type: 'SET_IS_LOADING', payload: false })
 
         dispatch({
