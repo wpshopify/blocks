@@ -25,6 +25,18 @@ import DirectCheckout from '../../_controls/direct-checkout'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 
+import ImagesSizingToggle from '../../_controls/images-sizing-toggle'
+import ImagesSizingWidth from '../../_controls/images-sizing-width'
+import ImagesSizingHeight from '../../_controls/images-sizing-height'
+import ImagesSizingCrop from '../../_controls/images-sizing-crop'
+import ImagesSizingScale from '../../_controls/images-sizing-scale'
+
+import ThumbnailsImagesSizingToggle from '../../_controls/thumbnails-images-sizing-toggle'
+import ThumbnailsImagesSizingWidth from '../../_controls/thumbnails-images-sizing-width'
+import ThumbnailsImagesSizingHeight from '../../_controls/thumbnails-images-sizing-height'
+import ThumbnailsImagesSizingCrop from '../../_controls/thumbnails-images-sizing-crop'
+import ThumbnailsImagesSizingScale from '../../_controls/thumbnails-images-sizing-scale'
+
 function SingleProductControls() {
   const { PanelBody } = wp.components
   const { useContext } = wp.element
@@ -86,6 +98,16 @@ function SingleProductControls() {
         className='wps-panel-body'>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
+        <ImagesSizingToggle state={state} dispatch={dispatch} />
+        <ImagesSizingWidth state={state} dispatch={dispatch} />
+        <ImagesSizingHeight state={state} dispatch={dispatch} />
+        <ImagesSizingCrop state={state} dispatch={dispatch} />
+        <ImagesSizingScale state={state} dispatch={dispatch} />
+        <ThumbnailsImagesSizingToggle state={state} dispatch={dispatch} />
+        <ThumbnailsImagesSizingWidth state={state} dispatch={dispatch} />
+        <ThumbnailsImagesSizingHeight state={state} dispatch={dispatch} />
+        <ThumbnailsImagesSizingCrop state={state} dispatch={dispatch} />
+        <ThumbnailsImagesSizingScale state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody

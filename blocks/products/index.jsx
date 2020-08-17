@@ -1,4 +1,3 @@
-import { decodePayloadSettings } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
 import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
 import { BlockProvider } from '../_state/provider'
 import { ProductsControls } from './controls'

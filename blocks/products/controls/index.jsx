@@ -31,12 +31,18 @@ import { DescriptionSize } from '../../_controls/description-size'
 import { DescriptionColor } from '../../_controls/description-color'
 import { DescriptionLength } from '../../_controls/description-length'
 import { AlignHeight } from '../../_controls/align-height'
+import { FullWidth } from '../../_controls/full-width'
 import { VariantStyle } from '../../_controls/variant-style'
 import { BlockControls } from '../../_controls'
 import { BlockContext } from '../../_state/context'
 import { ProductsLinkTarget } from '../../_controls/products-link-target'
 import { ProductsLinkTo } from '../../_controls/products-link-to'
 import DirectCheckout from '../../_controls/direct-checkout'
+import ImagesSizingToggle from '../../_controls/images-sizing-toggle'
+import ImagesSizingWidth from '../../_controls/images-sizing-width'
+import ImagesSizingHeight from '../../_controls/images-sizing-height'
+import ImagesSizingCrop from '../../_controls/images-sizing-crop'
+import ImagesSizingScale from '../../_controls/images-sizing-scale'
 
 function ProductsControls() {
   const { PanelBody } = wp.components
@@ -89,6 +95,7 @@ function ProductsControls() {
         initialOpen={false}
         className='wps-panel-body'>
         <ItemsPerRow state={state} dispatch={dispatch} />
+        <FullWidth state={state} dispatch={dispatch} />
         <Excludes state={state} dispatch={dispatch} />
         <AlignHeight state={state} dispatch={dispatch} />
       </PanelBody>
@@ -124,6 +131,11 @@ function ProductsControls() {
         className='wps-panel-body'>
         <ShowFeaturedOnly state={state} dispatch={dispatch} />
         <ShowZoom state={state} dispatch={dispatch} />
+        <ImagesSizingToggle state={state} dispatch={dispatch} />
+        <ImagesSizingWidth state={state} dispatch={dispatch} />
+        <ImagesSizingHeight state={state} dispatch={dispatch} />
+        <ImagesSizingCrop state={state} dispatch={dispatch} />
+        <ImagesSizingScale state={state} dispatch={dispatch} />
       </PanelBody>
 
       <PanelBody

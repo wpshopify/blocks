@@ -20,7 +20,7 @@
       "woocommerce"
    ],
    "dependencies": {
-      "@emotion/core": "^10.0.28",
+      "@emotion/core": "^10.0.34",
       "@tippy.js/react": "^3.1.1",
       "@wordpress/element": "^2.16.0",
       "@wordpress/hooks": "^2.9.0",
@@ -40,7 +40,7 @@
       "in-view": "^0.6.1",
       "js-md5": "^0.7.3",
       "loaders.css": "^0.1.2",
-      "lodash": "^4.17.19",
+      "lodash": "^4.17.20",
       "masonry-layout": "^4.2.2",
       "mixitup": "^3.3.1",
       "money": "^0.2.0",
@@ -82,7 +82,7 @@
       "babel-polyfill": "^6.26.0",
       "circular-dependency-plugin": "^5.2.0",
       "core-js": "^3.6.5",
-      "jest": "^26.3.0",
+      "jest": "^26.4.0",
       "jest-chain": "^1.1.5",
       "jest-dom": "^4.0.0",
       "jest-extended": "^0.11.5",
