@@ -1,13 +1,12 @@
 function ThumbnailsImagesSizingWidth({ state, dispatch }) {
   const { TextControl } = wp.components
+
   function onChange(newVal) {
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: 'thumbnailImagesSizingWidth', value: parseInt(newVal) },
     })
   }
-
-  console.log('state.payloadSettings', state.payloadSettings)
 
   return (
     <TextControl
