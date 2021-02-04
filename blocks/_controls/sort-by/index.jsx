@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/react';
 
 function SortBy({ state, dispatch }) {
-  const { SelectControl, Spinner, Notice } = wp.components
-  const { useState, useEffect } = wp.element
-  const [isLoading, setIsLoading] = useState(false)
-  const [badSort, setBadSort] = useState(false)
+  const { SelectControl, Spinner, Notice } = wp.components;
+  const { useState, useEffect } = wp.element;
+  const [isLoading, setIsLoading] = useState(false);
+  const [badSort, setBadSort] = useState(false);
 
   const spinnerStyles = css`
     position: absolute;
@@ -18,16 +18,16 @@ function SortBy({ state, dispatch }) {
     .components-spinner {
       margin: 0;
     }
-  `
+  `;
 
   const filterWrapCSS = css`
     position: relative;
-  `
+  `;
 
   const badSortCSS = css`
     margin-bottom: 2em;
     margin-top: -1em;
-  `
+  `;
 
   const options = [
     { label: wp.i18n.__('Title', 'wpshopify'), value: 'title' },
@@ -43,28 +43,28 @@ function SortBy({ state, dispatch }) {
       value: 'collection_default',
     },
     { label: wp.i18n.__('Manual (Collection only)', 'wpshopify'), value: 'manual' },
-  ]
+  ];
 
   function onChange(newVal) {
     if (
       (!state.payloadSettings.collection && newVal === 'collection_default') ||
       newVal === 'manual'
     ) {
-      setBadSort(true)
+      setBadSort(true);
     } else {
-      setBadSort(false)
+      setBadSort(false);
     }
 
-    setIsLoading(true)
-    dispatch({ type: 'SET_IS_LOADING', payload: true })
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'sortBy', value: newVal } })
+    setIsLoading(true);
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'sortBy', value: newVal } });
   }
 
   useEffect(() => {
     if (!state.isLoading) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [state.isLoading])
+  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -90,7 +90,7 @@ function SortBy({ state, dispatch }) {
         </Notice>
       )}
     </div>
-  )
+  );
 }
 
-export { SortBy }
+export { SortBy };

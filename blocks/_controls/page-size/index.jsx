@@ -1,15 +1,15 @@
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce';
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/react';
 
 function PageSize({ state, dispatch }) {
-  const { useEffect, useState, useRef } = wp.element
-  const { RangeControl, Spinner } = wp.components
-  const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize)
-  const [debouncedValue] = useDebounce(localVal, 150)
-  const isFirstRender = useRef(true)
+  const { useEffect, useState, useRef } = wp.element;
+  const { RangeControl, Spinner } = wp.components;
+  const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize);
+  const [debouncedValue] = useDebounce(localVal, 150);
+  const isFirstRender = useRef(true);
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const spinnerStyles = css`
     position: absolute;
@@ -22,32 +22,32 @@ function PageSize({ state, dispatch }) {
     .components-spinner {
       margin: 0;
     }
-  `
+  `;
 
   const filterWrapCSS = css`
     position: relative;
-  `
+  `;
 
   function onChange(newVal) {
-    setLocalVal(newVal)
+    setLocalVal(newVal);
   }
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+      isFirstRender.current = false;
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
 
-    dispatch({ type: 'SET_IS_LOADING', payload: true })
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pageSize', value: debouncedValue } })
-  }, [debouncedValue])
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pageSize', value: debouncedValue } });
+  }, [debouncedValue]);
 
   useEffect(() => {
     if (isLoading && !state.isLoading) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [state.isLoading])
+  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -66,7 +66,7 @@ function PageSize({ state, dispatch }) {
         max={250}
       />
     </div>
-  )
+  );
 }
 
-export { PageSize }
+export { PageSize };

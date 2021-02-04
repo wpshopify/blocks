@@ -1,66 +1,66 @@
 import {
   encodePayloadSettings,
   decodePayloadSettings,
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api'
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api';
 
 function getSavedBlockSettings(payloadSettingsId) {
-  return [decodePayloadSettings(payloadSettingsId), payloadSettingsId]
+  return [decodePayloadSettings(payloadSettingsId), payloadSettingsId];
 }
 
 function getDefaultBlockSettings(defaultPayloadSettings) {
-  return [defaultPayloadSettings, encodePayloadSettings(defaultPayloadSettings)]
+  return [defaultPayloadSettings, encodePayloadSettings(defaultPayloadSettings)];
 }
 
 function getBlockSettings(payloadSettingsId, defaultPayloadSettings) {
   // If a block has been saved already ...
   if (payloadSettingsId) {
-    return getSavedBlockSettings(payloadSettingsId)
+    return getSavedBlockSettings(payloadSettingsId);
   }
 
-  return getDefaultBlockSettings(defaultPayloadSettings)
+  return getDefaultBlockSettings(defaultPayloadSettings);
 }
 
 function customDefaultPayloadSettingsProductSingle(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
+  var copyPayloadSettings = payloadSettings;
 
-  copyPayloadSettings.limit = 1
-  copyPayloadSettings.itemsPerRow = 1
-  copyPayloadSettings.productsLinkTo = 'none'
-  copyPayloadSettings.excludes = ['description']
+  copyPayloadSettings.limit = 1;
+  copyPayloadSettings.itemsPerRow = 1;
+  copyPayloadSettings.productsLinkTo = 'none';
+  copyPayloadSettings.excludes = ['description'];
 
-  return copyPayloadSettings
+  return copyPayloadSettings;
 }
 
 function customDefaultPayloadSettingsBuyButton(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
+  var copyPayloadSettings = payloadSettings;
 
-  copyPayloadSettings.limit = 1
-  copyPayloadSettings.itemsPerRow = 1
-  copyPayloadSettings.excludes = ['title', 'images', 'description', 'pricing']
-  copyPayloadSettings.productsLinkTo = 'none'
+  copyPayloadSettings.limit = 1;
+  copyPayloadSettings.itemsPerRow = 1;
+  copyPayloadSettings.excludes = ['title', 'images', 'description', 'pricing'];
+  copyPayloadSettings.productsLinkTo = 'none';
 
-  return copyPayloadSettings
+  return copyPayloadSettings;
 }
 
 function customDefaultPayloadSettingsProducts(payloadSettings) {
-  var copyPayloadSettings = payloadSettings
-  copyPayloadSettings.productsLinkTo = 'none'
-  copyPayloadSettings.excludes = ['description']
-  copyPayloadSettings.itemsPerRow = 3
-  copyPayloadSettings.limit = false
+  var copyPayloadSettings = payloadSettings;
+  copyPayloadSettings.productsLinkTo = 'none';
+  copyPayloadSettings.excludes = ['description'];
+  copyPayloadSettings.itemsPerRow = 3;
+  copyPayloadSettings.limit = false;
 
-  return copyPayloadSettings
+  return copyPayloadSettings;
 }
 
 function customizeDefaultSettings(blockProps) {
   if (blockProps.name === 'wpshopify/products') {
-    return customDefaultPayloadSettingsProducts(blockProps.attributes.defaultPayloadSettings)
+    return customDefaultPayloadSettingsProducts(blockProps.attributes.defaultPayloadSettings);
   } else if (blockProps.name === 'wpshopify/single-product') {
-    return customDefaultPayloadSettingsProductSingle(blockProps.attributes.defaultPayloadSettings)
+    return customDefaultPayloadSettingsProductSingle(blockProps.attributes.defaultPayloadSettings);
   } else if (blockProps.name === 'wpshopify/buy-button') {
-    return customDefaultPayloadSettingsBuyButton(blockProps.attributes.defaultPayloadSettings)
+    return customDefaultPayloadSettingsBuyButton(blockProps.attributes.defaultPayloadSettings);
   } else {
-    return blockProps.attributes.defaultPayloadSettings
+    return blockProps.attributes.defaultPayloadSettings;
   }
 }
 
@@ -70,21 +70,21 @@ Setup inital block state
 
 */
 function BlockInitialState({ blockProps }) {
-  blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps)
+  blockProps.attributes.defaultPayloadSettings = customizeDefaultSettings(blockProps);
 
   const [blockData, payloadSettingsId] = getBlockSettings(
     blockProps.attributes.payloadSettingsId,
     blockProps.attributes.defaultPayloadSettings
-  )
+  );
 
   blockProps.setAttributes({
     payloadSettingsId: payloadSettingsId,
-  })
+  });
 
   if (blockData.limit && blockData.limit < blockData.pageSize) {
-    var pageSize = blockData.limit
+    var pageSize = blockData.limit;
   } else {
-    var pageSize = blockData.pageSize
+    var pageSize = blockData.pageSize;
   }
 
   return {
@@ -107,7 +107,7 @@ function BlockInitialState({ blockProps }) {
       reverse: blockData.reverse,
       first: pageSize,
     },
-  }
+  };
 }
 
-export { BlockInitialState }
+export { BlockInitialState };

@@ -1,13 +1,13 @@
-import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
-import { BlockProvider } from '../_state/provider'
-import { BuyButtonControls } from './controls'
-import ProductsContent from '../products/content'
-import { Icon } from '../_icons'
+import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components';
+import { BlockProvider } from '../_state/provider';
+import { BuyButtonControls } from './controls';
+import ProductsContent from '../products/content';
+import { Icon } from '../_icons';
 
 function BlockBuyButton() {
   const isBootstrapping = {
     current: true,
-  }
+  };
   return {
     title: wp.i18n.__('Buy Button', 'wpshopify'),
     description: wp.i18n.__(
@@ -29,7 +29,7 @@ function BlockBuyButton() {
       },
       defaultPayloadSettings: {
         type: 'object',
-        default: wpshopify.settings.products,
+        default: wpshopify.settings.products, // only available in Pro version
       },
     },
     edit: (props) => {
@@ -38,16 +38,16 @@ function BlockBuyButton() {
           <BuyButtonControls />
           <ProductsContent isBootstrapping={isBootstrapping} />
         </BlockProvider>
-      )
+      );
     },
     save: (props) => {
-      return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
+      return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />;
     },
-  }
+  };
 }
 
 function registerBlockBuyButton() {
-  wp.blocks.registerBlockType('wpshopify/buy-button', BlockBuyButton())
+  wp.blocks.registerBlockType('wpshopify/buy-button', BlockBuyButton());
 }
 
-export { registerBlockBuyButton }
+export { registerBlockBuyButton };

@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/react';
 
 function Reverse({ state, dispatch }) {
-  const { CheckboxControl, Spinner } = wp.components
-  const { useState, useEffect } = wp.element
-  const [isLoading, setIsLoading] = useState(false)
+  const { CheckboxControl, Spinner } = wp.components;
+  const { useState, useEffect } = wp.element;
+  const [isLoading, setIsLoading] = useState(false);
 
   const spinnerStyles = css`
     position: absolute;
@@ -17,23 +17,23 @@ function Reverse({ state, dispatch }) {
     .components-spinner {
       margin: 0;
     }
-  `
+  `;
 
   const filterWrapCSS = css`
     position: relative;
-  `
+  `;
 
   function onChange(newVal) {
-    setIsLoading(true)
-    dispatch({ type: 'SET_IS_LOADING', payload: true })
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } })
+    setIsLoading(true);
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } });
   }
 
   useEffect(() => {
     if (!state.isLoading) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [state.isLoading])
+  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -48,7 +48,7 @@ function Reverse({ state, dispatch }) {
         onChange={onChange}
       />
     </div>
-  )
+  );
 }
 
-export { Reverse }
+export { Reverse };

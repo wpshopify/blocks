@@ -1,28 +1,28 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/react';
 
-const { Button } = wp.components
-const { useEffect, useState } = wp.element
+const { Button } = wp.components;
+const { useEffect, useState } = wp.element;
 
 function ButtonReset({ state, dispatch, blockProps }) {
-  const [isShowing, setIsShowing] = useState(false)
+  const [isShowing, setIsShowing] = useState(false);
 
   const styles = css`
     margin: 2em 0 2em 3.5em;
     display: flex;
-  `
+  `;
 
   function onClick() {
-    dispatch({ type: 'RESET_SETTINGS', payload: blockProps })
+    dispatch({ type: 'RESET_SETTINGS', payload: blockProps });
   }
 
   useEffect(() => {
     if (state.payloadSettingsId === state.defaultPayloadSettingsId) {
-      setIsShowing(false)
+      setIsShowing(false);
     } else {
-      setIsShowing(true)
+      setIsShowing(true);
     }
-  }, [blockProps.attributes.payloadSettingsId])
+  }, [blockProps.attributes.payloadSettingsId]);
 
   return (
     isShowing && (
@@ -30,7 +30,7 @@ function ButtonReset({ state, dispatch, blockProps }) {
         Reset settings
       </Button>
     )
-  )
+  );
 }
 
-export { ButtonReset }
+export { ButtonReset };
