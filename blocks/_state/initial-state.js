@@ -77,9 +77,10 @@ function BlockInitialState({ blockProps }) {
     blockProps.attributes.defaultPayloadSettings
   );
 
-  blockProps.setAttributes({
-    payloadSettingsId: payloadSettingsId,
-  });
+  // TODO: Do we still need this?
+  //   blockProps.setAttributes({
+  //     payloadSettingsId: payloadSettingsId,
+  //   });
 
   if (blockData.limit && blockData.limit < blockData.pageSize) {
     var pageSize = blockData.limit;

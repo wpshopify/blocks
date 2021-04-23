@@ -1,62 +1,45 @@
-const { useEffect, useState } = wp.element
-const { Button } = wp.components
+const { useEffect, useState } = wp.element;
+const { Button } = wp.components;
 
 function UpdateCredentialsButton({ state, dispatch }) {
-  const [hasCredentials, setHasCredentials] = useState(hasValidCreds())
+  const [hasCredentials, setHasCredentials] = useState(hasValidCreds());
 
   function hasCachedCredentials() {
-    //  var existingCreds = localStorage.getItem('wps-storefront-creds')
-
-    //  if (existingCreds) {
-    //    return true
-    //  }
-
-    return false
+    return false;
   }
 
   function hasValidCreds() {
     if (hasCachedCredentials()) {
-      return true
+      return true;
     }
 
     if (!state.payloadSettings.myShopifyDomain || !state.payloadSettings.storefrontAccessToken) {
-      return false
+      return false;
     }
 
-    return true
+    return true;
   }
 
   useEffect(() => {
-    setHasCredentials(hasValidCreds())
-  }, [builderState.hasCustomConnection])
+    setHasCredentials(hasValidCreds());
+  }, [builderState.hasCustomConnection]);
 
   function onClick() {
     if (hasCredentials) {
-      // localStorage.removeItem('wps-storefront-creds')
-      // builderDispatch({
-      //   type: 'UPDATE_SETTING',
-      //   payload: { key: 'myShopifyDomain', value: false }
-      // })
-      // builderDispatch({
-      //   type: 'UPDATE_SETTING',
-      //   payload: { key: 'storefrontAccessToken', value: false }
-      // })
-      // builderDispatch({ type: 'SET_CUSTOM_CONNECTION', payload: false })
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'myShopifyDomain', value: false } });
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'storefrontAccessToken', value: false } });
+      dispatch({ type: 'SET_CUSTOM_CONNECTION', payload: false });
 
-      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'myShopifyDomain', value: false } })
-      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'storefrontAccessToken', value: false } })
-      dispatch({ type: 'SET_CUSTOM_CONNECTION', payload: false })
-
-      setHasCredentials(false)
+      setHasCredentials(false);
     } else {
       var newCreds = {
         domain: state.payloadSettings.myShopifyDomain,
-        storefrontAccessToken: state.payloadSettings.storefrontAccessToken
-      }
+        storefrontAccessToken: state.payloadSettings.storefrontAccessToken,
+      };
 
-      dispatch({ type: 'SET_CUSTOM_CONNECTION', payload: true })
+      dispatch({ type: 'SET_CUSTOM_CONNECTION', payload: true });
 
-      setHasCredentials(true)
+      setHasCredentials(true);
     }
   }
 
@@ -64,7 +47,7 @@ function UpdateCredentialsButton({ state, dispatch }) {
     <Button isDefault onClick={onClick} disabled={!hasValidCreds()}>
       {hasCredentials ? 'Remove connected Shopify store' : 'Load Shopify store'}
     </Button>
-  )
+  );
 }
 
-export { UpdateCredentialsButton }
+export { UpdateCredentialsButton };

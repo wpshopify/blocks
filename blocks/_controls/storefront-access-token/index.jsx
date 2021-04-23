@@ -1,43 +1,39 @@
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce';
 
 function StorefrontAccessToken({ state, dispatch }) {
-  const { useEffect, useState, useRef } = wp.element
-  const { TextControl } = wp.components
-  const [val, setVal] = useState(getCachedValue())
-  const [debouncedValue] = useDebounce(val, 250)
-  const isFirstRender = useRef(true)
+  const { useEffect, useState, useRef } = wp.element;
+  const { TextControl } = wp.components;
+  const [val, setVal] = useState(getCachedValue());
+  const [debouncedValue] = useDebounce(val, 250);
+  const isFirstRender = useRef(true);
 
   function getCachedValue() {
-    return ''
+    return wpshopify.settings.connection.storefront.storefrontAccessToken;
   }
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+      isFirstRender.current = false;
+      return;
     }
 
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: 'storefrontAccessToken', value: debouncedValue },
-    })
-  }, [debouncedValue])
+    });
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
+    console.log('debouncedValue', debouncedValue);
 
-    if (!state.payloadSettings.storefrontAccessToken) {
-      setVal('')
-    } else {
-      setVal(state.payloadSettings.storefrontAccessToken)
-    }
-  }, [builderState.hasCustomConnection])
+    wp.hooks.addFilter('misc.shop.credentials', 'wpshopify', function (defaultVal) {
+      return {
+        domain: wpshopify.settings.connection.storefront.domain,
+        storefrontAccessToken: debouncedValue,
+      };
+    });
+  }, [debouncedValue]);
 
   function onChange(newVal) {
-    setVal(newVal)
+    setVal(newVal);
   }
 
   return (
@@ -46,9 +42,9 @@ function StorefrontAccessToken({ state, dispatch }) {
       label={wp.i18n.__('Storefront Access Token', 'wpshopify')}
       value={val}
       onChange={onChange}
-      disabled={builderState.hasCustomConnection}
+      disabled={state.hasCustomConnection}
     />
-  )
+  );
 }
 
-export { StorefrontAccessToken }
+export { StorefrontAccessToken };
