@@ -60,8 +60,6 @@ function findQueryParamToUpdate({ key, value }, queryParams, newPayloadSettings)
 function BlockReducer(state, action) {
   switch (action.type) {
     case 'UPDATE_SETTING': {
-      console.log('state.defaultPayloadSettings', state.defaultPayloadSettings);
-
       if (typeof action.payload.value === 'undefined') {
         // get default instead
         var valueToSet = state.defaultPayloadSettings[action.payload.key];

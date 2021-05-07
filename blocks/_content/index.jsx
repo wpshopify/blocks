@@ -67,6 +67,7 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
           {
             componentElement: state.componentElement,
             componentType: state.componentType,
+            componentId: state.blockProps.clientId,
             payloadSettings: state.payloadSettings,
           },
         ]}

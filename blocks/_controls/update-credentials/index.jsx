@@ -22,7 +22,7 @@ function UpdateCredentialsButton({ state, dispatch }) {
 
   useEffect(() => {
     setHasCredentials(hasValidCreds());
-  }, [builderState.hasCustomConnection]);
+  }, [state.hasCustomConnection]);
 
   function onClick() {
     if (hasCredentials) {

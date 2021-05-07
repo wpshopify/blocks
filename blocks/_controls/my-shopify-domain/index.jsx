@@ -28,8 +28,6 @@ function MyShopifyDomain({ state, dispatch }) {
     setVal(newVal);
   }
 
-  console.log('state.payloadSettings', state.payloadSettings);
-
   return (
     <TextControl
       placeholder='yourstore.myshopify.com'

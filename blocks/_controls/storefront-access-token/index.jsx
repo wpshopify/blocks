@@ -22,8 +22,6 @@ function StorefrontAccessToken({ state, dispatch }) {
       payload: { key: 'storefrontAccessToken', value: debouncedValue },
     });
 
-    console.log('debouncedValue', debouncedValue);
-
     wp.hooks.addFilter('misc.shop.credentials', 'wpshopify', function (defaultVal) {
       return {
         domain: wpshopify.settings.connection.storefront.domain,
