@@ -1,12 +1,14 @@
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce';
 
-const { useEffect, useState, useRef } = wp.element
-const { FontSizePicker, BaseControl } = wp.components
+const { useEffect, useState, useRef } = wp.element;
+const { FontSizePicker, BaseControl } = wp.components;
+import { useBlockDispatch } from '../../_state/hooks';
 
-function FontSizePickerControl({ state, dispatch, defaultValue, label, settingName }) {
-  const [localVal, setLocalVal] = useState(getVal())
-  const [debouncedValue] = useDebounce(localVal, 10)
-  const isFirstRender = useRef(true)
+function FontSizePickerControl({ fontSize, defaultValue, label, settingName }) {
+  const [localVal, setLocalVal] = useState(getVal());
+  const [debouncedValue] = useDebounce(localVal, 10);
+  const isFirstRender = useRef(true);
+  const dispatch = useBlockDispatch();
 
   const fontSizes = [
     {
@@ -24,57 +26,57 @@ function FontSizePickerControl({ state, dispatch, defaultValue, label, settingNa
       slug: 'big',
       size: 28,
     },
-  ]
+  ];
 
   function getSizeIntFromString(value) {
-    return parseInt(value.split('px')[0])
+    return parseInt(value.split('px')[0]);
   }
 
   function getVal(maybeSize) {
     if (!maybeSize) {
-      return defaultValue
+      return defaultValue;
     }
 
-    return getSizeIntFromString(maybeSize)
+    return getSizeIntFromString(maybeSize);
   }
 
   function onChange(newFontSize) {
-    setLocalVal(newFontSize)
+    setLocalVal(newFontSize);
   }
 
   function convertToString(value) {
-    return value + 'px'
+    return value + 'px';
   }
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+      isFirstRender.current = false;
+      return;
     }
 
     if (!debouncedValue) {
-      var newVal = defaultValue
+      var newVal = defaultValue;
     } else {
-      var newVal = debouncedValue
+      var newVal = debouncedValue;
     }
 
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: settingName, value: convertToString(newVal) },
-    })
-  }, [debouncedValue])
+    });
+  }, [debouncedValue]);
 
   return (
     <BaseControl>
       <FontSizePicker
         fontSizes={fontSizes}
-        value={getVal(state.payloadSettings[settingName])}
+        value={getVal(fontSize)}
         fallbackFontSize={defaultValue}
         withSlider={true}
         onChange={onChange}
       />
     </BaseControl>
-  )
+  );
 }
 
-export { FontSizePickerControl }
+export default wp.element.memo(FontSizePickerControl);

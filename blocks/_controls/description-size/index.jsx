@@ -1,14 +1,9 @@
-import { FontSizePickerControl } from '../_common/font-size-picker-control'
+import FontSizePickerControl from '../_common/font-size-picker-control';
 
-function DescriptionSize({ state, dispatch }) {
+function DescriptionSize({ fontSize }) {
   return (
-    <FontSizePickerControl
-      state={state}
-      dispatch={dispatch}
-      defaultValue={16}
-      settingName='descriptionSize'
-    />
-  )
+    <FontSizePickerControl defaultValue={16} fontSize={fontSize} settingName='descriptionSize' />
+  );
 }
 
-export { DescriptionSize }
+export default wp.element.memo(DescriptionSize);

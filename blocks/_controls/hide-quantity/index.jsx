@@ -1,16 +1,20 @@
-function HideQuantity({ state, dispatch }) {
-  const { ToggleControl } = wp.components
+import { useBlockDispatch } from '../../_state/hooks';
+
+function HideQuantity({ hide }) {
+  const { ToggleControl } = wp.components;
+  const dispatch = useBlockDispatch();
+
   function onChange(newVal) {
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'hideQuantity', value: newVal } })
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'hideQuantity', value: newVal } });
   }
 
   return (
     <ToggleControl
       label={wp.i18n.__('Hide quantity', 'wpshopify')}
-      checked={state.payloadSettings.hideQuantity}
+      checked={hide}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { HideQuantity }
+export default wp.element.memo(HideQuantity);

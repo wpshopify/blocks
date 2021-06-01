@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function Reverse({ state, dispatch }) {
+function Reverse({ reverse, isLoading }) {
   const { CheckboxControl, Spinner } = wp.components;
-  const { useState, useEffect } = wp.element;
-  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useBlockDispatch();
 
   const spinnerStyles = css`
     position: absolute;
@@ -24,16 +25,9 @@ function Reverse({ state, dispatch }) {
   `;
 
   function onChange(newVal) {
-    setIsLoading(true);
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'reverse', value: newVal } });
   }
-
-  useEffect(() => {
-    if (!state.isLoading) {
-      setIsLoading(false);
-    }
-  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -44,11 +38,11 @@ function Reverse({ state, dispatch }) {
       )}
       <CheckboxControl
         label={wp.i18n.__('Reverse order?', 'wpshopify')}
-        checked={state.payloadSettings.reverse}
+        checked={reverse}
         onChange={onChange}
       />
     </div>
   );
 }
 
-export { Reverse };
+export default wp.element.memo(Reverse);

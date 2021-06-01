@@ -1,16 +1,16 @@
 function InfiniteScrollOffset({ state, dispatch }) {
-  const { useEffect, useState } = wp.element
-  const { TextControl } = wp.components
-  const [localVal, setLocalVal] = useState(state.payloadSettings.infiniteScrollOffset)
+  const { useEffect, useState } = wp.element;
+  const { TextControl } = wp.components;
+  const [localVal, setLocalVal] = useState(state.payloadSettings.infiniteScrollOffset);
 
   function onChange(newVal) {
-    setLocalVal(newVal)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'infiniteScrollOffset', value: newVal } })
+    setLocalVal(newVal);
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'infiniteScrollOffset', value: newVal } });
   }
 
   useEffect(() => {
-    setLocalVal(state.payloadSettings.infiniteScrollOffset)
-  }, [state.payloadSettings.infiniteScrollOffset])
+    setLocalVal(state.payloadSettings.infiniteScrollOffset);
+  }, [state.payloadSettings.infiniteScrollOffset]);
 
   return (
     <TextControl
@@ -20,7 +20,7 @@ function InfiniteScrollOffset({ state, dispatch }) {
       onChange={onChange}
       type='number'
     />
-  )
+  );
 }
 
-export { InfiniteScrollOffset }
+export default wp.element.memo(InfiniteScrollOffset);

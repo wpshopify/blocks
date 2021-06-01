@@ -1,11 +1,11 @@
 function UpdatedAt({ state, dispatch }) {
-  const { useState } = wp.element
-  const { TextControl } = wp.components
-  const [val, setVal] = useState(state.payloadSettings.updatedAt)
+  const { useState } = wp.element;
+  const { TextControl } = wp.components;
+  const [val, setVal] = useState(state.payloadSettings.updatedAt);
 
   function onChange(newVal) {
-    setVal(newVal)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'updatedAt', value: newVal } })
+    setVal(newVal);
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'updatedAt', value: newVal } });
   }
 
   return (
@@ -15,7 +15,7 @@ function UpdatedAt({ state, dispatch }) {
       value={val}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { UpdatedAt }
+export default wp.element.memo(UpdatedAt);

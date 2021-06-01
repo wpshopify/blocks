@@ -1,15 +1,15 @@
-import { useDebounce } from 'use-debounce';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { useBlockDispatch } from '../../_state/hooks';
+import { useDebounce } from 'use-debounce';
 
-function PageSize({ state, dispatch }) {
+function PageSize({ pageSize, isLoading }) {
   const { useEffect, useState, useRef } = wp.element;
   const { RangeControl, Spinner } = wp.components;
-  const [localVal, setLocalVal] = useState(state.payloadSettings.pageSize);
+  const [localVal, setLocalVal] = useState(pageSize);
   const [debouncedValue] = useDebounce(localVal, 150);
   const isFirstRender = useRef(true);
-
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useBlockDispatch();
 
   const spinnerStyles = css`
     position: absolute;
@@ -37,17 +37,9 @@ function PageSize({ state, dispatch }) {
       isFirstRender.current = false;
       return;
     }
-    setIsLoading(true);
 
-    dispatch({ type: 'SET_IS_LOADING', payload: true });
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'pageSize', value: debouncedValue } });
   }, [debouncedValue]);
-
-  useEffect(() => {
-    if (isLoading && !state.isLoading) {
-      setIsLoading(false);
-    }
-  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -58,7 +50,7 @@ function PageSize({ state, dispatch }) {
       )}
 
       <RangeControl
-        disabled={!state.payloadSettings.pageSize}
+        disabled={!pageSize || isLoading}
         label={wp.i18n.__('Page size', 'wpshopify')}
         value={localVal}
         onChange={onChange}
@@ -69,4 +61,4 @@ function PageSize({ state, dispatch }) {
   );
 }
 
-export { PageSize };
+export default wp.element.memo(PageSize);

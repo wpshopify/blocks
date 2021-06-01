@@ -1,32 +1,26 @@
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function ItemsPerRow({ state, dispatch }) {
-  const { useEffect, useState, useRef } = wp.element
-  const { RangeControl } = wp.components
-  const [localVal, setLocalVal] = useState(state.payloadSettings.itemsPerRow)
-  const [debouncedValue] = useDebounce(localVal, 100)
-  const isFirstRender = useRef(true)
+function ItemsPerRow({ itemsPerRow }) {
+  const { useEffect, useState, useRef } = wp.element;
+  const { RangeControl } = wp.components;
+  const [localVal, setLocalVal] = useState(itemsPerRow);
+  const [debouncedValue] = useDebounce(localVal, 100);
+  const isFirstRender = useRef(true);
+  const dispatch = useBlockDispatch();
 
   function onChange(newVal) {
-    setLocalVal(newVal)
+    setLocalVal(newVal);
   }
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+      isFirstRender.current = false;
+      return;
     }
 
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'itemsPerRow', value: debouncedValue } })
-  }, [debouncedValue])
-
-  //   useEffect(() => {
-  //     if (isFirstRender.current) {
-  //       isFirstRender.current = false
-  //       return
-  //     }
-  //     setLocalVal(state.payloadSettings.itemsPerRow)
-  //   }, [state.payloadSettings.itemsPerRow])
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'itemsPerRow', value: debouncedValue } });
+  }, [debouncedValue]);
 
   return (
     <RangeControl
@@ -36,7 +30,7 @@ function ItemsPerRow({ state, dispatch }) {
       min={1}
       max={20}
     />
-  )
+  );
 }
 
-export { ItemsPerRow }
+export default wp.element.memo(ItemsPerRow);

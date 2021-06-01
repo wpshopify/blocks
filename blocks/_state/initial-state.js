@@ -77,11 +77,6 @@ function BlockInitialState({ blockProps }) {
     blockProps.attributes.defaultPayloadSettings
   );
 
-  // TODO: Do we still need this?
-  //   blockProps.setAttributes({
-  //     payloadSettingsId: payloadSettingsId,
-  //   });
-
   if (blockData.limit && blockData.limit < blockData.pageSize) {
     var pageSize = blockData.limit;
   } else {
@@ -89,8 +84,8 @@ function BlockInitialState({ blockProps }) {
   }
 
   return {
-    isLoading: false,
     notices: [],
+    isLoading: false,
     componentElement: false,
     shouldForceUpdate: false,
     componentType: 'products',
@@ -111,4 +106,4 @@ function BlockInitialState({ blockProps }) {
   };
 }
 
-export { BlockInitialState };
+export default BlockInitialState;

@@ -1,13 +1,17 @@
-import { BlockContext } from './context';
-import { BlockInitialState } from './initial-state';
-import { BlockReducer } from './reducer';
+import BlockReducer from './reducer';
+import BlockInitialState from './initial-state';
+import { BlockStateContext, BlockDispatchContext } from './context';
 
 function BlockProvider(props) {
   const [state, dispatch] = wp.element.useReducer(BlockReducer, BlockInitialState(props));
 
-  const value = wp.element.useMemo(() => [state, dispatch], [state]);
-
-  return <BlockContext.Provider value={value} {...props} />;
+  return (
+    <BlockStateContext.Provider value={state}>
+      <BlockDispatchContext.Provider value={dispatch}>
+        {props.children}
+      </BlockDispatchContext.Provider>
+    </BlockStateContext.Provider>
+  );
 }
 
-export { BlockProvider };
+export default BlockProvider;

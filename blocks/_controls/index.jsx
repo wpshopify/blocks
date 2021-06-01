@@ -1,7 +1,7 @@
-const { InspectorControls } = wp.blockEditor
+const { InspectorControls } = wp.blockEditor;
 
 function BlockControls({ children }) {
-  return <InspectorControls>{children}</InspectorControls>
+  return <InspectorControls>{children}</InspectorControls>;
 }
 
-export { BlockControls }
+export default BlockControls;

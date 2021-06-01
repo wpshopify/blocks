@@ -1,28 +1,18 @@
-function Limit({ state, dispatch }) {
-  const { useState } = wp.element
-  const { TextControl } = wp.components
-  const [isLoading, setIsLoading] = useState(false)
-  const [localVal, setLocalVal] = useState(
-    state.payloadSettings.limit ? state.payloadSettings.limit : false
-  )
+import { useBlockDispatch } from '../../_state/hooks';
+
+function Limit({ limit }) {
+  const { TextControl } = wp.components;
+  const dispatch = useBlockDispatch();
 
   function onLimitChange(newVal) {
-    dispatch({ type: 'SET_IS_LOADING', payload: true })
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
 
     if (!newVal) {
-      setLocalVal(false)
-      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: false } })
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: false } });
     } else {
-      var newLimitNum = parseInt(newVal)
+      var newLimitNum = parseInt(newVal);
 
-      if (newLimitNum === state.payloadSettings.pageSize) {
-        setIsLoading(false)
-      } else {
-        setIsLoading(true)
-      }
-
-      setLocalVal(newLimitNum)
-      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: newLimitNum } })
+      dispatch({ type: 'UPDATE_SETTING', payload: { key: 'limit', value: newLimitNum } });
     }
   }
 
@@ -33,11 +23,11 @@ function Limit({ state, dispatch }) {
         'Sets the number of products shown. This will take precedence over the page size setting.',
         'wpshopify'
       )}
-      value={localVal}
+      value={limit}
       onChange={onLimitChange}
       type='number'
     />
-  )
+  );
 }
 
-export { Limit }
+export default wp.element.memo(Limit);

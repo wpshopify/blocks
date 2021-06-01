@@ -1,11 +1,11 @@
 function ProductId({ state, dispatch }) {
-  const { useState } = wp.element
-  const { TextControl } = wp.components
-  const [val, setVal] = useState(state.payloadSettings.productId)
+  const { useState } = wp.element;
+  const { TextControl } = wp.components;
+  const [val, setVal] = useState(state.payloadSettings.productId);
 
   function onChange(newVal) {
-    setVal(newVal)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'productId', value: newVal } })
+    setVal(newVal);
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'productId', value: newVal } });
   }
 
   return (
@@ -15,7 +15,7 @@ function ProductId({ state, dispatch }) {
       value={val}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { ProductId }
+export default wp.element.memo(ProductId);

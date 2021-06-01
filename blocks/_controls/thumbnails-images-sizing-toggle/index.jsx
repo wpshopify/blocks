@@ -1,14 +1,17 @@
-function ThumbnailsImagesSizingToggle({ state, dispatch }) {
-  const { ToggleControl } = wp.components
-  const { useState } = wp.element
-  const [val, setVal] = useState(state.payloadSettings.thumbnailImagesSizingToggle)
+import { useBlockDispatch } from '../../_state/hooks';
+
+function ThumbnailsImagesSizingToggle({ toggle }) {
+  const { ToggleControl } = wp.components;
+  const { useState } = wp.element;
+  const [val, setVal] = useState(toggle);
+  const dispatch = useBlockDispatch();
 
   function onChange(newVal) {
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: 'thumbnailImagesSizingToggle', value: newVal },
-    })
-    setVal(newVal)
+    });
+    setVal(newVal);
   }
 
   return (
@@ -17,7 +20,7 @@ function ThumbnailsImagesSizingToggle({ state, dispatch }) {
       checked={val}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export default ThumbnailsImagesSizingToggle
+export default wp.element.memo(ThumbnailsImagesSizingToggle);

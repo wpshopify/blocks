@@ -1,17 +1,21 @@
-function MaxQuantity({ state, dispatch }) {
-  const { TextControl } = wp.components
+import { useBlockDispatch } from '../../_state/hooks';
+
+function MaxQuantity({ max }) {
+  const { TextControl } = wp.components;
+  const dispatch = useBlockDispatch();
+
   function onChange(newVal) {
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'maxQuantity', value: newVal } })
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'maxQuantity', value: newVal } });
   }
 
   return (
     <TextControl
       type='Number'
       label={wp.i18n.__('Max quantity', 'wpshopify')}
-      value={state.payloadSettings.maxQuantity}
+      value={max}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { MaxQuantity }
+export default wp.element.memo(MaxQuantity);

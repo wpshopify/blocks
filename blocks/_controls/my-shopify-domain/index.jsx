@@ -39,4 +39,4 @@ function MyShopifyDomain({ state, dispatch }) {
   );
 }
 
-export { MyShopifyDomain };
+export default wp.element.memo(MyShopifyDomain);

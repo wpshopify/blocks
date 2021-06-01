@@ -1,11 +1,11 @@
 function CreatedAt({ state, dispatch }) {
-  const { useState } = wp.element
-  const { TextControl } = wp.components
-  const [val, setVal] = useState(state.payloadSettings.createdAt)
+  const { useState } = wp.element;
+  const { TextControl } = wp.components;
+  const [val, setVal] = useState(state.payloadSettings.createdAt);
 
   function onChange(newVal) {
-    setVal(newVal)
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'createdAt', value: newVal } })
+    setVal(newVal);
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'createdAt', value: newVal } });
   }
 
   return (
@@ -15,7 +15,7 @@ function CreatedAt({ state, dispatch }) {
       help={wp.i18n.__('Match product created at', 'wpshopify')}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { CreatedAt }
+export default wp.element.memo(CreatedAt);

@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function SortBy({ state, dispatch }) {
+function SortBy({ sortBy, isLoading, collection }) {
   const { SelectControl, Spinner, Notice } = wp.components;
-  const { useState, useEffect } = wp.element;
-  const [isLoading, setIsLoading] = useState(false);
+  const { useState } = wp.element;
   const [badSort, setBadSort] = useState(false);
+  const dispatch = useBlockDispatch();
 
   const spinnerStyles = css`
     position: absolute;
@@ -46,25 +47,15 @@ function SortBy({ state, dispatch }) {
   ];
 
   function onChange(newVal) {
-    if (
-      (!state.payloadSettings.collection && newVal === 'collection_default') ||
-      newVal === 'manual'
-    ) {
+    if ((!collection && newVal === 'collection_default') || newVal === 'manual') {
       setBadSort(true);
     } else {
       setBadSort(false);
     }
 
-    setIsLoading(true);
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'sortBy', value: newVal } });
   }
-
-  useEffect(() => {
-    if (!state.isLoading) {
-      setIsLoading(false);
-    }
-  }, [state.isLoading]);
 
   return (
     <div css={filterWrapCSS}>
@@ -79,7 +70,7 @@ function SortBy({ state, dispatch }) {
           'Note: sorting by price will take all variant prices into consideration',
           'wpshopify'
         )}
-        value={state.payloadSettings.sortBy}
+        value={sortBy}
         options={options}
         onChange={onChange}
       />
@@ -93,4 +84,4 @@ function SortBy({ state, dispatch }) {
   );
 }
 
-export { SortBy };
+export default wp.element.memo(SortBy);

@@ -4,12 +4,25 @@ import {
   ProductPlaceholder,
   Notices,
 } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components';
-import { fetchNewItems } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api';
-import { BlockContext } from '../_state/context';
+import {
+  fetchNewItems,
+  encodePayloadSettings,
+} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api';
 
-function BlockContent({ children, isBootstrapping, blockProps }) {
-  const { useContext, useEffect } = wp.element;
-  const [state, dispatch] = useContext(BlockContext);
+import { useBlockState, useBlockDispatch } from '../_state/hooks';
+
+function BlockContent({ children }) {
+  const { useEffect, useState } = wp.element;
+
+  const state = useBlockState();
+  const dispatch = useBlockDispatch();
+  const [isBootstrapping, setIsBootstrapping] = useState(true);
+
+  useEffect(() => {
+    state.blockProps.setAttributes({
+      payloadSettingsId: encodePayloadSettings(state.payloadSettings),
+    });
+  }, [state.payloadSettings]);
 
   useEffect(() => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
@@ -18,9 +31,7 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
       .then(function (newItems) {
         dispatch({ type: 'SET_IS_LOADING', payload: false });
 
-        if (isBootstrapping) {
-          isBootstrapping.current = false;
-        }
+        setIsBootstrapping(false);
 
         if (newItems.length) {
           dispatch({
@@ -42,9 +53,7 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
         }
       })
       .catch((error) => {
-        if (isBootstrapping) {
-          isBootstrapping.current = false;
-        }
+        setIsBootstrapping(false);
 
         dispatch({ type: 'SET_IS_LOADING', payload: false });
 
@@ -58,7 +67,7 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
       });
   }, [state.queryParams]);
 
-  return isBootstrapping.current ? (
+  return isBootstrapping ? (
     <ProductPlaceholder />
   ) : state.payload.length ? (
     <Shop options={{ isCartReady: true }}>
@@ -71,10 +80,9 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
             payloadSettings: state.payloadSettings,
           },
         ]}
+        payloadSettings={state.payloadSettings}
         payload={state.payload}
         customQueryParams={state.queryParams}
-        limit={state.payloadSettings.limit}
-        infiniteScroll={state.payloadSettings.infiniteScroll}
         isParentLoading={state.isLoading}>
         {children}
       </Items>
@@ -83,4 +91,4 @@ function BlockContent({ children, isBootstrapping, blockProps }) {
     <Notices notices={state.notices} noticeGroup='block' />
   );
 }
-export { BlockContent };
+export default BlockContent;

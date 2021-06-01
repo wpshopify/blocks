@@ -1,46 +1,19 @@
-import { Title } from '../../_controls/title'
-import { Excludes } from '../../_controls/excludes'
-import { AddToCartButtonColor } from '../../_controls/add-to-cart-button-color'
-import { AddToCartButtonText } from '../../_controls/add-to-cart-button-text'
-import { VariantButtonColor } from '../../_controls/variant-button-color'
-import { HideQuantity } from '../../_controls/hide-quantity'
-import { ShowQuantityLabel } from '../../_controls/show-quantity-label'
-import { QuantityLabelText } from '../../_controls/quantity-label-text'
-import { MinQuantity } from '../../_controls/min-quantity'
-import { MaxQuantity } from '../../_controls/max-quantity'
-import { ShowPriceRange } from '../../_controls/show-price-range'
-import { ShowCompareAt } from '../../_controls/show-compare-at'
-import { ShowFeaturedOnly } from '../../_controls/show-featured-only'
-import { ShowZoom } from '../../_controls/show-zoom'
-import { TitleSize } from '../../_controls/title-size'
-import { TitleColor } from '../../_controls/title-color'
-import { DescriptionSize } from '../../_controls/description-size'
-import { DescriptionColor } from '../../_controls/description-color'
-import { DescriptionLength } from '../../_controls/description-length'
-import { AlignHeight } from '../../_controls/align-height'
-import { VariantStyle } from '../../_controls/variant-style'
-import { ProductsLinkTarget } from '../../_controls/products-link-target'
-import { ProductsLinkTo } from '../../_controls/products-link-to'
-import DirectCheckout from '../../_controls/direct-checkout'
-import { BlockControls } from '../../_controls'
-import { BlockContext } from '../../_state/context'
-
-import ImagesSizingToggle from '../../_controls/images-sizing-toggle'
-import ImagesSizingWidth from '../../_controls/images-sizing-width'
-import ImagesSizingHeight from '../../_controls/images-sizing-height'
-import ImagesSizingCrop from '../../_controls/images-sizing-crop'
-import ImagesSizingScale from '../../_controls/images-sizing-scale'
-
-import ThumbnailsImagesSizingToggle from '../../_controls/thumbnails-images-sizing-toggle'
-import ThumbnailsImagesSizingWidth from '../../_controls/thumbnails-images-sizing-width'
-import ThumbnailsImagesSizingHeight from '../../_controls/thumbnails-images-sizing-height'
-import ThumbnailsImagesSizingCrop from '../../_controls/thumbnails-images-sizing-crop'
-import ThumbnailsImagesSizingScale from '../../_controls/thumbnails-images-sizing-scale'
+import FilteringControls from '../../_controls/_groups/filtering';
+import GeneralControls from '../../_controls/_groups/general';
+import LayoutControls from '../../_controls/_groups/layout';
+import TitleControls from '../../_controls/_groups/title';
+import DescriptionControls from '../../_controls/_groups/description';
+import PricingControls from '../../_controls/_groups/pricing';
+import ImagesControls from '../../_controls/_groups/images';
+import ButtonControls from '../../_controls/_groups/buy-button';
+import CheckoutControls from '../../_controls/_groups/checkout';
+import BlockControls from '../../_controls';
+import { useBlockState } from '../../_state/hooks';
 
 function SingleProductControls() {
-  const { PanelBody } = wp.components
-  const { useContext } = wp.element
-  const [state, dispatch] = useContext(BlockContext)
+  const { PanelBody } = wp.components;
+
+  const { payloadSettings: settings } = useBlockState();
 
   return (
     <BlockControls>
@@ -48,91 +21,66 @@ function SingleProductControls() {
         title={wp.i18n.__('Filtering', 'wpshopify')}
         initialOpen={true}
         className='wps-panel-body'>
-        <Title state={state} dispatch={dispatch} />
+        <FilteringControls settings={settings} single={true} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('General', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <ProductsLinkTo state={state} dispatch={dispatch} />
-        <ProductsLinkTarget state={state} dispatch={dispatch} />
+        <GeneralControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Layout', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <Excludes state={state} dispatch={dispatch} />
-        <AlignHeight state={state} dispatch={dispatch} />
+        <LayoutControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Title', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <TitleSize state={state} dispatch={dispatch} />
-        <TitleColor state={state} dispatch={dispatch} />
+        <TitleControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Description', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <DescriptionSize state={state} dispatch={dispatch} />
-        <DescriptionColor state={state} dispatch={dispatch} />
-        <DescriptionLength state={state} dispatch={dispatch} />
+        <DescriptionControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Pricing', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <ShowPriceRange state={state} dispatch={dispatch} />
-        <ShowCompareAt state={state} dispatch={dispatch} />
+        <PricingControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Images', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <ShowFeaturedOnly state={state} dispatch={dispatch} />
-        <ShowZoom state={state} dispatch={dispatch} />
-        <ImagesSizingToggle state={state} dispatch={dispatch} />
-        <ImagesSizingWidth state={state} dispatch={dispatch} />
-        <ImagesSizingHeight state={state} dispatch={dispatch} />
-        <ImagesSizingCrop state={state} dispatch={dispatch} />
-        <ImagesSizingScale state={state} dispatch={dispatch} />
-        <ThumbnailsImagesSizingToggle state={state} dispatch={dispatch} />
-        <ThumbnailsImagesSizingWidth state={state} dispatch={dispatch} />
-        <ThumbnailsImagesSizingHeight state={state} dispatch={dispatch} />
-        <ThumbnailsImagesSizingCrop state={state} dispatch={dispatch} />
-        <ThumbnailsImagesSizingScale state={state} dispatch={dispatch} />
+        <ImagesControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Buy Button', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <AddToCartButtonColor state={state} dispatch={dispatch} />
-        <AddToCartButtonText state={state} dispatch={dispatch} />
-        <VariantButtonColor state={state} dispatch={dispatch} />
-        <HideQuantity state={state} dispatch={dispatch} />
-        <ShowQuantityLabel state={state} dispatch={dispatch} />
-        <QuantityLabelText state={state} dispatch={dispatch} />
-        <MinQuantity state={state} dispatch={dispatch} />
-        <MaxQuantity state={state} dispatch={dispatch} />
-        <VariantStyle state={state} dispatch={dispatch} />
+        <ButtonControls settings={settings} />
       </PanelBody>
 
       <PanelBody
         title={wp.i18n.__('Checkout', 'wpshopify')}
         initialOpen={false}
         className='wps-panel-body'>
-        <DirectCheckout state={state} dispatch={dispatch} />
+        <CheckoutControls settings={settings} />
       </PanelBody>
     </BlockControls>
-  )
+  );
 }
 
-export { SingleProductControls }
+export default SingleProductControls;

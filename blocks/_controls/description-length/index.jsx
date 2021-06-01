@@ -1,31 +1,33 @@
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function DescriptionLength({ state, dispatch }) {
-  const { useEffect, useState, useRef } = wp.element
-  const { RangeControl } = wp.components
-  const [localVal, setLocalVal] = useState(state.payloadSettings.descriptionLength)
-  const [debouncedValue] = useDebounce(localVal, 10)
-  const isFirstRender = useRef(true)
+function DescriptionLength({ length }) {
+  const { useEffect, useState, useRef } = wp.element;
+  const { RangeControl } = wp.components;
+  const [localVal, setLocalVal] = useState(length);
+  const [debouncedValue] = useDebounce(localVal, 10);
+  const isFirstRender = useRef(true);
+  const dispatch = useBlockDispatch();
 
   function onChange(newVal) {
-    setLocalVal(newVal)
+    setLocalVal(newVal);
   }
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+      isFirstRender.current = false;
+      return;
     }
 
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: 'descriptionLength', value: debouncedValue },
-    })
-  }, [debouncedValue])
+    });
+  }, [debouncedValue]);
 
   useEffect(() => {
-    setLocalVal(state.payloadSettings.descriptionLength)
-  }, [state.payloadSettings.descriptionLength])
+    setLocalVal(length);
+  }, [length]);
 
   return (
     <RangeControl
@@ -36,7 +38,7 @@ function DescriptionLength({ state, dispatch }) {
       min={1}
       max={200}
     />
-  )
+  );
 }
 
-export { DescriptionLength }
+export default wp.element.memo(DescriptionLength);

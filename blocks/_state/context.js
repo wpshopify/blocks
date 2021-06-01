@@ -1,5 +1,4 @@
-const { createContext } = wp.element
+const BlockStateContext = wp.element.createContext();
+const BlockDispatchContext = wp.element.createContext();
 
-const BlockContext = createContext()
-
-export { BlockContext }
+export { BlockStateContext, BlockDispatchContext };

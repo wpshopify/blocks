@@ -1,13 +1,9 @@
-import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components';
-import { BlockProvider } from '../_state/provider';
-import { ProductsControls } from './controls';
-import ProductsContent from './content';
-import { Icon } from '../_icons';
+import BlockRoot from '../_content/root';
+import BlockWrapper from '../_content/wrapper';
+import ProductsControls from './controls';
+import Icon from '../_icons';
 
 function BlockProducts() {
-  const isBootstrapping = {
-    current: true,
-  };
   return {
     title: wp.i18n.__('Products', 'wpshopify'),
     description: wp.i18n.__(
@@ -31,17 +27,20 @@ function BlockProducts() {
         type: 'object',
         default: wpshopify.settings.products,
       },
+      clientId: {
+        type: 'string',
+        default: '',
+      },
     },
     edit: (props) => {
       return (
-        <BlockProvider options={wpshopify} blockProps={props}>
+        <BlockWrapper blockProps={props}>
           <ProductsControls />
-          <ProductsContent isBootstrapping={isBootstrapping} />
-        </BlockProvider>
+        </BlockWrapper>
       );
     },
     save: (props) => {
-      return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />;
+      return <BlockRoot attributes={props.attributes} />;
     },
   };
 }
@@ -50,4 +49,4 @@ function registerBlockProducts() {
   wp.blocks.registerBlockType('wpshopify/products', BlockProducts());
 }
 
-export { registerBlockProducts };
+export default registerBlockProducts;

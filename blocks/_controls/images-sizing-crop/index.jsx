@@ -1,5 +1,8 @@
-function ImagesSizingCrop({ state, dispatch }) {
-  const { SelectControl } = wp.components
+import { useBlockDispatch } from '../../_state/hooks';
+
+function ImagesSizingCrop({ crop }) {
+  const { SelectControl } = wp.components;
+  const dispatch = useBlockDispatch();
 
   const options = [
     { label: wp.i18n.__('None', 'wpshopify'), value: 'none' },
@@ -8,10 +11,10 @@ function ImagesSizingCrop({ state, dispatch }) {
     { label: wp.i18n.__('Bottom', 'wpshopify'), value: 'bottom' },
     { label: wp.i18n.__('Left', 'wpshopify'), value: 'left' },
     { label: wp.i18n.__('Right', 'wpshopify'), value: 'right' },
-  ]
+  ];
 
   function onChange(newVal) {
-    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'imagesSizingCrop', value: newVal } })
+    dispatch({ type: 'UPDATE_SETTING', payload: { key: 'imagesSizingCrop', value: newVal } });
   }
 
   return (
@@ -21,11 +24,11 @@ function ImagesSizingCrop({ state, dispatch }) {
         "If the entire image won't fit in your set dimensions, the crop parameter specifies what part of the image to show.",
         'wpshopify'
       )}
-      value={state.payloadSettings.imagesSizingCrop}
+      value={crop}
       options={options}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export default ImagesSizingCrop
+export default wp.element.memo(ImagesSizingCrop);

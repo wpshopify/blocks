@@ -1,6 +1,6 @@
-import { FilterTextControl } from '../_common/filter-text-control'
+import FilterTextControl from '../_common/filter-text-control';
 
-function Collection({ state, dispatch }) {
+function Collection({ state, isLoading }) {
   return (
     <FilterTextControl
       label={wp.i18n.__('Filter by Collection', 'wpshopify')}
@@ -10,9 +10,9 @@ function Collection({ state, dispatch }) {
       )}
       settingName='collection'
       state={state}
-      dispatch={dispatch}
+      isLoading={isLoading}
     />
-  )
+  );
 }
 
-export { Collection }
+export default wp.element.memo(Collection);

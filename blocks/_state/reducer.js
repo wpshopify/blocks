@@ -92,8 +92,6 @@ function BlockReducer(state, action) {
       var okqueryParamObject = update(state.queryParams, { $set: queryParamObject });
       var payloadSettingsId = encodePayloadSettings(newPayloadSettings);
 
-      setPayloadSettingsAttributes(state.blockProps.setAttributes, payloadSettingsId);
-
       return {
         ...state,
         queryParams: okqueryParamObject,
@@ -136,4 +134,4 @@ function BlockReducer(state, action) {
   }
 }
 
-export { BlockReducer };
+export default BlockReducer;

@@ -1,13 +1,9 @@
-import { RootElement } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components'
-import { BlockProvider } from '../_state/provider'
-import { SingleProductControls } from './controls'
-import ProductsContent from '../products/content'
-import { Icon } from '../_icons'
+import BlockRoot from '../_content/root';
+import BlockWrapper from '../_content/wrapper';
+import SingleProductControls from './controls';
+import Icon from '../_icons';
 
 function BlockSingleProduct() {
-  const isBootstrapping = {
-    current: true,
-  }
   return {
     title: wp.i18n.__('Single Product', 'wpshopify'),
     description: wp.i18n.__('This block displays a single Shopify product.', 'wpshopify'),
@@ -23,28 +19,32 @@ function BlockSingleProduct() {
     attributes: {
       payloadSettingsId: {
         type: 'string',
+        default: '',
       },
       defaultPayloadSettings: {
         type: 'object',
         default: wpshopify.settings.products,
       },
+      clientId: {
+        type: 'string',
+        default: '',
+      },
     },
     edit: (props) => {
       return (
-        <BlockProvider options={wpshopify} blockProps={props}>
+        <BlockWrapper blockProps={props}>
           <SingleProductControls />
-          <ProductsContent isBootstrapping={isBootstrapping} />
-        </BlockProvider>
-      )
+        </BlockWrapper>
+      );
     },
     save: (props) => {
-      return <RootElement payloadSettingsId={props.attributes.payloadSettingsId} />
+      return <BlockRoot attributes={props.attributes} />;
     },
-  }
+  };
 }
 
 function registerBlockSingleProduct() {
-  wp.blocks.registerBlockType('wpshopify/single-product', BlockSingleProduct())
+  wp.blocks.registerBlockType('wpshopify/single-product', BlockSingleProduct());
 }
 
-export { registerBlockSingleProduct }
+export default registerBlockSingleProduct;

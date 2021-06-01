@@ -1,14 +1,7 @@
-import { FontSizePickerControl } from '../_common/font-size-picker-control'
+import FontSizePickerControl from '../_common/font-size-picker-control';
 
-function TitleSize({ state, dispatch }) {
-  return (
-    <FontSizePickerControl
-      state={state}
-      dispatch={dispatch}
-      defaultValue={22}
-      settingName='titleSize'
-    />
-  )
+function TitleSize({ fontSize }) {
+  return <FontSizePickerControl fontSize={fontSize} defaultValue={22} settingName='titleSize' />;
 }
 
-export { TitleSize }
+export default wp.element.memo(TitleSize);

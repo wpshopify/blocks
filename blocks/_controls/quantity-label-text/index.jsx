@@ -1,16 +1,15 @@
-import TextControlDebounced from '../_common/text-control-debounced'
+import TextControlDebounced from '../_common/text-control-debounced';
 
-function QuantityLabelText({ state, dispatch }) {
+function QuantityLabelText({ text, showQuantityLabel }) {
   return (
-    state.payloadSettings.showQuantityLabel && (
+    showQuantityLabel && (
       <TextControlDebounced
         settingName='quantityLabelText'
         label={wp.i18n.__('Quantity label text', 'wpshopify')}
-        state={state}
-        dispatch={dispatch}
+        state={text}
       />
     )
-  )
+  );
 }
 
-export { QuantityLabelText }
+export default wp.element.memo(QuantityLabelText);

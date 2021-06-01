@@ -1,15 +1,15 @@
-import { FilterTextControl } from '../_common/filter-text-control'
+import FilterTextControl from '../_common/filter-text-control';
 
-function Vendor({ state, dispatch }) {
+function Vendor({ state, isLoading }) {
   return (
     <FilterTextControl
       label={wp.i18n.__('Filter by Vendor', 'wpshopify')}
       help={wp.i18n.__('Match product vendors. Separate multiple by comma.', 'wpshopify')}
       settingName='vendor'
       state={state}
-      dispatch={dispatch}
+      isLoading={isLoading}
     />
-  )
+  );
 }
 
-export { Vendor }
+export default wp.element.memo(Vendor);

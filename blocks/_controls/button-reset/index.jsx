@@ -33,4 +33,4 @@ function ButtonReset({ state, dispatch, blockProps }) {
   );
 }
 
-export { ButtonReset };
+export default wp.element.memo(ButtonReset);

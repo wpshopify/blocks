@@ -1,11 +1,11 @@
 function FullWidth({ state, dispatch }) {
-  const { ToggleControl } = wp.components
+  const { ToggleControl } = wp.components;
 
   function onChange(isChecked) {
     dispatch({
       type: 'UPDATE_SETTING',
       payload: { key: 'fullWidth', value: isChecked },
-    })
+    });
   }
 
   return (
@@ -14,7 +14,7 @@ function FullWidth({ state, dispatch }) {
       checked={state.payloadSettings.fullWidth}
       onChange={onChange}
     />
-  )
+  );
 }
 
-export { FullWidth }
+export default wp.element.memo(FullWidth);

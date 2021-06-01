@@ -1,18 +1,17 @@
-import { convertValuesToString, removeEmptyValues } from './';
-import { useDebounce } from 'use-debounce';
-
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { convertValuesToString, removeEmptyValues } from './';
+import { useDebounce } from 'use-debounce';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function FilterTextControl({ state, dispatch, label, help, settingName }) {
+function FilterTextControl({ state, label, help, settingName, isLoading }) {
   const { useEffect, useState, useRef } = wp.element;
   const { TextControl, Spinner } = wp.components;
-  const [localVal, setLocalVal] = useState(
-    convertValuesToString(state.payloadSettings[settingName])
-  );
-  const [debouncedValue] = useDebounce(localVal, 350);
+  const [localVal, setLocalVal] = useState(convertValuesToString(state));
+  const [debouncedValue] = useDebounce(localVal, 150);
   const isFirstRender = useRef(true);
   const [isTouched, setIsTouched] = useState(false);
+  const dispatch = useBlockDispatch();
 
   const spinnerStyles = css`
     position: absolute;
@@ -50,14 +49,14 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   }, [debouncedValue]);
 
   useEffect(() => {
-    if (!state.isLoading) {
+    if (!isLoading) {
       setIsTouched(false);
     }
-  }, [state.isLoading]);
+  }, [isLoading]);
 
   return (
     <div css={filterWrapCSS}>
-      {state.isLoading && isTouched && (
+      {isLoading && isTouched && (
         <div css={spinnerStyles}>
           <Spinner />
         </div>
@@ -68,4 +67,4 @@ function FilterTextControl({ state, dispatch, label, help, settingName }) {
   );
 }
 
-export { FilterTextControl };
+export default wp.element.memo(FilterTextControl);

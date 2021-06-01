@@ -1,11 +1,13 @@
-import without from 'lodash/without';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import without from 'lodash/without';
+import { useBlockDispatch } from '../../_state/hooks';
 
-function Excludes({ state, dispatch }) {
+function Excludes({ excludes }) {
+  const dispatch = useBlockDispatch();
   const { useEffect, useState, useRef } = wp.element;
   const { CheckboxControl, BaseControl } = wp.components;
-  const [excludesState, setExcludesState] = useState(state.payloadSettings.excludes);
+  const [excludesState, setExcludesState] = useState(excludes);
   const isFirstRender = useRef(true);
 
   const excludeCSS = css`
@@ -44,15 +46,6 @@ function Excludes({ state, dispatch }) {
 
     dispatch({ type: 'UPDATE_SETTING', payload: { key: 'excludes', value: excludesState } });
   }, [excludesState]);
-
-  //   useEffect(() => {
-  //     if (isFirstRender.current) {
-  //       isFirstRender.current = false
-  //       return
-  //     }
-
-  //     setExcludesState(state.payloadSettings.excludes)
-  //   }, [state.payloadSettings.excludes])
 
   function Title() {
     return (
@@ -116,4 +109,4 @@ function Excludes({ state, dispatch }) {
   );
 }
 
-export { Excludes };
+export default wp.element.memo(Excludes);

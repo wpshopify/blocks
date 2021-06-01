@@ -45,4 +45,4 @@ function StorefrontAccessToken({ state, dispatch }) {
   );
 }
 
-export { StorefrontAccessToken };
+export default wp.element.memo(StorefrontAccessToken);

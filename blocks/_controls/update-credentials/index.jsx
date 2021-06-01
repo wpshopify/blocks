@@ -44,10 +44,10 @@ function UpdateCredentialsButton({ state, dispatch }) {
   }
 
   return (
-    <Button isDefault onClick={onClick} disabled={!hasValidCreds()}>
+    <Button onClick={onClick} disabled={!hasValidCreds()}>
       {hasCredentials ? 'Remove connected Shopify store' : 'Load Shopify store'}
     </Button>
   );
 }
 
-export { UpdateCredentialsButton };
+export default wp.element.memo(UpdateCredentialsButton);

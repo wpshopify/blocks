@@ -9,6 +9,6 @@ const Icon = (
       fill='#415aff'
     />
   </svg>
-)
+);
 
-export { Icon }
+export default Icon;
