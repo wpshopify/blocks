@@ -1,4 +1,4 @@
-import { Products } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components';
+import { Products } from '/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-components';
 import BlockContent from '../../_content';
 
 function ProductsContent() {

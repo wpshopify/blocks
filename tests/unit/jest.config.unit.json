@@ -9,9 +9,9 @@
    "setupFilesAfterEnv": ["<rootDir>/tests/jest-test-setup.js"],
    "testRegex": "unit.test.js",
    "moduleNameMapper": {
-      "/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api": "<rootDir>/node_modules//Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api"
+      "/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-api": "<rootDir>/node_modules//Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-api"
    },
-   "transformIgnorePatterns": ["node_modules/(?!(/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api)/)"],
+   "transformIgnorePatterns": ["node_modules/(?!(/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-api)/)"],
    "transform": {
       "^.+\\.jsx?$": "babel-jest"
    }

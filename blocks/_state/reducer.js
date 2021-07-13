@@ -1,9 +1,9 @@
 import {
   buildQueryFromSelections,
   encodePayloadSettings,
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api';
+} from '/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-api';
 
-import { updateNoticesState } from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-components';
+import { updateNoticesState } from '/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-components';
 import update from 'immutability-helper';
 
 function setPayloadSettingsAttributes(setAttributes, payloadSettingsId) {

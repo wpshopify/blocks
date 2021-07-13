@@ -1,7 +1,7 @@
 import {
   encodePayloadSettings,
   decodePayloadSettings,
-} from '/Users/andrew/www/devil/devilbox-new/data/www/wpshopify-api';
+} from '/Users/arobbins/www/_devilbox/devilbox/data/www/wpshopify-api';
 
 function getSavedBlockSettings(payloadSettingsId) {
   return [decodePayloadSettings(payloadSettingsId), payloadSettingsId];
